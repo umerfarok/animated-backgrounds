@@ -108,12 +108,12 @@ The `AnimatedBackground` component accepts additional props for customization:
 ![Particle Network](images/particleNetwork.png "Particle Network")
 ![Galaxy Spiral](images/galaxySpiral.png "Galaxy Spiral")
 ![Rainbow Waves](images/rainbowWaves.png "Rainbow Waves")
-![Geometric Shapes](images/geometricShapes.png "Geometric Shapes")
-![Fireflies](images/fireflies.png "Fireflies")
+<!-- ![Geometric Shapes](images/geometricShapes.png "Geometric Shapes")
+![Fireflies](images/fireflies.png "Fireflies") -->
 ![Matrix Rain](images/matrixRain.png "Matrix Rain")
 ![Quantum Field](images/quantumField.png "Quantum Field")
 ![Electric Storm](images/electricStorm.png "Electric Storm")
-![Cosmic Dust](images/cosmicDust.png "Cosmic Dust")
+<!-- ![Cosmic Dust](images/cosmicDust.png "Cosmic Dust") -->
 ![Neon Pulse](images/neonPulse.png "Neon Pulse")
 ![Aurora Borealis](images/auroraBorealis.png "Aurora Borealis")
 
