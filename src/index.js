@@ -5,7 +5,9 @@ import {
     gradientWave, particleNetwork, galaxySpiral,
     rainbowWaves, geometricShapes, fireflies,
     matrixRain, quantumField, electricStorm,
-    cosmicDust, neonPulse, auroraBorealis
+    cosmicDust, neonPulse, auroraBorealis, oceanWaves,
+    neuralNetwork,
+    dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest
 } from './backgroundAnimations';
 
 class AnimatedBackground extends React.Component {
@@ -15,12 +17,21 @@ class AnimatedBackground extends React.Component {
         this.animationFrameId = null;
     }
 
+    handleResize = () => {
+        const canvas = this.canvasRef.current;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        this.setupCanvas();
+    }
+
     componentDidMount() {
         this.setupCanvas();
+        window.addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
         cancelAnimationFrame(this.animationFrameId);
+        window.removeEventListener('resize', this.handleResize);
     }
 
     setupCanvas = () => {
@@ -39,15 +50,33 @@ class AnimatedBackground extends React.Component {
             geometricShapes,
             fireflies,
             matrixRain,
-            quantumField, electricStorm,
-            cosmicDust, neonPulse, auroraBorealis
+            quantumField,
+            electricStorm,
+            cosmicDust,
+            neonPulse,
+            auroraBorealis,
+            oceanWaves,
+            neuralNetwork,
+            dnaHelix,
+            snowFall,
+            realisticRain, realisticClouds, fireflyForest,
+            autumnLeaves
         };
 
-        const animation = animations[this.props.animationName](canvas, ctx);
+        let animation = animations[this.props.animationName];
+
+        if (!animation) {
+            console.warn(`Animation "${this.props.animationName}" not found. Using fallback animation.`);
+            animation = animations[this.props.fallbackAnimation] || animations.geometricShapes;
+        }
+
+        animation = animation(canvas, ctx);
 
         const animate = () => {
             animation();
-            this.animationFrameId = requestAnimationFrame(animate);
+            this.animationFrameId = setTimeout(() => {
+                requestAnimationFrame(animate);
+            }, 1000 / this.props.fps);
         };
 
         animate();
@@ -71,8 +100,10 @@ class AnimatedBackground extends React.Component {
     }
 }
 
+
 export {
-    AnimatedBackground, starryNight,
+    AnimatedBackground,
+    starryNight,
     floatingBubbles,
     gradientWave,
     particleNetwork,
@@ -80,5 +111,10 @@ export {
     rainbowWaves,
     geometricShapes,
     fireflies,
-    matrixRain
+    matrixRain,
+    quantumField,
+    electricStorm,
+    cosmicDust,
+    neonPulse,
+    auroraBorealis
 };
