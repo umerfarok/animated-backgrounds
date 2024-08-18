@@ -1140,7 +1140,6 @@ export const realisticRain = (canvas, ctx) => {
     };
 };
 
-// Add this to your src/backgroundAnimations.js file
 
 export const fallingFoodFiesta = (canvas, ctx) => {
     const foodItems = [];

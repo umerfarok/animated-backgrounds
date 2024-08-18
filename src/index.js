@@ -60,7 +60,8 @@ class AnimatedBackground extends React.Component {
             dnaHelix,
             snowFall,
             realisticRain, realisticClouds, fireflyForest,
-            autumnLeaves
+            autumnLeaves,
+            fallingFoodFiesta,
         };
 
         let animation = animations[this.props.animationName];
