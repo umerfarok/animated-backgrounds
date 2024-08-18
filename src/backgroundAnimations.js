@@ -1140,11 +1140,27 @@ export const realisticRain = (canvas, ctx) => {
     };
 };
 
-// Add this to your src/backgroundAnimations.js file
+
 export const fallingFoodFiesta = (canvas, ctx) => {
     const foodItems = [];
-    const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦', '🍎', '🍇', '🍓', '🍑', '🍍', '🥑', '🥕', '🥪', '🥨', '🧀', '🥐', '🥯'];
-    const numItems = 40;
+    const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦', '🍎', '🍇', '🍓', '🍑', '🍍', '🥑', '🥕', '🥪', '🥨', '🧀', '🥐', '🥯', '🍱', '🍜', '🍙', '🍗', '🥟', '🥘', '🍤', '🥞', '🧇', '🥓'];
+    const numItems = 50;
+
+    // Colors for the moving gradient
+    const colors = [
+        { r: 255, g: 0, b: 0 },    // Red
+        { r: 255, g: 165, b: 0 },  // Orange
+        { r: 255, g: 255, b: 0 },  // Yellow
+        { r: 0, g: 255, b: 0 },    // Green
+        { r: 0, g: 0, b: 255 },    // Blue
+        { r: 75, g: 0, b: 130 },   // Indigo
+        { r: 238, g: 130, b: 238 } // Violet
+    ];
+
+    let colorIndex = 0;
+    let nextColorIndex = 1;
+    let colorT = 0;
+    const colorSpeed = 0.005;
 
     for (let i = 0; i < numItems; i++) {
         foodItems.push({
@@ -1158,8 +1174,33 @@ export const fallingFoodFiesta = (canvas, ctx) => {
         });
     }
 
+    const lerpColor = (color1, color2, t) => {
+        return {
+            r: Math.round(color1.r + (color2.r - color1.r) * t),
+            g: Math.round(color1.g + (color2.g - color1.g) * t),
+            b: Math.round(color1.b + (color2.b - color1.b) * t)
+        };
+    };
+
     return () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Update gradient colors
+        colorT += colorSpeed;
+        if (colorT >= 1) {
+            colorT = 0;
+            colorIndex = nextColorIndex;
+            nextColorIndex = (nextColorIndex + 1) % colors.length;
+        }
+
+        const currentColor = lerpColor(colors[colorIndex], colors[nextColorIndex], colorT);
+
+        // Create moving gradient
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`);
+        gradient.addColorStop(1, `rgb(${255 - currentColor.r}, ${255 - currentColor.g}, ${255 - currentColor.b})`);
+
+        // Draw gradient background
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         foodItems.forEach(item => {
             ctx.save();
@@ -1168,8 +1209,16 @@ export const fallingFoodFiesta = (canvas, ctx) => {
             ctx.font = `${item.size}px Arial`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            
+
+            // Add a white outline for better visibility
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+            ctx.strokeText(item.emoji, 0, 0);
+
+            // Fill with black for contrast
+            ctx.fillStyle = 'black';
             ctx.fillText(item.emoji, 0, 0);
+
             ctx.restore();
 
             item.y += item.speed;
