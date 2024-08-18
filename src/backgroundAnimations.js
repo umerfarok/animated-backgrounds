@@ -1139,3 +1139,47 @@ export const realisticRain = (canvas, ctx) => {
         });
     };
 };
+
+// Add this to your src/backgroundAnimations.js file
+
+export const fallingFoodFiesta = (canvas, ctx) => {
+    const foodItems = [];
+    const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦'];
+    const numItems = 30;
+
+    for (let i = 0; i < numItems; i++) {
+        foodItems.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height - canvas.height,
+            emoji: foodTypes[Math.floor(Math.random() * foodTypes.length)],
+            size: Math.random() * 30 + 20,
+            speed: Math.random() * 2 + 1,
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 4 - 2
+        });
+    }
+
+    return () => {
+        ctx.fillStyle = 'rgba(255, 253, 240, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        foodItems.forEach(item => {
+            ctx.save();
+            ctx.translate(item.x, item.y);
+            ctx.rotate(item.rotation * Math.PI / 180);
+            ctx.font = `${item.size}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(item.emoji, 0, 0);
+            ctx.restore();
+
+            item.y += item.speed;
+            item.rotation += item.rotationSpeed;
+
+            if (item.y > canvas.height + item.size) {
+                item.y = -item.size;
+                item.x = Math.random() * canvas.width;
+            }
+        });
+    };
+};

@@ -7,7 +7,7 @@ import {
     matrixRain, quantumField, electricStorm,
     cosmicDust, neonPulse, auroraBorealis, oceanWaves,
     neuralNetwork,
-    dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest
+    dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest, fallingFoodFiesta
 } from './backgroundAnimations';
 
 class AnimatedBackground extends React.Component {
@@ -116,5 +116,6 @@ export {
     electricStorm,
     cosmicDust,
     neonPulse,
-    auroraBorealis
+    auroraBorealis,
+    fallingFoodFiesta
 };
