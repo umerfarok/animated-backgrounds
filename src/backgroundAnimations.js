@@ -1146,46 +1146,35 @@ export const fallingFoodFiesta = (canvas, ctx) => {
     const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦', '🍎', '🍇', '🍓', '🍑', '🍍', '🥑', '🥕', '🥪', '🥨', '🧀', '🥐', '🥯'];
     const numItems = 40;
 
-    // Initialize food items
     for (let i = 0; i < numItems; i++) {
         foodItems.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
             emoji: foodTypes[Math.floor(Math.random() * foodTypes.length)],
-            size: Math.random() * 20 + 30, // Increased size for clarity
-            speed: Math.random() * 1.5 + 0.5, // Slightly reduced speed range
-            rotation: Math.random() * 360,
-            rotationSpeed: Math.random() * 2 - 1 // Reduced rotation speed
+            size: Math.random() * 20 + 30,
+            speed: Math.random() * 1.5 + 0.5,
+            rotation: Math.random() * Math.PI * 2,
+            rotationSpeed: (Math.random() * 2 - 1) * 0.02
         });
     }
 
     return () => {
-        // Clear the canvas with a more solid background
-        ctx.fillStyle = 'rgba(255, 253, 240, 0.3)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         foodItems.forEach(item => {
             ctx.save();
             ctx.translate(item.x, item.y);
-            ctx.rotate(item.rotation * Math.PI / 180);
+            ctx.rotate(item.rotation);
             ctx.font = `${item.size}px Arial`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             
-            // Add a subtle shadow for depth
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.2)';
-            ctx.shadowBlur = 5;
-            ctx.shadowOffsetX = 2;
-            ctx.shadowOffsetY = 2;
-            
             ctx.fillText(item.emoji, 0, 0);
             ctx.restore();
 
-            // Update position and rotation
             item.y += item.speed;
             item.rotation += item.rotationSpeed;
 
-            // Reset position when item goes off-screen
             if (item.y > canvas.height + item.size) {
                 item.y = -item.size;
                 item.x = Math.random() * canvas.width;
