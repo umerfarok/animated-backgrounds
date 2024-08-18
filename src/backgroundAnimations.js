@@ -1140,36 +1140,132 @@ export const realisticRain = (canvas, ctx) => {
     };
 };
 
-
 export const fallingFoodFiesta = (canvas, ctx) => {
     const foodItems = [];
-    const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦'];
-    const numItems = 30;
+    const numItems = 20;
+    
+    // Food item designs
+    const foodDesigns = [
+        { name: 'burger', color: '#8B4513', secondaryColor: '#DAA520', shape: drawBurger },
+        { name: 'pizza', color: '#FFA500', secondaryColor: '#FF0000', shape: drawPizza },
+        { name: 'fries', color: '#FFD700', secondaryColor: '#FF4500', shape: drawFries },
+        { name: 'donut', color: '#FF69B4', secondaryColor: '#FFC0CB', shape: drawDonut }
+    ];
 
     for (let i = 0; i < numItems; i++) {
+        const foodType = foodDesigns[Math.floor(Math.random() * foodDesigns.length)];
         foodItems.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height - canvas.height,
-            emoji: foodTypes[Math.floor(Math.random() * foodTypes.length)],
-            size: Math.random() * 30 + 20,
+            type: foodType,
+            size: Math.random() * 40 + 30,
             speed: Math.random() * 2 + 1,
             rotation: Math.random() * 360,
-            rotationSpeed: Math.random() * 4 - 2
+            rotationSpeed: Math.random() * 4 - 2,
+            wobble: 0,
+            wobbleSpeed: Math.random() * 0.1 + 0.05
         });
     }
 
+    // Drawing functions for food items
+    function drawBurger(ctx, size) {
+        ctx.fillStyle = '#8B4513'; // Bun color
+        ctx.beginPath();
+        ctx.arc(0, 0, size/2, 0, Math.PI, true);
+        ctx.fill();
+        ctx.fillStyle = '#228B22'; // Lettuce
+        ctx.fillRect(-size/2, -size/8, size, size/8);
+        ctx.fillStyle = '#FF6347'; // Tomato
+        ctx.fillRect(-size/2, 0, size, size/8);
+        ctx.fillStyle = '#DAA520'; // Cheese
+        ctx.fillRect(-size/2, size/8, size, size/8);
+        ctx.fillStyle = '#8B4513'; // Bottom bun
+        ctx.beginPath();
+        ctx.arc(0, size/4, size/2, 0, Math.PI, false);
+        ctx.fill();
+    }
+
+    function drawPizza(ctx, size) {
+        ctx.fillStyle = '#FFA500'; // Crust color
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(-size/2, size/2);
+        ctx.lineTo(size/2, size/2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#FF0000'; // Sauce
+        ctx.beginPath();
+        ctx.arc(0, size/4, size/3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFF00'; // Cheese
+        for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            ctx.arc(Math.random() * size/2 - size/4, Math.random() * size/2, size/10, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function drawFries(ctx, size) {
+        ctx.fillStyle = '#FFD700'; // Fries color
+        for (let i = 0; i < 7; i++) {
+            ctx.fillRect(-size/2 + i * size/8, -size/2, size/12, size);
+        }
+        ctx.fillStyle = '#FF4500'; // Ketchup
+        ctx.beginPath();
+        ctx.arc(0, -size/2, size/4, 0, Math.PI, true);
+        ctx.fill();
+    }
+
+    function drawDonut(ctx, size) {
+        ctx.fillStyle = '#FF69B4'; // Donut color
+        ctx.beginPath();
+        ctx.arc(0, 0, size/2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFF'; // Hole
+        ctx.beginPath();
+        ctx.arc(0, 0, size/6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFC0CB'; // Frosting
+        for (let i = 0; i < 8; i++) {
+            ctx.beginPath();
+            ctx.arc(Math.cos(i * Math.PI/4) * size/3, Math.sin(i * Math.PI/4) * size/3, size/8, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
     return () => {
-        ctx.fillStyle = 'rgba(255, 253, 240, 0.1)';
+        // Clear canvas with a light pattern background
+        ctx.fillStyle = '#FFF';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw a subtle grid pattern
+        ctx.strokeStyle = 'rgba(200, 200, 200, 0.5)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < canvas.width; i += 20) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, canvas.height);
+            ctx.stroke();
+        }
+        for (let i = 0; i < canvas.height; i += 20) {
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(canvas.width, i);
+            ctx.stroke();
+        }
 
         foodItems.forEach(item => {
             ctx.save();
             ctx.translate(item.x, item.y);
             ctx.rotate(item.rotation * Math.PI / 180);
-            ctx.font = `${item.size}px Arial`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(item.emoji, 0, 0);
+            
+            // Add wobble effect
+            item.wobble += item.wobbleSpeed;
+            ctx.translate(Math.sin(item.wobble) * 5, 0);
+            
+            // Draw food item
+            item.type.shape(ctx, item.size);
+            
             ctx.restore();
 
             item.y += item.speed;
