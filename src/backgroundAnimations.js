@@ -1146,15 +1146,15 @@ export const fallingFoodFiesta = (canvas, ctx) => {
     const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦', '🍎', '🍇', '🍓', '🍑', '🍍', '🥑', '🥕', '🥪', '🥨', '🧀', '🥐', '🥯', '🍱', '🍜', '🍙', '🍗', '🥟', '🥘', '🍤', '🥞', '🧇', '🥓'];
     const numItems = 50;
 
-    // Colors for the moving gradient
+    // Lighter gradient colors
     const colors = [
-        { r: 255, g: 0, b: 0 },    // Red
-        { r: 255, g: 165, b: 0 },  // Orange
-        { r: 255, g: 255, b: 0 },  // Yellow
-        { r: 0, g: 255, b: 0 },    // Green
-        { r: 0, g: 0, b: 255 },    // Blue
-        { r: 75, g: 0, b: 130 },   // Indigo
-        { r: 238, g: 130, b: 238 } // Violet
+        { r: 255, g: 102, b: 102 },  // Light Red
+        { r: 255, g: 178, b: 102 },  // Light Orange
+        { r: 255, g: 255, b: 153 },  // Light Yellow
+        { r: 153, g: 255, b: 153 },  // Light Green
+        { r: 153, g: 204, b: 255 },  // Light Blue
+        { r: 178, g: 102, b: 255 },  // Light Indigo
+        { r: 255, g: 153, b: 255 }   // Light Violet
     ];
 
     let colorIndex = 0;
@@ -1190,18 +1190,24 @@ export const fallingFoodFiesta = (canvas, ctx) => {
             colorIndex = nextColorIndex;
             nextColorIndex = (nextColorIndex + 1) % colors.length;
         }
-
         const currentColor = lerpColor(colors[colorIndex], colors[nextColorIndex], colorT);
 
-        // Create moving gradient
+        // Create moving gradient with lighter colors
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
         gradient.addColorStop(0, `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`);
         gradient.addColorStop(1, `rgb(${255 - currentColor.r}, ${255 - currentColor.g}, ${255 - currentColor.b})`);
+
+        // Apply blur effect to the gradient
+        ctx.filter = 'blur(5px)';
 
         // Draw gradient background
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+        // Reset filter for subsequent drawing
+        ctx.filter = 'none';
+
+        // Draw food items
         foodItems.forEach(item => {
             ctx.save();
             ctx.translate(item.x, item.y);
@@ -1218,12 +1224,10 @@ export const fallingFoodFiesta = (canvas, ctx) => {
             // Fill with black for contrast
             ctx.fillStyle = 'black';
             ctx.fillText(item.emoji, 0, 0);
-
             ctx.restore();
 
             item.y += item.speed;
             item.rotation += item.rotationSpeed;
-
             if (item.y > canvas.height + item.size) {
                 item.y = -item.size;
                 item.x = Math.random() * canvas.width;
