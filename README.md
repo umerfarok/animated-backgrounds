@@ -49,7 +49,7 @@ The package currently includes the following animations:
 - `matrixRain`
 - `quantumField`
 - `electricStorm`
-- `cosmicDust`, `neonPulse`, `auroraBorealis`
+- `cosmicDust`, `neonPulse`, `auroraBorealis`, `autumnLeaves`, `dnaHelix`, `fallingFoodFiesta`
 
 
 To use a different animation, simply change the `animationName` prop:
@@ -101,22 +101,49 @@ The `AnimatedBackground` component accepts additional props for customization:
 />
 ```
 
-## Animations we have in 
-![Starry Night](images/starryNight.png "Starry Night")
-![Floating Bubbles](images/floatingBubbles.png "Floating Bubbles")
-![Gradient Wave](images/gradientWave.png "Gradient Wave")
-![Particle Network](images/particleNetwork.png "Particle Network")
-![Galaxy Spiral](images/galaxySpiral.png "Galaxy Spiral")
-![Rainbow Waves](images/rainbowWaves.png "Rainbow Waves")
-<!-- ![Geometric Shapes](images/geometricShapes.png "Geometric Shapes")
-![Fireflies](images/fireflies.png "Fireflies") -->
-![Matrix Rain](images/matrixRain.png "Matrix Rain")
-![Quantum Field](images/quantumField.png "Quantum Field")
-![Electric Storm](images/electricStorm.png "Electric Storm")
-<!-- ![Cosmic Dust](images/cosmicDust.png "Cosmic Dust") -->
-![Neon Pulse](images/neonPulse.png "Neon Pulse")
-![Aurora Borealis](images/auroraBorealis.png "Aurora Borealis")
+## Animations we have
 
+### Starry Night
+![Starry Night](images/starryNight.png "Starry Night")
+
+### Floating Bubbles
+![Floating Bubbles](images/floatingBubbles.png "Floating Bubbles")
+
+### Gradient Wave
+![Gradient Wave](images/gradientWave.png "Gradient Wave")
+
+### Particle Network
+![Particle Network](images/particleNetwork.png "Particle Network")
+
+### Galaxy Spiral
+![Galaxy Spiral](images/galaxySpiral.png "Galaxy Spiral")
+
+### Rainbow Waves
+![Rainbow Waves](images/rainbowWaves.png "Rainbow Waves")
+
+### Geometric Shapes
+![Geometric Shapes](images/geometricShapes.png "Geometric Shapes")
+
+### Fireflies
+![Fireflies](images/fireflies.png "Fireflies")
+
+### Matrix Rain
+![Matrix Rain](images/matrixRain.png "Matrix Rain")
+
+### Quantum Field
+![Quantum Field](images/quantumField.png "Quantum Field")
+
+### Electric Storm
+![Electric Storm](images/electricStorm.png "Electric Storm")
+
+### Cosmic Dust
+![Cosmic Dust](images/cosmicDust.png "Cosmic Dust")
+
+### Neon Pulse
+![Neon Pulse](images/neonPulse.png "Neon Pulse")
+
+### Aurora Borealis
+![Aurora Borealis](images/auroraBorealis.png "Aurora Borealis")
 
 ## Adding New Animations
 
