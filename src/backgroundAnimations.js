@@ -1235,3 +1235,186 @@ export const fallingFoodFiesta = (canvas, ctx) => {
         });
     };
 };
+
+export const hauntedForest = (canvas, ctx) => {
+    const trees = [];
+    const fireflies = [];
+    const fog = [];
+
+    // Initialize trees
+    for (let i = 0; i < 20; i++) {
+        trees.push({
+            x: Math.random() * canvas.width,
+            height: Math.random() * 200 + 100,
+            width: Math.random() * 20 + 10,
+        });
+    }
+
+    // Initialize fireflies
+    for (let i = 0; i < 50; i++) {
+        fireflies.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            speed: Math.random() * 0.5 + 0.1,
+            opacity: Math.random(),
+        });
+    }
+
+    // Initialize fog
+    for (let i = 0; i < 100; i++) {
+        fog.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 50 + 20,
+            speed: Math.random() * 0.2 + 0.1,
+        });
+    }
+
+    return () => {
+        ctx.fillStyle = '#0a0a0a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw trees
+        ctx.fillStyle = '#1a1a1a';
+        trees.forEach(tree => {
+            ctx.beginPath();
+            ctx.moveTo(tree.x, canvas.height);
+            ctx.lineTo(tree.x - tree.width / 2, canvas.height - tree.height);
+            ctx.lineTo(tree.x + tree.width / 2, canvas.height - tree.height);
+            ctx.closePath();
+            ctx.fill();
+        });
+
+        // Draw fog
+        ctx.fillStyle = 'rgba(200, 200, 200, 0.05)';
+        fog.forEach(particle => {
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            particle.x += particle.speed;
+            if (particle.x > canvas.width + particle.radius) {
+                particle.x = -particle.radius;
+            }
+        });
+
+        // Draw fireflies
+        fireflies.forEach(firefly => {
+            ctx.beginPath();
+            ctx.arc(firefly.x, firefly.y, firefly.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 100, ${firefly.opacity})`;
+            ctx.fill();
+
+            firefly.x += Math.sin(Date.now() * 0.001) * firefly.speed;
+            firefly.y += Math.cos(Date.now() * 0.001) * firefly.speed;
+            firefly.opacity = Math.sin(Date.now() * 0.01) * 0.5 + 0.5;
+
+            if (firefly.x < 0) firefly.x = canvas.width;
+            if (firefly.x > canvas.width) firefly.x = 0;
+            if (firefly.y < 0) firefly.y = canvas.height;
+            if (firefly.y > canvas.height) firefly.y = 0;
+        });
+    };
+};
+
+export const ghostlyApparitions = (canvas, ctx) => {
+    const ghosts = [];
+    const numGhosts = 5;
+
+    for (let i = 0; i < numGhosts; i++) {
+        ghosts.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 50 + 30,
+            speed: Math.random() * 0.5 + 0.1,
+            opacity: Math.random() * 0.5,
+        });
+    }
+
+    return () => {
+        ctx.fillStyle = '#000033';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ghosts.forEach(ghost => {
+            ctx.beginPath();
+            ctx.moveTo(ghost.x, ghost.y);
+            ctx.bezierCurveTo(
+                ghost.x - ghost.size / 2, ghost.y - ghost.size / 2,
+                ghost.x - ghost.size / 2, ghost.y + ghost.size / 2,
+                ghost.x, ghost.y + ghost.size
+            );
+            ctx.bezierCurveTo(
+                ghost.x + ghost.size / 2, ghost.y + ghost.size / 2,
+                ghost.x + ghost.size / 2, ghost.y - ghost.size / 2,
+                ghost.x, ghost.y
+            );
+
+            const gradient = ctx.createRadialGradient(
+                ghost.x, ghost.y, 0,
+                ghost.x, ghost.y, ghost.size
+            );
+            gradient.addColorStop(0, `rgba(255, 255, 255, ${ghost.opacity})`);
+            gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            ghost.y -= ghost.speed;
+            ghost.opacity = Math.sin(Date.now() * 0.001) * 0.2 + 0.3;
+
+            if (ghost.y + ghost.size < 0) {
+                ghost.y = canvas.height + ghost.size;
+                ghost.x = Math.random() * canvas.width;
+            }
+        });
+    };
+};
+
+export const spiderwebOverlay = (canvas, ctx) => {
+    const webs = [];
+    const numWebs = 20;
+
+    for (let i = 0; i < numWebs; i++) {
+        webs.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 100 + 50,
+            rotation: Math.random() * Math.PI * 2,
+        });
+    }
+
+    const drawWeb = (x, y, size, rotation) => {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+
+        ctx.beginPath();
+        for (let i = 0; i < 8; i++) {
+            const angle = (Math.PI * 2 / 8) * i;
+            ctx.moveTo(0, 0);
+            ctx.lineTo(Math.cos(angle) * size, Math.sin(angle) * size);
+        }
+
+        for (let r = size / 4; r < size; r += size / 4) {
+            ctx.moveTo(r, 0);
+            for (let i = 1; i < 8; i++) {
+                const angle = (Math.PI * 2 / 8) * i;
+                ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
+            }
+            ctx.closePath();
+        }
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.stroke();
+        ctx.restore();
+    };
+
+    return () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        webs.forEach(web => {
+            drawWeb(web.x, web.y, web.size, web.rotation);
+        });
+    };
+};
