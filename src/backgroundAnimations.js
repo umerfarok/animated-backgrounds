@@ -1418,3 +1418,214 @@ export const spiderwebOverlay = (canvas, ctx) => {
         });
     };
 };
+
+// Add these to your existing backgroundAnimations.js file
+
+export const undeadGraveyard = (canvas, ctx) => {
+    const graves = [];
+    const zombies = [];
+    const fog = [];
+
+    // Initialize graves
+    for (let i = 0; i < 15; i++) {
+        graves.push({
+            x: Math.random() * canvas.width,
+            y: canvas.height - Math.random() * 100 - 50,
+            width: Math.random() * 30 + 20,
+            height: Math.random() * 40 + 30
+        });
+    }
+
+    // Initialize zombies
+    for (let i = 0; i < 10; i++) {
+        zombies.push({
+            x: Math.random() * canvas.width,
+            y: canvas.height,
+            speed: Math.random() * 0.5 + 0.1,
+            size: Math.random() * 30 + 20
+        });
+    }
+
+    // Initialize fog
+    for (let i = 0; i < 50; i++) {
+        fog.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 100 + 50,
+            speed: Math.random() * 0.2 + 0.1
+        });
+    }
+
+    return () => {
+        // Dark, eerie sky
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, '#0a0a1a');
+        gradient.addColorStop(1, '#1a0a1a');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Moon
+        ctx.beginPath();
+        ctx.arc(canvas.width * 0.8, canvas.height * 0.2, 40, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 200, 0.8)';
+        ctx.fill();
+
+        // Draw graves
+        ctx.fillStyle = '#333';
+        graves.forEach(grave => {
+            ctx.fillRect(grave.x, grave.y, grave.width, grave.height);
+            ctx.fillStyle = '#222';
+            ctx.fillRect(grave.x + grave.width * 0.1, grave.y, grave.width * 0.8, grave.height * 0.1);
+        });
+
+        // Draw zombies
+        zombies.forEach(zombie => {
+            ctx.beginPath();
+            ctx.arc(zombie.x, zombie.y - zombie.size, zombie.size * 0.5, 0, Math.PI * 2);
+            ctx.fillStyle = '#3a5';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(zombie.x, zombie.y - zombie.size);
+            ctx.lineTo(zombie.x - zombie.size * 0.5, zombie.y);
+            ctx.lineTo(zombie.x + zombie.size * 0.5, zombie.y);
+            ctx.closePath();
+            ctx.fillStyle = '#3a5';
+            ctx.fill();
+
+            zombie.y -= zombie.speed;
+            if (zombie.y < canvas.height * 0.7) {
+                zombie.y = canvas.height;
+                zombie.x = Math.random() * canvas.width;
+            }
+        });
+
+        // Draw fog
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+        fog.forEach(particle => {
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            particle.x += particle.speed;
+            if (particle.x > canvas.width + particle.radius) {
+                particle.x = -particle.radius;
+            }
+        });
+    };
+};
+
+export const bloodRain = (canvas, ctx) => {
+    const drops = [];
+    const splats = [];
+
+    for (let i = 0; i < 200; i++) {
+        drops.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            length: Math.random() * 20 + 10,
+            speed: Math.random() * 5 + 5
+        });
+    }
+
+    return () => {
+        ctx.fillStyle = 'rgba(20, 0, 0, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw rain
+        ctx.strokeStyle = '#800';
+        ctx.lineWidth = 1;
+        drops.forEach(drop => {
+            ctx.beginPath();
+            ctx.moveTo(drop.x, drop.y);
+            ctx.lineTo(drop.x, drop.y + drop.length);
+            ctx.stroke();
+
+            drop.y += drop.speed;
+
+            if (drop.y > canvas.height) {
+                drop.y = 0;
+                drop.x = Math.random() * canvas.width;
+
+                // Create a splat
+                splats.push({
+                    x: drop.x,
+                    y: canvas.height,
+                    size: Math.random() * 5 + 2,
+                    opacity: 1
+                });
+            }
+        });
+
+        // Draw splats
+        splats.forEach((splat, index) => {
+            ctx.beginPath();
+            ctx.arc(splat.x, splat.y, splat.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(128, 0, 0, ${splat.opacity})`;
+            ctx.fill();
+
+            splat.opacity -= 0.005;
+            if (splat.opacity <= 0) {
+                splats.splice(index, 1);
+            }
+        });
+    };
+};
+
+export const creepyCrawlies = (canvas, ctx) => {
+    const bugs = [];
+    const webNodes = [];
+
+    for (let i = 0; i < 50; i++) {
+        bugs.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 5 + 2,
+            speedX: Math.random() * 2 - 1,
+            speedY: Math.random() * 2 - 1
+        });
+    }
+
+    for (let i = 0; i < 20; i++) {
+        webNodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height
+        });
+    }
+
+    return () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw web
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.beginPath();
+        webNodes.forEach((node, index) => {
+            webNodes.slice(index + 1).forEach(otherNode => {
+                ctx.moveTo(node.x, node.y);
+                ctx.lineTo(otherNode.x, otherNode.y);
+            });
+        });
+        ctx.stroke();
+
+        // Draw and move bugs
+        ctx.fillStyle = '#400';
+        bugs.forEach(bug => {
+            ctx.beginPath();
+            ctx.arc(bug.x, bug.y, bug.size, 0, Math.PI * 2);
+            ctx.fill();
+
+            bug.x += bug.speedX;
+            bug.y += bug.speedY;
+
+            if (bug.x < 0 || bug.x > canvas.width) bug.speedX *= -1;
+            if (bug.y < 0 || bug.y > canvas.height) bug.speedY *= -1;
+
+            // Occasionally change direction
+            if (Math.random() < 0.01) {
+                bug.speedX = Math.random() * 2 - 1;
+                bug.speedY = Math.random() * 2 - 1;
+            }
+        });
+    };
+};

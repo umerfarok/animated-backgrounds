@@ -9,7 +9,10 @@ import {
     dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest, fallingFoodFiesta,
     hauntedForest,
     ghostlyApparitions,
-    spiderwebOverlay
+    spiderwebOverlay,
+    undeadGraveyard,
+    bloodRain,
+    creepyCrawlies,
 } from './backgroundAnimations';
 
 const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShapes', fps = 60, style }) => {
@@ -29,7 +32,10 @@ const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShape
             neuralNetwork, dnaHelix, snowFall, realisticRain, realisticClouds,
             fireflyForest, autumnLeaves, fallingFoodFiesta,  hauntedForest,
             ghostlyApparitions,
-            spiderwebOverlay
+            spiderwebOverlay,
+            undeadGraveyard,
+            bloodRain,
+            creepyCrawlies,
         };
 
         let animation = animations[animationName];
@@ -116,7 +122,12 @@ export {
     fallingFoodFiesta,
     hauntedForest,
     ghostlyApparitions,
-    spiderwebOverlay
+    spiderwebOverlay,
+    undeadGraveyard,
+    bloodRain,
+    creepyCrawlies,
+
+
 
 
 };
