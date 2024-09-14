@@ -1,5 +1,4 @@
-// src/index.js
-import React from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import {
     starryNight, floatingBubbles,
     gradientWave, particleNetwork, galaxySpiral,
@@ -10,97 +9,88 @@ import {
     dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest, fallingFoodFiesta
 } from './backgroundAnimations';
 
-class AnimatedBackground extends React.Component {
-    constructor(props) {
-        super(props);
-        this.canvasRef = React.createRef();
-        this.animationFrameId = null;
-    }
+const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShapes', fps = 60, style }) => {
+    const canvasRef = useRef(null);
+    const animationRef = useRef(null);
 
-    handleResize = () => {
-        const canvas = this.canvasRef.current;
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        this.setupCanvas();
-    }
-
-    componentDidMount() {
-        this.setupCanvas();
-        window.addEventListener('resize', this.handleResize);
-    }
-
-    componentWillUnmount() {
-        cancelAnimationFrame(this.animationFrameId);
-        window.removeEventListener('resize', this.handleResize);
-    }
-
-    setupCanvas = () => {
-        const canvas = this.canvasRef.current;
+    const setupCanvas = useCallback(() => {
+        const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         const animations = {
-            starryNight,
-            floatingBubbles,
-            gradientWave,
-            particleNetwork,
-            galaxySpiral,
-            rainbowWaves,
-            geometricShapes,
-            fireflies,
-            matrixRain,
-            quantumField,
-            electricStorm,
-            cosmicDust,
-            neonPulse,
-            auroraBorealis,
-            oceanWaves,
-            neuralNetwork,
-            dnaHelix,
-            snowFall,
-            realisticRain, realisticClouds, fireflyForest,
-            autumnLeaves,
-            fallingFoodFiesta,
+            starryNight, floatingBubbles, gradientWave, particleNetwork, galaxySpiral,
+            rainbowWaves, geometricShapes, fireflies, matrixRain, quantumField,
+            electricStorm, cosmicDust, neonPulse, auroraBorealis, oceanWaves,
+            neuralNetwork, dnaHelix, snowFall, realisticRain, realisticClouds,
+            fireflyForest, autumnLeaves, fallingFoodFiesta
         };
 
-        let animation = animations[this.props.animationName];
+        let animation = animations[animationName];
 
         if (!animation) {
-            console.warn(`Animation "${this.props.animationName}" not found. Using fallback animation.`);
-            animation = animations[this.props.fallbackAnimation] || animations.geometricShapes;
+            console.warn(`Animation "${animationName}" not found. Using fallback animation.`);
+            animation = animations[fallbackAnimation] || animations.geometricShapes;
         }
 
-        animation = animation(canvas, ctx);
+        return animation(canvas, ctx);
+    }, [animationName, fallbackAnimation]);
 
+    useEffect(() => {
         const animate = () => {
-            animation();
-            this.animationFrameId = setTimeout(() => {
-                requestAnimationFrame(animate);
-            }, 1000 / this.props.fps);
+            const animation = setupCanvas();
+            let lastTime = 0;
+            const frameInterval = 1000 / fps;
+
+            const loop = (currentTime) => {
+                animationRef.current = requestAnimationFrame(loop);
+
+                const deltaTime = currentTime - lastTime;
+                if (deltaTime >= frameInterval) {
+                    lastTime = currentTime - (deltaTime % frameInterval);
+                    animation();
+                }
+            };
+
+            animationRef.current = requestAnimationFrame(loop);
         };
 
         animate();
-    }
 
-    render() {
-        return (
-            <canvas
-                ref={this.canvasRef}
-                style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    zIndex: -1,
-                    ...this.props.style
-                }}
-            />
-        );
-    }
-}
+        const handleResize = () => {
+            if (canvasRef.current) {
+                canvasRef.current.width = window.innerWidth;
+                canvasRef.current.height = window.innerHeight;
+                setupCanvas();
+            }
+        };
 
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [fps, setupCanvas]);
+
+    return (
+        <canvas
+            ref={canvasRef}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: -1,
+                ...style
+            }}
+        />
+    );
+};
 
 export {
     AnimatedBackground,
