@@ -103,6 +103,8 @@ The `AnimatedBackground` component accepts additional props for customization:
 ```
 
 ## Animations we have
+### Falling Food Fiesta
+![Falling Food Fiesta](images/fallingFoodFiesta.png "Falling Food Fiesta")
 
 ### Starry Night
 ![Starry Night](images/starryNight.png "Starry Night")
