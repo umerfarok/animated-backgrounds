@@ -35,6 +35,29 @@ function App() {
 export default App;
 ```
 
+## Usage in Next.js with SSR
+When using the AnimatedBackground component in a Next.js project with server-side rendering (SSR), you need to ensure that the component is rendered on the client side. You can do this by adding the "use client" directive at the top of the file where you use the component.
+
+```jsx
+// pages/index.js
+"use client";
+
+import React from 'react';
+import AnimatedBackground from 'animated-backgrounds';
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to Next.js with Animated Backgrounds</h1>
+      <AnimatedBackground animationName="starryNight" />
+    </div>
+  );
+};
+
+export default Home;
+```
+
+
 ## Available Animations
 
 The package currently includes the following animations:
