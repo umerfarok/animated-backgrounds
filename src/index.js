@@ -15,6 +15,21 @@ import {
     creepyCrawlies,
 } from './backgroundAnimations';
 
+/**
+ * @module AnimatedBackground
+ * @description A React component that creates animated canvas backgrounds
+ */
+
+
+/**
+ * AnimatedBackground Component
+ * @param {Object} props - Component props
+ * @param {string} props.animationName - Name of the animation to display
+ * @param {string} [props.fallbackAnimation='geometricShapes'] - Fallback animation if main animation fails
+ * @param {number} [props.fps=60] - Frames per second for the animation
+ * @param {Object} [props.style] - Additional CSS styles for the canvas
+ * @returns {React.Component} A canvas element with the animated background
+ */
 const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShapes', fps = 60, style }) => {
     const canvasRef = useRef(null);
     const animationRef = useRef(null);
