@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Animation Demo</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/animated-backgrounds"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        ReactDOM.render(
+            React.createElement(AnimatedBackgrounds.AnimatedBackground, {
+                animationName: "starryNight"
+            }),
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

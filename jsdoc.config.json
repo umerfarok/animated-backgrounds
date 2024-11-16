@@ -1,0 +1,60 @@
+{
+  "source": {
+    "include": ["src"],
+    "includePattern": ".+\\.js(x)?$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/component",
+    "node_modules/better-docs/category"
+  ],
+  "opts": {
+    "destination": "./docs",
+    "template": "node_modules/better-docs",
+    "readme": "./docs-content/main.md"
+  },
+  "templates": {
+    "better-docs": {
+      "name": "Animated Backgrounds",
+      "title": "Animated Backgrounds Documentation",
+      "description": "Documentation for the Animated Backgrounds React package",
+      "navigation": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/umerfarok/animated-backgrounds"
+        },
+        {
+          "label": "NPM",
+          "href": "https://www.npmjs.com/package/animated-backgrounds"
+        }
+      ]
+    }
+  },
+  "tags": {
+    "allowUnknownTags": ["component"]
+  },
+  "search": true,
+  "docdash": {
+    "static": false,
+    "sort": true,
+    "sectionOrder": [
+      "Classes",
+      "Modules",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces"
+    ],
+    "meta": {
+      "title": "Animated Backgrounds Documentation",
+      "description": "Documentation for the Animated Backgrounds React package",
+      "keyword": "react, animation, background, canvas, javascript"
+    },
+    "search": true,
+    "collapse": true,
+    "wrap": true
+  }
+}

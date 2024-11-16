@@ -1,5 +1,15 @@
 // src/backgroundAnimations.js
+/**
+ * @module backgroundAnimations
+ * @description Collection of animation functions for the AnimatedBackground component
+ */
 
+/**
+ * Creates a starry night animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const starryNight = (canvas, ctx) => {
     const stars = [];
     for (let i = 0; i < 150; i++) {
@@ -34,6 +44,12 @@ export const starryNight = (canvas, ctx) => {
     };
 };
 
+/**
+ * Creates a starry floatingBubbles animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const floatingBubbles = (canvas, ctx) => {
     const bubbles = [];
     for (let i = 0; i < 75; i++) {
@@ -68,6 +84,12 @@ export const floatingBubbles = (canvas, ctx) => {
     };
 };
 
+/**
+ * Creates a starry gradientWave animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const gradientWave = (canvas, ctx) => {
     let time = 0;
 
@@ -93,7 +115,12 @@ export const gradientWave = (canvas, ctx) => {
         }
     };
 };
-
+/**
+ * Creates a starry particleNetwork animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const particleNetwork = (canvas, ctx) => {
     const particles = [];
     const particleCount = 150;
@@ -145,6 +172,14 @@ export const particleNetwork = (canvas, ctx) => {
         }
     };
 };
+
+
+/**
+ * Creates a starry galaxySpiral animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const galaxySpiral = (canvas, ctx, speed = 0.0001) => {
     const stars = initializeStars(canvas, 2000);
     let rotation = 0;
@@ -196,6 +231,13 @@ export const galaxySpiral = (canvas, ctx, speed = 0.0001) => {
         rotation += speed;
     };
 };
+
+/**
+ * Creates a starry rainbowWaves animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const rainbowWaves = (canvas, ctx) => {
     let time = 0;
     const waves = 7;
@@ -223,6 +265,13 @@ export const rainbowWaves = (canvas, ctx) => {
         }
     };
 };
+
+/**
+ * Creates a starry auroraBorealis animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const auroraBorealis = (canvas, ctx) => {
     let time = 0;
     const colorStops = [
@@ -258,6 +307,13 @@ export const auroraBorealis = (canvas, ctx) => {
         }
     };
 };
+
+/**
+ * Creates a starry neonPulse animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const neonPulse = (canvas, ctx) => {
     const circles = [];
     const colors = ['#FF00FF', '#00FFFF', '#FFFF00', '#FF00AA'];
@@ -294,6 +350,12 @@ export const neonPulse = (canvas, ctx) => {
         });
     };
 };
+/**
+ * Creates a starry cosmicDust animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const cosmicDust = (canvas, ctx) => {
     const particles = [];
     const particleCount = 300;
@@ -327,6 +389,12 @@ export const cosmicDust = (canvas, ctx) => {
         });
     };
 };
+/**
+ * Creates a starry electricStorm animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const electricStorm = (canvas, ctx) => {
     let time = 0;
     const bolts = [];
@@ -372,7 +440,12 @@ export const electricStorm = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry quantumField animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const quantumField = (canvas, ctx) => {
     const particles = [];
     const particleCount = 100;
@@ -422,7 +495,12 @@ export const quantumField = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry geometricShapes animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const geometricShapes = (canvas, ctx) => {
     const shapes = [];
     const shapeCount = 50;
@@ -478,7 +556,12 @@ export const geometricShapes = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry fireflies animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const fireflies = (canvas, ctx) => {
     const fireflies = [];
     const fireflyCount = 100;
@@ -520,7 +603,12 @@ export const fireflies = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry matrixRain animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const matrixRain = (canvas, ctx) => {
     const columns = Math.floor(canvas.width / 20);
     const drops = [];
@@ -550,7 +638,12 @@ export const matrixRain = (canvas, ctx) => {
     };
 };
 
-
+/**
+ * Creates a starry dnaHelix animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const dnaHelix = (canvas, ctx) => {
     const speed = 0.02
     const baseRadius = 100
@@ -591,7 +684,12 @@ export const dnaHelix = (canvas, ctx) => {
         t += speed;
     };
 }
-
+/**
+ * Creates a starry neuralNetwork animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const neuralNetwork = (canvas, ctx) => {
     const nodeCount = 30;
     const connectionProbability = 0.2;
@@ -674,7 +772,12 @@ export const neuralNetwork = (canvas, ctx) => {
         }
     };
 }
-
+/**
+ * Creates a starry oceanWaves animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const oceanWaves = (canvas, ctx) => {
     const waveCount = 7;
     const amplitude = 30;
@@ -749,6 +852,12 @@ export const oceanWaves = (canvas, ctx) => {
         time += speed;
     };
 }
+/**
+ * Creates a starry snowFall animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const snowFall = (canvas, ctx) => {
     const snowflakeCount = 200;
     const snowflakes = [];
@@ -829,7 +938,12 @@ export const snowFall = (canvas, ctx) => {
     };
 }
 
-
+/**
+ * Creates a starry fireflyForest animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const fireflyForest = (canvas, ctx) => {
     const fireflies = [];
     const fireflyCount = 100;
@@ -901,6 +1015,12 @@ export const fireflyForest = (canvas, ctx) => {
         });
     };
 };
+/**
+ * Creates a starry realisticClouds animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const realisticClouds = (canvas, ctx) => {
     const clouds = [];
     const cloudCount = 10;
@@ -996,7 +1116,12 @@ export const realisticClouds = (canvas, ctx) => {
         ctx.fill();
     };
 };
-
+/**
+ * Creates a starry autumnLeaves animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const autumnLeaves = (canvas, ctx) => {
     const leaves = [];
     const leafCount = 100;
@@ -1082,7 +1207,12 @@ export const autumnLeaves = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry realisticRain animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const realisticRain = (canvas, ctx) => {
     const raindrops = [];
     const dropCount = 1000;
@@ -1140,7 +1270,12 @@ export const realisticRain = (canvas, ctx) => {
     };
 };
 
-
+/**
+ * Creates a starry fallingFoodFiesta animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const fallingFoodFiesta = (canvas, ctx) => {
     const foodItems = [];
     const foodTypes = ['🍔', '🍕', '🌭', '🍟', '🌮', '🍣', '🍩', '🍦', '🍎', '🍇', '🍓', '🍑', '🍍', '🥑', '🥕', '🥪', '🥨', '🧀', '🥐', '🥯', '🍱', '🍜', '🍙', '🍗', '🥟', '🥘', '🍤', '🥞', '🧇', '🥓'];
@@ -1235,7 +1370,12 @@ export const fallingFoodFiesta = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry hauntedForest animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const hauntedForest = (canvas, ctx) => {
     const trees = [];
     const fireflies = [];
@@ -1317,7 +1457,12 @@ export const hauntedForest = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry ghostlyApparitions animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const ghostlyApparitions = (canvas, ctx) => {
     const ghosts = [];
     const numGhosts = 5;
@@ -1370,7 +1515,12 @@ export const ghostlyApparitions = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry spiderwebOverlay animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const spiderwebOverlay = (canvas, ctx) => {
     const webs = [];
     const numWebs = 20;
@@ -1419,8 +1569,12 @@ export const spiderwebOverlay = (canvas, ctx) => {
     };
 };
 
-// Add these to your existing backgroundAnimations.js file
-
+/**
+ * Creates a starry undeadGraveyard animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const undeadGraveyard = (canvas, ctx) => {
     const graves = [];
     const zombies = [];
@@ -1514,7 +1668,12 @@ export const undeadGraveyard = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry bloodRain animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const bloodRain = (canvas, ctx) => {
     const drops = [];
     const splats = [];
@@ -1571,7 +1730,12 @@ export const bloodRain = (canvas, ctx) => {
         });
     };
 };
-
+/**
+ * Creates a starry creepyCrawlies animation
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
+ * @returns {Function} Animation loop function
+ */
 export const creepyCrawlies = (canvas, ctx) => {
     const bugs = [];
     const webNodes = [];
