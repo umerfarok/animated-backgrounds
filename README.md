@@ -2,6 +2,7 @@
 
 A React package for easy-to-use, customizable animated backgrounds.
 Sample implementation https://qr-generator-murex.vercel.app/
+## Docs https://umerfarok.github.io/animated-backgrounds/
 
 ## Installation
 
