@@ -14,12 +14,12 @@ import {
     bloodRain,
     creepyCrawlies,
 } from './backgroundAnimations';
+import AnimatedText from './AnimatedText';
 
 /**
  * @module AnimatedBackground
- * @description A React component that creates animated canvas backgrounds
+ * @description A React component that creates animated canvas backgrounds with blend modes
  */
-
 
 /**
  * AnimatedBackground Component
@@ -27,12 +27,37 @@ import {
  * @param {string} props.animationName - Name of the animation to display
  * @param {string} [props.fallbackAnimation='geometricShapes'] - Fallback animation if main animation fails
  * @param {number} [props.fps=60] - Frames per second for the animation
+ * @param {string} [props.blendMode='normal'] - Canvas blend mode
  * @param {Object} [props.style] - Additional CSS styles for the canvas
  * @returns {React.Component} A canvas element with the animated background
  */
-const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShapes', fps = 60, style }) => {
+const AnimatedBackground = ({
+    animationName,
+    fallbackAnimation = 'geometricShapes',
+    fps = 60,
+    blendMode = 'normal',
+    style
+}) => {
     const canvasRef = useRef(null);
     const animationRef = useRef(null);
+    const blendModes = [
+        'normal',
+        'multiply',
+        'screen',
+        'overlay',
+        'darken',
+        'lighten',
+        'color-dodge',
+        'color-burn',
+        'hard-light',
+        'soft-light',
+        'difference',
+        'exclusion',
+        'hue',
+        'saturation',
+        'color',
+        'luminosity'
+    ];
 
     const setupCanvas = useCallback(() => {
         const canvas = canvasRef.current;
@@ -40,12 +65,17 @@ const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShape
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
+        // Set blend mode
+        ctx.globalCompositeOperation = blendModes.includes(blendMode)
+            ? blendMode
+            : 'normal';
+
         const animations = {
             starryNight, floatingBubbles, gradientWave, particleNetwork, galaxySpiral,
             rainbowWaves, geometricShapes, fireflies, matrixRain, quantumField,
             electricStorm, cosmicDust, neonPulse, auroraBorealis, oceanWaves,
             neuralNetwork, dnaHelix, snowFall, realisticRain, realisticClouds,
-            fireflyForest, autumnLeaves, fallingFoodFiesta,  hauntedForest,
+            fireflyForest, autumnLeaves, fallingFoodFiesta, hauntedForest,
             ghostlyApparitions,
             spiderwebOverlay,
             undeadGraveyard,
@@ -61,7 +91,7 @@ const AnimatedBackground = ({ animationName, fallbackAnimation = 'geometricShape
         }
 
         return animation(canvas, ctx);
-    }, [animationName, fallbackAnimation]);
+    }, [animationName, fallbackAnimation, blendMode]);
 
     useEffect(() => {
         const animate = () => {
@@ -141,7 +171,7 @@ export {
     undeadGraveyard,
     bloodRain,
     creepyCrawlies,
-
+    AnimatedText,
 
 
 

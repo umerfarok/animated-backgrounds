@@ -27,8 +27,64 @@ import { AnimatedBackground } from 'animated-backgrounds';
 function App() {
   return (
     <div>
-      <AnimatedBackground animationName="starryNight" />
+      <AnimatedBackground animationName="starryNight" 
+       blendMode="screen" />
       {/* Your app content */}
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+## Usage For Animated Text
+
+To use animated text effects in your React application, import the `AnimatedText` component and use it in your JSX:
+
+```jsx
+import React from 'react';
+import { AnimatedText } from 'animated-text-effects';
+
+function App() {
+  return (
+    <div>
+      {/* Basic usage */}
+      <AnimatedText 
+        text="Hello World!"
+        effect="typewriter"
+      />
+
+      {/* With configuration */}
+      <AnimatedText 
+        text="Animated Text with Config"
+        effect="rainbow"
+        config={{
+          speed: 100,
+          loop: true,
+          delay: 1000,
+          color: '#ff0000'
+        }}
+      />
+
+      {/* With custom styles */}
+      <AnimatedText 
+        text="Custom Styled Text"
+        effect="bounce"
+        styles={{
+          fontSize: '2em',
+          fontWeight: 'bold',
+          color: '#0066ff'
+        }}
+      />
+
+      {/* Combined with other components */}
+      <h1>
+        <AnimatedText 
+          text="Welcome to My App"
+          effect="glitch"
+        />
+      </h1>
     </div>
   );
 }
@@ -50,14 +106,53 @@ const Home = () => {
   return (
     <div>
       <h1>Welcome to Next.js with Animated Backgrounds</h1>
-      <AnimatedBackground animationName="starryNight" />
+      <AnimatedBackground animationName="starryNight" 
+       blendMode="screen"  // Optional: Add blend mode for visual effects
+
+      />
     </div>
   );
-};
+};  
 
 export default Home;
 ```
 
+## Blend Modes
+
+The package supports various blend modes to create different visual effects. Available blend modes include:
+
+- `normal` (default)
+- `multiply`
+- `screen`
+- `overlay`
+- `darken`
+- `lighten`
+- `color-dodge`
+- `color-burn`
+- `hard-light`
+- `soft-light`
+- `difference`
+- `exclusion`
+- `hue`
+- `saturation`
+- `color`
+- `luminosity`
+
+To use a blend mode, simply set the `blendMode` prop on the `AnimatedBackground` component:
+
+```jsx
+<AnimatedBackground 
+  animationName="starryNight" 
+  blendMode="screen" 
+/>
+```
+
+## Recommended Blend Modes for Specific Effects
+
+- **Screen**: Use for light effects and glowing animations.
+- **Multiply**: Use for darker, atmospheric effects.
+- **Overlay**: Use for increased contrast and vibrant colors.
+- **Color-Dodge**: Use for intense light effects.
 
 ## Available Animations
 
@@ -80,6 +175,7 @@ The package currently includes the following animations:
 To use a different animation, simply change the `animationName` prop:
 
 ```jsx
+
 <AnimatedBackground animationName="floatingBubbles" />
 ```
 
@@ -92,19 +188,36 @@ import React, { useState, useEffect } from 'react';
 import { AnimatedBackground } from 'animated-backgrounds';
 
 function App() {
-  const [animationName, setAnimationName] = useState('starryNight');
+  const [animation, setAnimation] = useState({
+    name: 'starryNight',
+    blendMode: 'normal'
+  });
 
   useEffect(() => {
-    const animations = ['starryNight', 'floatingBubbles', 'gradientWave', 'particleNetwork', 'galaxySpiral'];
+    const animations = ['starryNight', 'floatingBubbles', 'gradientWave'];
+    const blendModes = ['screen', 'multiply', 'overlay', 'color-dodge'];
+    
     const storedIndex = localStorage.getItem('backgroundAnimationIndex');
+    const storedBlendIndex = localStorage.getItem('blendModeIndex');
+    
     const newIndex = storedIndex ? (parseInt(storedIndex) + 1) % animations.length : 0;
-    setAnimationName(animations[newIndex]);
+    const newBlendIndex = storedBlendIndex ? (parseInt(storedBlendIndex) + 1) % blendModes.length : 0;
+    
+    setAnimation({
+      name: animations[newIndex],
+      blendMode: blendModes[newBlendIndex]
+    });
+    
     localStorage.setItem('backgroundAnimationIndex', newIndex.toString());
+    localStorage.setItem('blendModeIndex', newBlendIndex.toString());
   }, []);
 
   return (
     <div>
-      <AnimatedBackground animationName={animationName} />
+      <AnimatedBackground 
+        animationName={animation.name}
+        blendMode={animation.blendMode}
+      />
       {/* Your app content */}
     </div>
   );

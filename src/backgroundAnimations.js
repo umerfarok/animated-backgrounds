@@ -1,14 +1,10 @@
-// src/backgroundAnimations.js
 /**
  * @module backgroundAnimations
- * @description Collection of animation functions for the AnimatedBackground component
+ * @description Collection of animation functions with blend mode support
  */
 
 /**
- * Creates a starry night animation
- * @param {HTMLCanvasElement} canvas - The canvas element
- * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
- * @returns {Function} Animation loop function
+ * Creates a starry night animation with blend modes
  */
 export const starryNight = (canvas, ctx) => {
     const stars = [];
@@ -19,19 +15,35 @@ export const starryNight = (canvas, ctx) => {
             radius: Math.random() * 2,
             vx: Math.floor(Math.random() * 50) - 25,
             vy: Math.floor(Math.random() * 50) - 25,
-            twinkle: Math.random()
+            twinkle: Math.random(),
+            color: `hsla(${Math.random() * 360}, 70%, 70%, 0.8)`
         });
     }
 
     return () => {
         ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#FFF';
+        
         stars.forEach(star => {
             star.twinkle += 0.02;
             const opacity = Math.abs(Math.sin(star.twinkle));
+            
+            // Create glow effect
+            const gradient = ctx.createRadialGradient(
+                star.x, star.y, 0,
+                star.x, star.y, star.radius * 4
+            );
+            gradient.addColorStop(0, star.color);
+            gradient.addColorStop(1, 'transparent');
+            
             ctx.beginPath();
-            ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+            ctx.arc(star.x, star.y, star.radius * 4, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Draw star core
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
             ctx.fill();
 
@@ -45,10 +57,7 @@ export const starryNight = (canvas, ctx) => {
 };
 
 /**
- * Creates a starry floatingBubbles animation
- * @param {HTMLCanvasElement} canvas - The canvas element
- * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
- * @returns {Function} Animation loop function
+ * Creates floating bubbles animation with blend modes
  */
 export const floatingBubbles = (canvas, ctx) => {
     const bubbles = [];
@@ -58,7 +67,8 @@ export const floatingBubbles = (canvas, ctx) => {
             y: Math.random() * canvas.height,
             radius: Math.random() * 30 + 5,
             speed: Math.random() * 0.7 + 0.1,
-            color: `hsla(${Math.random() * 360}, 70%, 60%, 0.6)`
+            color: `hsla(${Math.random() * 360}, 70%, 60%, 0.6)`,
+            glowColor: `hsla(${Math.random() * 360}, 70%, 60%, 0.3)`
         });
     }
 
@@ -67,15 +77,40 @@ export const floatingBubbles = (canvas, ctx) => {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         bubbles.forEach(bubble => {
+            // Create glow effect
+            const gradient = ctx.createRadialGradient(
+                bubble.x, bubble.y, 0,
+                bubble.x, bubble.y, bubble.radius * 2
+            );
+            gradient.addColorStop(0, bubble.glowColor);
+            gradient.addColorStop(1, 'transparent');
+            
+            ctx.beginPath();
+            ctx.arc(bubble.x, bubble.y, bubble.radius * 2, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Draw bubble
             ctx.beginPath();
             ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
             ctx.fillStyle = bubble.color;
             ctx.fill();
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-            ctx.stroke();
+            
+            // Add highlight
+            ctx.beginPath();
+            ctx.arc(
+                bubble.x - bubble.radius * 0.3,
+                bubble.y - bubble.radius * 0.3,
+                bubble.radius * 0.2,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            ctx.fill();
 
             bubble.y -= bubble.speed;
             bubble.x += Math.sin(bubble.y * 0.03) * 0.5;
+            
             if (bubble.y + bubble.radius < 0) {
                 bubble.y = canvas.height + bubble.radius;
                 bubble.x = Math.random() * canvas.width;
