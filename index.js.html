@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds Documentation index.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AnimatedBackground.html">AnimatedBackground</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>index.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useRef, useEffect, useCallback } from 'react';
+import {
+    starryNight, floatingBubbles,
+    gradientWave, particleNetwork, galaxySpiral,
+    rainbowWaves, geometricShapes, fireflies,
+    matrixRain, quantumField, electricStorm,
+    cosmicDust, neonPulse, auroraBorealis, oceanWaves,
+    neuralNetwork,
+    dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest, fallingFoodFiesta,
+    hauntedForest,
+    ghostlyApparitions,
+    spiderwebOverlay,
+    undeadGraveyard,
+    bloodRain,
+    creepyCrawlies,
+} from './backgroundAnimations';
+import AnimatedText from './AnimatedText';
+
+/**
+ * @module AnimatedBackground
+ * @description A React component that creates animated canvas backgrounds with blend modes
+ */
+
+/**
+ * AnimatedBackground Component
+ * @param {Object} props - Component props
+ * @param {string} props.animationName - Name of the animation to display
+ * @param {string} [props.fallbackAnimation='geometricShapes'] - Fallback animation if main animation fails
+ * @param {number} [props.fps=60] - Frames per second for the animation
+ * @param {string} [props.blendMode='normal'] - Canvas blend mode
+ * @param {Object} [props.style] - Additional CSS styles for the canvas
+ * @returns {React.Component} A canvas element with the animated background
+ */
+const AnimatedBackground = ({
+    animationName,
+    fallbackAnimation = 'geometricShapes',
+    fps = 60,
+    blendMode = 'normal',
+    style
+}) => {
+    const canvasRef = useRef(null);
+    const animationRef = useRef(null);
+    const blendModes = [
+        'normal',
+        'multiply',
+        'screen',
+        'overlay',
+        'darken',
+        'lighten',
+        'color-dodge',
+        'color-burn',
+        'hard-light',
+        'soft-light',
+        'difference',
+        'exclusion',
+        'hue',
+        'saturation',
+        'color',
+        'luminosity'
+    ];
+
+    const setupCanvas = useCallback(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Set blend mode
+        ctx.globalCompositeOperation = blendModes.includes(blendMode)
+            ? blendMode
+            : 'normal';
+
+        const animations = {
+            starryNight, floatingBubbles, gradientWave, particleNetwork, galaxySpiral,
+            rainbowWaves, geometricShapes, fireflies, matrixRain, quantumField,
+            electricStorm, cosmicDust, neonPulse, auroraBorealis, oceanWaves,
+            neuralNetwork, dnaHelix, snowFall, realisticRain, realisticClouds,
+            fireflyForest, autumnLeaves, fallingFoodFiesta, hauntedForest,
+            ghostlyApparitions,
+            spiderwebOverlay,
+            undeadGraveyard,
+            bloodRain,
+            creepyCrawlies,
+        };
+
+        let animation = animations[animationName];
+
+        if (!animation) {
+            console.warn(`Animation "${animationName}" not found. Using fallback animation.`);
+            animation = animations[fallbackAnimation] || animations.geometricShapes;
+        }
+
+        return animation(canvas, ctx);
+    }, [animationName, fallbackAnimation, blendMode]);
+
+    useEffect(() => {
+        const animate = () => {
+            const animation = setupCanvas();
+            let lastTime = 0;
+            const frameInterval = 1000 / fps;
+
+            const loop = (currentTime) => {
+                animationRef.current = requestAnimationFrame(loop);
+
+                const deltaTime = currentTime - lastTime;
+                if (deltaTime >= frameInterval) {
+                    lastTime = currentTime - (deltaTime % frameInterval);
+                    animation();
+                }
+            };
+
+            animationRef.current = requestAnimationFrame(loop);
+        };
+
+        animate();
+
+        const handleResize = () => {
+            if (canvasRef.current) {
+                canvasRef.current.width = window.innerWidth;
+                canvasRef.current.height = window.innerHeight;
+                setupCanvas();
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [fps, setupCanvas]);
+
+    return (
+        &lt;canvas
+            ref={canvasRef}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: -1,
+                ...style
+            }}
+        />
+    );
+};
+
+export {
+    AnimatedBackground,
+    starryNight,
+    floatingBubbles,
+    gradientWave,
+    particleNetwork,
+    galaxySpiral,
+    rainbowWaves,
+    geometricShapes,
+    fireflies,
+    matrixRain,
+    quantumField,
+    electricStorm,
+    cosmicDust,
+    neonPulse,
+    auroraBorealis,
+    fallingFoodFiesta,
+    hauntedForest,
+    ghostlyApparitions,
+    spiderwebOverlay,
+    undeadGraveyard,
+    bloodRain,
+    creepyCrawlies,
+    AnimatedText,
+
+
+
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
