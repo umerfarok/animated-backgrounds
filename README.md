@@ -44,7 +44,7 @@ To use animated text effects in your React application, import the `AnimatedText
 
 ```jsx
 import React from 'react';
-import { AnimatedText } from 'animated-text-effects';
+import { AnimatedText } from 'animated-backgrounds';
 
 function App() {
   return (
