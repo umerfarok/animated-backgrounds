@@ -237,52 +237,52 @@ The `AnimatedBackground` component accepts additional props for customization:
   style={{ opacity: 0.5 }}  // Add any additional CSS styles
 />
 ```
-
 ## Animations we have
+
 ### Falling Food Fiesta
-![Falling Food Fiesta](images/fallingFoodFiesta.png "Falling Food Fiesta")
+![Falling Food Fiesta](./images/fallingFoodFiesta.png "Falling Food Fiesta")
 
 ### Starry Night
-![Starry Night](images/starryNight.png "Starry Night")
+![Starry Night](./images/starryNight.png "Starry Night")
 
 ### Floating Bubbles
-![Floating Bubbles](images/floatingBubbles.png "Floating Bubbles")
+![Floating Bubbles](./images/floatingBubbles.png "Floating Bubbles")
 
 ### Gradient Wave
-![Gradient Wave](images/gradientWave.png "Gradient Wave")
+![Gradient Wave](./images/gradientWave.png "Gradient Wave")
 
 ### Particle Network
-![Particle Network](images/particleNetwork.png "Particle Network")
+![Particle Network](./images/particleNetwork.png "Particle Network")
 
 ### Galaxy Spiral
-![Galaxy Spiral](images/galaxySpiral.png "Galaxy Spiral")
+![Galaxy Spiral](./images/galaxySpiral.png "Galaxy Spiral")
 
 ### Rainbow Waves
-![Rainbow Waves](images/rainbowWaves.png "Rainbow Waves")
+![Rainbow Waves](./images/rainbowWaves.png "Rainbow Waves")
 
 ### Geometric Shapes
-![Geometric Shapes](images/geometricShapes.png "Geometric Shapes")
+![Geometric Shapes](./images/geometricShapes.png "Geometric Shapes")
 
 ### Fireflies
-![Fireflies](images/fireflies.png "Fireflies")
+![Fireflies](./images/fireflies.png "Fireflies")
 
 ### Matrix Rain
-![Matrix Rain](images/matrixRain.png "Matrix Rain")
+![Matrix Rain](./images/matrixRain.png "Matrix Rain")
 
 ### Quantum Field
-![Quantum Field](images/quantumField.png "Quantum Field")
+![Quantum Field](./images/quantumField.png "Quantum Field")
 
 ### Electric Storm
-![Electric Storm](images/electricStorm.png "Electric Storm")
+![Electric Storm](./images/electricStorm.png "Electric Storm")
 
 ### Cosmic Dust
-![Cosmic Dust](images/cosmicDust.png "Cosmic Dust")
+![Cosmic Dust](./images/cosmicDust.png "Cosmic Dust")
 
 ### Neon Pulse
-![Neon Pulse](images/neonPulse.png "Neon Pulse")
+![Neon Pulse](./images/neonPulse.png "Neon Pulse")
 
 ### Aurora Borealis
-![Aurora Borealis](images/auroraBorealis.png "Aurora Borealis")
+![Aurora Borealis](./images/auroraBorealis.png "Aurora Borealis")
 
 ## Adding New Animations
 

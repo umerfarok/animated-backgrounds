@@ -12,7 +12,7 @@
   "opts": {
     "destination": "./docs",
     "template": "node_modules/better-docs",
-    "readme": "./docs-content/main.md"
+    "readme": "./README.md"
   },
   "templates": {
     "better-docs": {
