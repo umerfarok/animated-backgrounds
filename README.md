@@ -2,6 +2,11 @@
 
 [![npm](https://img.shields.io/npm/dm/animated-backgrounds.svg)](https://www.npmjs.com/package/animated-backgrounds)
 [![Dependents](https://badgen.net/npm/dependents/animated-backgrounds)](https://www.npmjs.com/package/animated-backgrounds?activeTab=dependents)
+![Build Status](https://github.com/umerfarok/animated-backgrounds/actions/workflows/main.yml/badge.svg)
+![License](https://img.shields.io/github/license/umerfarok/animated-backgrounds)
+![npm](https://img.shields.io/npm/v/animated-backgrounds)
+![Coverage Status](https://coveralls.io/repos/github/umerfarok/animated-backgrounds/badge.svg?branch=main)
+![GitHub stars](https://img.shields.io/github/stars/umerfarok/animated-backgrounds)
 
 
 A React package for easy-to-use, customizable animated backgrounds.
