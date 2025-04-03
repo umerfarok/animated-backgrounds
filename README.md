@@ -1,5 +1,9 @@
 # Animated Backgrounds [![Socket Badge](https://socket.dev/api/badge/npm/package/animated-backgrounds/1.1.0)](https://socket.dev/npm/package/animated-backgrounds/overview/1.1.0)
 
+[![npm](https://img.shields.io/npm/dm/animated-backgrounds.svg)](https://www.npmjs.com/package/animated-backgrounds)
+[![Dependents](https://badgen.net/npm/dependents/animated-backgrounds)](https://www.npmjs.com/package/animated-backgrounds?activeTab=dependents)
+
+
 A React package for easy-to-use, customizable animated backgrounds.
 Sample implementation https://qr-generator-murex.vercel.app/
 ## Docs https://umerfarok.github.io/animated-backgrounds/
