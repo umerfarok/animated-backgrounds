@@ -1,7 +1,6 @@
 # Animated Backgrounds [![Socket Badge](https://socket.dev/api/badge/npm/package/animated-backgrounds/1.1.0)](https://socket.dev/npm/package/animated-backgrounds/overview/1.1.0)
 
 [![npm](https://img.shields.io/npm/dm/animated-backgrounds.svg)](https://www.npmjs.com/package/animated-backgrounds)
-[![Dependents](https://badgen.net/npm/dependents/animated-backgrounds)](https://www.npmjs.com/package/animated-backgrounds?activeTab=dependents)
 ![License](https://img.shields.io/github/license/umerfarok/animated-backgrounds)
 ![npm](https://img.shields.io/npm/v/animated-backgrounds)
 ![GitHub stars](https://img.shields.io/github/stars/umerfarok/animated-backgrounds)
