@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds Documentation Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AnimatedBackground.html">AnimatedBackground</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Animated Backgrounds <a href="https://socket.dev/npm/package/animated-backgrounds/overview/1.1.0"><img src="https://socket.dev/api/badge/npm/package/animated-backgrounds/1.1.0" alt="Socket Badge"></a></h1>
+<p><a href="https://www.npmjs.com/package/animated-backgrounds"><img src="https://img.shields.io/npm/dm/animated-backgrounds.svg" alt="npm"></a>
+<img src="https://img.shields.io/github/license/umerfarok/animated-backgrounds" alt="License">
+<img src="https://img.shields.io/npm/v/animated-backgrounds" alt="npm">
+<img src="https://img.shields.io/github/stars/umerfarok/animated-backgrounds" alt="GitHub stars"></p>
+<p>A React package for easy-to-use, customizable animated backgrounds.
+Sample implementation https://qr-generator-murex.vercel.app/</p>
+<h2>Docs https://umerfarok.github.io/animated-backgrounds/</h2>
+<h2>Installation</h2>
+<pre class="prettyprint source lang-bash"><code>npm install animated-backgrounds
+</code></pre>
+<p>or</p>
+<pre class="prettyprint source lang-bash"><code>yarn add animated-backgrounds
+</code></pre>
+<h2>Usage</h2>
+<p>To use the animated backgrounds in your React application, import the <code>AnimatedBackground</code> component and use it in your JSX:</p>
+<pre class="prettyprint source lang-jsx"><code>import React from 'react';
+import { AnimatedBackground } from 'animated-backgrounds';
+
+function App() {
+  return (
+    &lt;div>
+      &lt;AnimatedBackground animationName=&quot;starryNight&quot; 
+       blendMode=&quot;screen&quot; />
+      {/* Your app content */}
+    &lt;/div>
+  );
+}
+
+export default App;
+</code></pre>
+<h2>Usage For Animated Text</h2>
+<p>To use animated text effects in your React application, import the <code>AnimatedText</code> component and use it in your JSX:</p>
+<pre class="prettyprint source lang-jsx"><code>import React from 'react';
+import { AnimatedText } from 'animated-backgrounds';
+
+function App() {
+  return (
+    &lt;div>
+      {/* Basic usage */}
+      &lt;AnimatedText 
+        text=&quot;Hello World!&quot;
+        effect=&quot;typewriter&quot;
+      />
+
+      {/* With configuration */}
+      &lt;AnimatedText 
+        text=&quot;Animated Text with Config&quot;
+        effect=&quot;rainbow&quot;
+        config={{
+          speed: 100,
+          loop: true,
+          delay: 1000,
+          color: '#ff0000'
+        }}
+      />
+
+      {/* With custom styles */}
+      &lt;AnimatedText 
+        text=&quot;Custom Styled Text&quot;
+        effect=&quot;bounce&quot;
+        styles={{
+          fontSize: '2em',
+          fontWeight: 'bold',
+          color: '#0066ff'
+        }}
+      />
+
+      {/* Combined with other components */}
+      &lt;h1>
+        &lt;AnimatedText 
+          text=&quot;Welcome to My App&quot;
+          effect=&quot;glitch&quot;
+        />
+      &lt;/h1>
+    &lt;/div>
+  );
+}
+
+export default App;
+</code></pre>
+<h2>Usage in Next.js with SSR</h2>
+<p>When using the AnimatedBackground component in a Next.js project with server-side rendering (SSR), you need to ensure that the component is rendered on the client side. You can do this by adding the &quot;use client&quot; directive at the top of the file where you use the component.</p>
+<pre class="prettyprint source lang-jsx"><code>// pages/index.js
+&quot;use client&quot;;
+
+import React from 'react';
+import AnimatedBackground from 'animated-backgrounds';
+
+const Home = () => {
+  return (
+    &lt;div>
+      &lt;h1>Welcome to Next.js with Animated Backgrounds&lt;/h1>
+      &lt;AnimatedBackground animationName=&quot;starryNight&quot; 
+       blendMode=&quot;screen&quot;  // Optional: Add blend mode for visual effects
+
+      />
+    &lt;/div>
+  );
+};  
+
+export default Home;
+</code></pre>
+<h2>Blend Modes</h2>
+<p>The package supports various blend modes to create different visual effects. Available blend modes include:</p>
+<ul>
+<li><code>normal</code> (default)</li>
+<li><code>multiply</code></li>
+<li><code>screen</code></li>
+<li><code>overlay</code></li>
+<li><code>darken</code></li>
+<li><code>lighten</code></li>
+<li><code>color-dodge</code></li>
+<li><code>color-burn</code></li>
+<li><code>hard-light</code></li>
+<li><code>soft-light</code></li>
+<li><code>difference</code></li>
+<li><code>exclusion</code></li>
+<li><code>hue</code></li>
+<li><code>saturation</code></li>
+<li><code>color</code></li>
+<li><code>luminosity</code></li>
+</ul>
+<p>To use a blend mode, simply set the <code>blendMode</code> prop on the <code>AnimatedBackground</code> component:</p>
+<pre class="prettyprint source lang-jsx"><code>&lt;AnimatedBackground 
+  animationName=&quot;starryNight&quot; 
+  blendMode=&quot;screen&quot; 
+/>
+</code></pre>
+<h2>Recommended Blend Modes for Specific Effects</h2>
+<ul>
+<li><strong>Screen</strong>: Use for light effects and glowing animations.</li>
+<li><strong>Multiply</strong>: Use for darker, atmospheric effects.</li>
+<li><strong>Overlay</strong>: Use for increased contrast and vibrant colors.</li>
+<li><strong>Color-Dodge</strong>: Use for intense light effects.</li>
+</ul>
+<h2>Available Animations</h2>
+<p>The package currently includes the following animations:</p>
+<ul>
+<li><code>starryNight</code></li>
+<li><code>floatingBubbles</code></li>
+<li><code>gradientWave</code></li>
+<li><code>particleNetwork</code></li>
+<li><code>galaxySpiral</code></li>
+<li><code>rainbowWaves</code></li>
+<li><code>geometricShapes</code></li>
+<li><code>fireflies</code></li>
+<li><code>matrixRain</code></li>
+<li><code>quantumField</code></li>
+<li><code>electricStorm</code></li>
+<li><code>cosmicDust</code>, <code>neonPulse</code>, <code>auroraBorealis</code>, <code>autumnLeaves</code>, <code>dnaHelix</code>, <code>fallingFoodFiesta</code></li>
+</ul>
+<p>To use a different animation, simply change the <code>animationName</code> prop:</p>
+<pre class="prettyprint source lang-jsx"><code>
+&lt;AnimatedBackground animationName=&quot;floatingBubbles&quot; />
+</code></pre>
+<h2>Cycling Through Backgrounds</h2>
+<p>If you want to cycle through different backgrounds on each page reload, you can use the following approach:</p>
+<pre class="prettyprint source lang-jsx"><code>import React, { useState, useEffect } from 'react';
+import { AnimatedBackground } from 'animated-backgrounds';
+
+function App() {
+  const [animation, setAnimation] = useState({
+    name: 'starryNight',
+    blendMode: 'normal'
+  });
+
+  useEffect(() => {
+    const animations = ['starryNight', 'floatingBubbles', 'gradientWave'];
+    const blendModes = ['screen', 'multiply', 'overlay', 'color-dodge'];
+    
+    const storedIndex = localStorage.getItem('backgroundAnimationIndex');
+    const storedBlendIndex = localStorage.getItem('blendModeIndex');
+    
+    const newIndex = storedIndex ? (parseInt(storedIndex) + 1) % animations.length : 0;
+    const newBlendIndex = storedBlendIndex ? (parseInt(storedBlendIndex) + 1) % blendModes.length : 0;
+    
+    setAnimation({
+      name: animations[newIndex],
+      blendMode: blendModes[newBlendIndex]
+    });
+    
+    localStorage.setItem('backgroundAnimationIndex', newIndex.toString());
+    localStorage.setItem('blendModeIndex', newBlendIndex.toString());
+  }, []);
+
+  return (
+    &lt;div>
+      &lt;AnimatedBackground 
+        animationName={animation.name}
+        blendMode={animation.blendMode}
+      />
+      {/* Your app content */}
+    &lt;/div>
+  );
+}
+
+export default App;
+</code></pre>
+<p>This code will cycle through all available animations, changing to a new one each time the page is reloaded.</p>
+<h2>Customization</h2>
+<p>The <code>AnimatedBackground</code> component accepts additional props for customization:</p>
+<pre class="prettyprint source lang-jsx"><code>&lt;AnimatedBackground 
+  animationName=&quot;starryNight&quot;
+  style={{ opacity: 0.5 }}  // Add any additional CSS styles
+/>
+</code></pre>
+<h2>Animations we have</h2>
+<h3>Falling Food Fiesta</h3>
+<p><img src="images/fallingFoodFiesta.png" alt="Falling Food Fiesta" title="Falling Food Fiesta"></p>
+<h3>Starry Night</h3>
+<p><img src="images/starryNight.png" alt="Starry Night" title="Starry Night"></p>
+<h3>Floating Bubbles</h3>
+<p><img src="images/floatingBubbles.png" alt="Floating Bubbles" title="Floating Bubbles"></p>
+<h3>Gradient Wave</h3>
+<p><img src="images/gradientWave.png" alt="Gradient Wave" title="Gradient Wave"></p>
+<h3>Particle Network</h3>
+<p><img src="images/particleNetwork.png" alt="Particle Network" title="Particle Network"></p>
+<h3>Galaxy Spiral</h3>
+<p><img src="images/galaxySpiral.png" alt="Galaxy Spiral" title="Galaxy Spiral"></p>
+<h3>Rainbow Waves</h3>
+<p><img src="images/rainbowWaves.png" alt="Rainbow Waves" title="Rainbow Waves"></p>
+<h3>Geometric Shapes</h3>
+<p><img src="images/geometricShapes.png" alt="Geometric Shapes" title="Geometric Shapes"></p>
+<h3>Fireflies</h3>
+<p><img src="images/fireflies.png" alt="Fireflies" title="Fireflies"></p>
+<h3>Matrix Rain</h3>
+<p><img src="images/matrixRain.png" alt="Matrix Rain" title="Matrix Rain"></p>
+<h3>Quantum Field</h3>
+<p><img src="images/quantumField.png" alt="Quantum Field" title="Quantum Field"></p>
+<h3>Electric Storm</h3>
+<p><img src="images/electricStorm.png" alt="Electric Storm" title="Electric Storm"></p>
+<h3>Cosmic Dust</h3>
+<p><img src="images/cosmicDust.png" alt="Cosmic Dust" title="Cosmic Dust"></p>
+<h3>Neon Pulse</h3>
+<p><img src="images/neonPulse.png" alt="Neon Pulse" title="Neon Pulse"></p>
+<h3>Aurora Borealis</h3>
+<p><img src="images/auroraBorealis.png" alt="Aurora Borealis" title="Aurora Borealis"></p>
+<h2>Adding New Animations</h2>
+<p>To add a new animation:</p>
+<ol>
+<li>Create a new file in the <code>src</code> directory of the package, e.g., <code>newAnimation.js</code>.</li>
+<li>Define your animation function. It should accept <code>canvas</code> and <code>ctx</code> parameters and return a function that updates the animation for each frame.</li>
+<li>Export your new animation from <code>src/backgroundAnimations.js</code>.</li>
+<li>Update the <code>animations</code> object in <code>src/index.js</code> to include your new animation.</li>
+</ol>
+<p>Example of a new animation:</p>
+<pre class="prettyprint source lang-javascript"><code>// src/newAnimation.js
+export const newAnimation = (canvas, ctx) => {
+  // Setup code here
+
+  return () => {
+    // Animation update code here
+  };
+};
+
+// src/backgroundAnimations.js
+export { newAnimation } from './newAnimation';
+
+// src/index.js
+import { newAnimation } from './backgroundAnimations';
+
+const animations = {
+  // ... existing animations
+  newAnimation,
+};
+</code></pre>
+<p>After adding a new animation, rebuild the package with <code>npm run build</code>.</p>
+<h2>Contributing</h2>
+<p>Contributions are welcome! Please feel free to submit a Pull Request.</p>
+<h2>License</h2>
+<p>This project is licensed under the MIT License.</p></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
