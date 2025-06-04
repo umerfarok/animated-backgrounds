@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds - Interactive React Animations API Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds v2.0</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/"
+                        >
+                            🏠 Home
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-AnimatedBackground.html"
+                        >
+                            📚 API Reference
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-ThemeSystem.html"
+                        >
+                            🎨 Themes & Colors
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-InteractionUtils.html"
+                        >
+                            🎮 Interactions
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-useAnimationControls.html"
+                        >
+                            🎛️ Animation Controls
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-usePerformanceMonitor.html"
+                        >
+                            📊 Performance
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-LayeredBackground.html"
+                        >
+                            🏗️ Layered Backgrounds
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href=""
+                        >
+                            
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/umerfarok/animated-backgrounds"
+                        >
+                            💻 GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/animated-backgrounds"
+                        >
+                            📦 NPM
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://qr-generator-murex.vercel.app/"
+                        >
+                            🎮 Live Demo
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AIFeatures.html">AIFeatures</a></li><li><a href="module-AnimatedBackgrounds.html">AnimatedBackgrounds</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AudioUtils.html">AudioUtils</a></li><li><a href="module-DebugTools.html">DebugTools</a></li><li><a href="module-FrameworkIntegration.html">FrameworkIntegration</a></li><li><a href="module-InteractionUtils.html">InteractionUtils</a></li><li><a href="module-LayeredBackground.html">LayeredBackground</a></li><li><a href="module-PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.html">ThemeSystem</a></li><li><a href="module-WebGLUtils.html">WebGLUtils</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li><li><a href="module-useAnimationControls.html">useAnimationControls</a></li><li><a href="module-usePerformanceMonitor.html">usePerformanceMonitor</a></li></ul><h3>Classes</h3><ul><li><a href="module-AIFeatures.ContentGenerator.html">ContentGenerator</a></li><li><a href="module-AIFeatures.IntelligentOptimizer.html">IntelligentOptimizer</a></li><li><a href="module-AIFeatures-AnimationPatternGenerator.html">AnimationPatternGenerator</a></li><li><a href="module-AIFeatures-ColorHarmonyGenerator.html">ColorHarmonyGenerator</a></li><li><a href="module-AnimationSequencer.AnimationPresets.html">AnimationPresets</a></li><li><a href="module-AnimationSequencer.AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AnimationSequencer.AnimationTrack.html">AnimationTrack</a></li><li><a href="module-AnimationSequencer.Keyframe.html">Keyframe</a></li><li><a href="module-AudioUtils.AudioAnalyzer.html">AudioAnalyzer</a></li><li><a href="module-AudioUtils.AudioReactiveEffects.html">AudioReactiveEffects</a></li><li><a href="module-DebugTools.DebugConsole.html">DebugConsole</a></li><li><a href="module-DebugTools.DebugManager.html">DebugManager</a></li><li><a href="module-DebugTools.DebugVisualizer.html">DebugVisualizer</a></li><li><a href="module-DebugTools.PerformanceMonitor.html">PerformanceMonitor</a></li><li><a href="module-FrameworkIntegration.AnimatedBackgroundManager.html">AnimatedBackgroundManager</a></li><li><a href="module-PhysicsEngine.ForceGenerator.html">ForceGenerator</a></li><li><a href="module-PhysicsEngine.PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-PhysicsEngine.PhysicsParticle.html">PhysicsParticle</a></li><li><a href="module-PhysicsEngine.Vector2D.html">Vector2D</a></li><li><a href="module-PhysicsEngine-SpatialGrid.html">SpatialGrid</a></li><li><a href="module-ProjectManager.ProjectConfig.html">ProjectConfig</a></li><li><a href="module-ProjectManager.ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.ThemeManager.html">ThemeManager</a></li><li><a href="module-WebGLUtils.ShaderManager.html">ShaderManager</a></li><li><a href="module-WebGLUtils.WebGLEffectComposer.html">WebGLEffectComposer</a></li><li><a href="module-WebGLUtils.WebGLParticleSystem.html">WebGLParticleSystem</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3>animated-backgrounds 2.0.0</h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Animated Backgrounds v2.0</h1>
+<blockquote>
+<p>✨ <strong>A comprehensive React package for stunning animated backgrounds with interactive controls, themes, performance monitoring, and layered compositions.</strong></p>
+</blockquote>
+<p><img src="https://img.shields.io/npm/v/animated-backgrounds.svg" alt="npm version">
+<img src="https://img.shields.io/npm/dm/animated-backgrounds.svg" alt="npm downloads">
+<img src="https://img.shields.io/npm/l/animated-backgrounds.svg" alt="license">
+<img src="https://img.shields.io/badge/React-%2016.8%2B-blue" alt="React">
+<a href="https://umerfarok.github.io/animated-backgrounds/"><img src="https://img.shields.io/badge/Docs-%F0%9F%93%9A_API_Reference-blue" alt="Docs"></a>
+<a href="https://qr-generator-murex.vercel.app/"><img src="https://img.shields.io/badge/Demo-%F0%9F%8E%AE_Live_Example-green" alt="Demo"></a></p>
+<h2>�� What's New in v2.0</h2>
+<p><strong>Major upgrade with powerful new features:</strong></p>
+<h3>🎮 Interactive Animations</h3>
+<ul>
+<li><strong>Mouse &amp; Touch Interactions</strong>: 8 interaction effects (attract, repel, follow, burst, gravity, magnetic, vortex, wave)</li>
+<li><strong>Multi-touch Support</strong>: Responsive mobile gestures and interactions</li>
+<li><strong>Real-time Force Simulation</strong>: Physics-based particle interactions</li>
+</ul>
+<h3>🎨 Advanced Theme System</h3>
+<ul>
+<li><strong>8 Predefined Themes</strong>: Gaming, Portfolio, Landing, Presentation, Wellness, Party, Cyberpunk, Retro</li>
+<li><strong>Custom Color Schemes</strong>: Dynamic color management and gradients</li>
+<li><strong>Theme-aware Animations</strong>: Automatic color and style adaptation</li>
+</ul>
+<h3>⚡ Performance &amp; Control</h3>
+<ul>
+<li><strong>Animation Controls</strong>: Play/pause/reset functionality with speed control (0.1x-5.0x)</li>
+<li><strong>Performance Monitoring</strong>: Real-time FPS tracking and memory usage</li>
+<li><strong>Adaptive Optimization</strong>: Automatic performance adjustments</li>
+</ul>
+<h3>🏗️ Layered Compositions</h3>
+<ul>
+<li><strong>Multiple Animation Layers</strong>: Composite animations with individual opacity and blend modes</li>
+<li><strong>Independent Controls</strong>: Per-layer speed and timing control</li>
+<li><strong>Advanced Blend Modes</strong>: 16 CSS blend modes for stunning visual effects</li>
+</ul>
+<h2>📦 Installation</h2>
+<pre class="prettyprint source lang-bash"><code>npm install animated-backgrounds
+</code></pre>
+<h2>🎯 Quick Start</h2>
+<h3>Basic Animation</h3>
+<pre class="prettyprint source lang-jsx"><code>import { AnimatedBackground } from 'animated-backgrounds';
+
+function App() {
+  return (
+    &lt;div>
+      &lt;AnimatedBackground animationName=&quot;particleNetwork&quot; />
+      &lt;h1>Your content here&lt;/h1>
+    &lt;/div>
+  );
+}
+</code></pre>
+<h3>Interactive Animation with Theme</h3>
+<pre class="prettyprint source lang-jsx"><code>import { AnimatedBackground } from 'animated-backgrounds';
+
+function App() {
+  return (
+    &lt;AnimatedBackground 
+      animationName=&quot;particleNetwork&quot;
+      theme=&quot;cyberpunk&quot;
+      interactive={true}
+      interactionConfig={{
+        effect: 'attract',
+        strength: 0.8,
+        radius: 150,
+        continuous: true
+      }}
+    />
+  );
+}
+</code></pre>
+<h3>Animation with Controls</h3>
+<pre class="prettyprint source lang-jsx"><code>import { AnimatedBackground, useAnimationControls } from 'animated-backgrounds';
+
+function App() {
+  const controls = useAnimationControls();
+  
+  return (
+    &lt;div>
+      &lt;AnimatedBackground 
+        animationName=&quot;starryNight&quot;
+        animationControls={controls}
+      />
+      
+      &lt;div className=&quot;controls&quot;>
+        &lt;button onClick={controls.play}>Play&lt;/button>
+        &lt;button onClick={controls.pause}>Pause&lt;/button>
+        &lt;button onClick={() => controls.setSpeed(2.0)}>2x Speed&lt;/button>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+</code></pre>
+<h3>Performance Monitoring</h3>
+<pre class="prettyprint source lang-jsx"><code>import { AnimatedBackground, usePerformanceMonitor } from 'animated-backgrounds';
+
+function App() {
+  const performance = usePerformanceMonitor();
+  
+  return (
+    &lt;div>
+      &lt;AnimatedBackground 
+        animationName=&quot;matrixRain&quot;
+        enablePerformanceMonitoring={true}
+        adaptivePerformance={true}
+      />
+      
+      &lt;div className=&quot;performance-info&quot;>
+        FPS: {performance.fps} | Level: {performance.performanceLevel}
+      &lt;/div>
+    &lt;/div>
+  );
+}
+</code></pre>
+<h3>Layered Background</h3>
+<pre class="prettyprint source lang-jsx"><code>import { LayeredBackground } from 'animated-backgrounds';
+
+function App() {
+  const layers = [
+    { animation: 'starryNight', opacity: 0.8, blendMode: 'normal', speed: 0.5 },
+    { animation: 'cosmicDust', opacity: 0.6, blendMode: 'screen', speed: 1.0 },
+    { animation: 'auroraBorealis', opacity: 0.4, blendMode: 'overlay', speed: 1.5 }
+  ];
+  
+  return (
+    &lt;LayeredBackground layers={layers} />
+  );
+}
+</code></pre>
+<h2>🎨 Available Animations</h2>
+<h3>Core Animations (Battle-tested)</h3>
+<ul>
+<li><code>particleNetwork</code> - Interactive particle system with connections</li>
+<li><code>starryNight</code> - Twinkling stars with smooth movement</li>
+<li><code>floatingBubbles</code> - Gentle bubbles with realistic physics</li>
+<li><code>gradientWave</code> - Dynamic flowing gradient waves</li>
+<li><code>geometricShapes</code> - Rotating geometric patterns</li>
+<li><code>matrixRain</code> - Digital rain effect</li>
+<li><code>auroraBorealis</code> - Northern lights simulation</li>
+</ul>
+<h3>Nature &amp; Organic</h3>
+<ul>
+<li><code>fireflies</code> - Glowing fireflies in the forest</li>
+<li><code>oceanWaves</code> - Realistic ocean wave simulation</li>
+<li><code>autumnLeaves</code> - Falling autumn leaves</li>
+<li><code>snowFall</code> - Gentle snowfall effect</li>
+</ul>
+<h3>Sci-Fi &amp; Abstract</h3>
+<ul>
+<li><code>galaxySpiral</code> - Spinning galaxy animation</li>
+<li><code>electricStorm</code> - Lightning and electrical effects</li>
+<li><code>cosmicDust</code> - Cosmic particle field</li>
+<li><code>quantumField</code> - Quantum physics visualization</li>
+<li><code>neonPulse</code> - Pulsing neon lights</li>
+<li><code>dnaHelix</code> - DNA double helix rotation</li>
+</ul>
+<h2>🎨 Theme System</h2>
+<h3>Predefined Themes</h3>
+<pre class="prettyprint source lang-jsx"><code>&lt;AnimatedBackground 
+  animationName=&quot;particleNetwork&quot;
+  theme=&quot;cyberpunk&quot; // gaming, portfolio, landing, presentation, wellness, party, cyberpunk, retro
+/>
+</code></pre>
+<h3>Available Themes</h3>
+<ul>
+<li><strong><code>gaming</code></strong> - High-contrast gaming aesthetic</li>
+<li><strong><code>portfolio</code></strong> - Professional and clean</li>
+<li><strong><code>landing</code></strong> - Modern landing page style</li>
+<li><strong><code>presentation</code></strong> - Business presentation ready</li>
+<li><strong><code>wellness</code></strong> - Calm and soothing colors</li>
+<li><strong><code>party</code></strong> - Vibrant and energetic</li>
+<li><strong><code>cyberpunk</code></strong> - Neon and futuristic</li>
+<li><strong><code>retro</code></strong> - Nostalgic color schemes</li>
+</ul>
+<h2>🎮 Interactive Features</h2>
+<h3>Interaction Effects</h3>
+<pre class="prettyprint source lang-jsx"><code>const interactionConfig = {
+  effect: 'attract',     // 'attract' | 'repel' | 'follow' | 'burst' | 'gravity' | 'magnetic' | 'vortex' | 'wave'
+  strength: 0.8,         // 0.1 to 2.0
+  radius: 150,           // pixels
+  continuous: true,      // continue effect after mouse leaves
+  multiTouch: true       // enable multi-touch for mobile
+};
+
+&lt;AnimatedBackground 
+  interactive={true}
+  interactionConfig={interactionConfig}
+/>
+</code></pre>
+<h3>Interaction Types</h3>
+<ul>
+<li><strong><code>attract</code></strong> - Particles are drawn toward cursor</li>
+<li><strong><code>repel</code></strong> - Particles push away from cursor</li>
+<li><strong><code>follow</code></strong> - Particles trail behind cursor movement</li>
+<li><strong><code>burst</code></strong> - Explosive effect on interaction</li>
+<li><strong><code>gravity</code></strong> - Realistic gravitational pull</li>
+<li><strong><code>magnetic</code></strong> - Magnetic field interaction</li>
+<li><strong><code>vortex</code></strong> - Spinning vortex effect</li>
+<li><strong><code>wave</code></strong> - Ripple wave propagation</li>
+</ul>
+<h2>⚡ Performance Features</h2>
+<h3>Animation Controls</h3>
+<pre class="prettyprint source lang-jsx"><code>import { useAnimationControls } from 'animated-backgrounds';
+
+const controls = useAnimationControls();
+
+// Available methods:
+controls.play();           // Start animation
+controls.pause();          // Pause animation
+controls.reset();          // Reset to initial state
+controls.toggle();         // Toggle play/pause
+controls.setSpeed(1.5);    // Set speed (0.1x to 5.0x)
+
+// Available properties:
+controls.isPlaying;        // Current play state
+controls.speed;            // Current speed multiplier
+</code></pre>
+<h3>Performance Monitoring</h3>
+<pre class="prettyprint source lang-jsx"><code>import { usePerformanceMonitor } from 'animated-backgrounds';
+
+const performance = usePerformanceMonitor();
+
+// Available metrics:
+performance.fps;                    // Current FPS
+performance.avgFps;                 // Average FPS
+performance.performanceLevel;       // 'excellent' | 'good' | 'fair' | 'poor'
+performance.memoryUsage;           // Memory usage info
+performance.frameTime;             // Frame render time
+</code></pre>
+<h2>🏗️ Layered Backgrounds</h2>
+<p>Create complex visual compositions by layering multiple animations:</p>
+<pre class="prettyprint source lang-jsx"><code>import { LayeredBackground } from 'animated-backgrounds';
+
+const cosmicScene = [
+  { 
+    animation: 'starryNight', 
+    opacity: 0.8, 
+    blendMode: 'normal',
+    speed: 0.3 
+  },
+  { 
+    animation: 'cosmicDust', 
+    opacity: 0.6, 
+    blendMode: 'screen',
+    speed: 0.8 
+  },
+  { 
+    animation: 'auroraBorealis', 
+    opacity: 0.4, 
+    blendMode: 'overlay',
+    speed: 1.2 
+  }
+];
+
+&lt;LayeredBackground layers={cosmicScene} />
+</code></pre>
+<h3>Blend Modes</h3>
+<p><code>normal</code>, <code>multiply</code>, <code>screen</code>, <code>overlay</code>, <code>darken</code>, <code>lighten</code>, <code>color-dodge</code>, <code>color-burn</code>, <code>hard-light</code>, <code>soft-light</code>, <code>difference</code>, <code>exclusion</code>, <code>hue</code>, <code>saturation</code>, <code>color</code>, <code>luminosity</code></p>
+<h2>🔧 API Reference</h2>
+<h3>AnimatedBackground Props</h3>
+<table>
+<thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>animationName</code></td>
+<td><code>string</code></td>
+<td><code>'geometricShapes'</code></td>
+<td>Name of the animation</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+<td>Theme name for colors</td>
+</tr>
+<tr>
+<td><code>interactive</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Enable mouse/touch interactions</td>
+</tr>
+<tr>
+<td><code>interactionConfig</code></td>
+<td><code>object</code></td>
+<td><code>{}</code></td>
+<td>Interaction configuration</td>
+</tr>
+<tr>
+<td><code>animationControls</code></td>
+<td><code>object</code></td>
+<td><code>undefined</code></td>
+<td>External animation controls</td>
+</tr>
+<tr>
+<td><code>enablePerformanceMonitoring</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Enable performance tracking</td>
+</tr>
+<tr>
+<td><code>adaptivePerformance</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Auto-optimize performance</td>
+</tr>
+<tr>
+<td><code>fps</code></td>
+<td><code>number</code></td>
+<td><code>60</code></td>
+<td>Target frames per second</td>
+</tr>
+<tr>
+<td><code>blendMode</code></td>
+<td><code>string</code></td>
+<td><code>'normal'</code></td>
+<td>Canvas blend mode</td>
+</tr>
+<tr>
+<td><code>style</code></td>
+<td><code>object</code></td>
+<td><code>{}</code></td>
+<td>Custom CSS styles</td>
+</tr>
+</tbody>
+</table>
+<h3>InteractionConfig Options</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>effect</code></td>
+<td><code>string</code></td>
+<td><code>'attract'</code></td>
+<td>Interaction effect type</td>
+</tr>
+<tr>
+<td><code>strength</code></td>
+<td><code>number</code></td>
+<td><code>0.5</code></td>
+<td>Effect strength (0.1-2.0)</td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td><code>number</code></td>
+<td><code>100</code></td>
+<td>Interaction radius in pixels</td>
+</tr>
+<tr>
+<td><code>continuous</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Continue after mouse leaves</td>
+</tr>
+<tr>
+<td><code>multiTouch</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Enable multi-touch support</td>
+</tr>
+</tbody>
+</table>
+<h2>🎯 Real-world Examples</h2>
+<h3>Gaming Website Header</h3>
+<pre class="prettyprint source lang-jsx"><code>&lt;AnimatedBackground 
+  animationName=&quot;electricStorm&quot;
+  theme=&quot;gaming&quot;
+  interactive={true}
+  interactionConfig={{
+    effect: 'burst',
+    strength: 1.2,
+    radius: 200
+  }}
+  adaptivePerformance={true}
+/>
+</code></pre>
+<h3>Professional Portfolio</h3>
+<pre class="prettyprint source lang-jsx"><code>&lt;AnimatedBackground 
+  animationName=&quot;geometricShapes&quot;
+  theme=&quot;portfolio&quot;
+  fps={30}
+  style={{ opacity: 0.6 }}
+/>
+</code></pre>
+<h3>Mobile-Optimized</h3>
+<pre class="prettyprint source lang-jsx"><code>&lt;AnimatedBackground 
+  animationName=&quot;floatingBubbles&quot;
+  theme=&quot;wellness&quot;
+  interactive={true}
+  interactionConfig={{
+    effect: 'follow',
+    strength: 0.6,
+    multiTouch: true
+  }}
+  adaptivePerformance={true}
+  fps={30}
+/>
+</code></pre>
+<h2>🔧 Troubleshooting</h2>
+<h3>Common Issues</h3>
+<h4>1. Mouse Interactions Not Working</h4>
+<p><strong>Problem</strong>: Particles don't respond to mouse movement
+<strong>Solution</strong>: Ensure <code>interactive={true}</code> and check that the canvas doesn't have <code>pointer-events: none</code></p>
+<pre class="prettyprint source lang-jsx"><code>// Correct usage
+&lt;AnimatedBackground 
+  interactive={true}
+  style={{ pointerEvents: 'auto' }} // Ensure pointer events are enabled
+/>
+</code></pre>
+<h4>2. Performance Issues</h4>
+<p><strong>Problem</strong>: Low FPS or choppy animations
+<strong>Solutions</strong>:</p>
+<ul>
+<li>Enable adaptive performance: <code>adaptivePerformance={true}</code></li>
+<li>Reduce FPS: <code>fps={30}</code></li>
+<li>Use simpler animations for mobile devices</li>
+</ul>
+<h4>3. Theme Colors Not Applying</h4>
+<p><strong>Problem</strong>: Theme doesn't change animation colors
+<strong>Solution</strong>: Ensure the animation supports themes (check documentation)</p>
+<pre class="prettyprint source lang-jsx"><code>// Some animations support themes better than others
+&lt;AnimatedBackground 
+  animationName=&quot;particleNetwork&quot; // Good theme support
+  theme=&quot;cyberpunk&quot;
+/>
+</code></pre>
+<h3>Performance Optimization</h3>
+<ol>
+<li><strong>Mobile Devices</strong>: Use <code>fps={30}</code> and <code>adaptivePerformance={true}</code></li>
+<li><strong>Low-end Hardware</strong>: Stick to basic animations like <code>starryNight</code> or <code>geometricShapes</code></li>
+<li><strong>Background Usage</strong>: Consider using <code>style={{ opacity: 0.6 }}</code> for better text readability</li>
+</ol>
+<h2>📚 Documentation</h2>
+<ul>
+<li><a href="https://qr-generator-murex.vercel.app/">Live Demo</a> - Interactive examples</li>
+<li><a href="https://umerfarok.github.io/animated-backgrounds/">API Documentation</a> - Complete API reference</li>
+<li><a href="https://github.com/umerfarok/animated-backgrounds">GitHub Repository</a> - Source code</li>
+</ul>
+<h2>🤝 Contributing</h2>
+<p>We welcome contributions! Please see our <a href="CONTRIBUTING.md">Contributing Guide</a> for details.</p>
+<h2>📄 License</h2>
+<p>MIT License - see <a href="LICENSE">LICENSE</a> file for details.</p>
+<h2>🔧 Technical Support</h2>
+<ul>
+<li><strong>Node.js</strong>: 16.x or higher</li>
+<li><strong>React</strong>: 16.8 or higher (hooks support required)</li>
+<li><strong>Browsers</strong>: Modern browsers with Canvas support</li>
+<li><strong>TypeScript</strong>: Full TypeScript definitions included</li>
+</ul>
+<hr>
+<p><strong>Made with ❤️ by <a href="https://github.com/umerfarok">Umer Farooq</a></strong></p>
+<pre class="prettyprint source lang-bash"><code>npm install animated-backgrounds
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

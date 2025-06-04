@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds - Interactive React Animations API index.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds v2.0</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/"
+                        >
+                            🏠 Home
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-AnimatedBackground.html"
+                        >
+                            📚 API Reference
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-ThemeSystem.html"
+                        >
+                            🎨 Themes & Colors
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-InteractionUtils.html"
+                        >
+                            🎮 Interactions
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-useAnimationControls.html"
+                        >
+                            🎛️ Animation Controls
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-usePerformanceMonitor.html"
+                        >
+                            📊 Performance
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-LayeredBackground.html"
+                        >
+                            🏗️ Layered Backgrounds
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href=""
+                        >
+                            
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/umerfarok/animated-backgrounds"
+                        >
+                            💻 GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/animated-backgrounds"
+                        >
+                            📦 NPM
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://qr-generator-murex.vercel.app/"
+                        >
+                            🎮 Live Demo
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AIFeatures.html">AIFeatures</a></li><li><a href="module-AnimatedBackgrounds.html">AnimatedBackgrounds</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AudioUtils.html">AudioUtils</a></li><li><a href="module-DebugTools.html">DebugTools</a></li><li><a href="module-FrameworkIntegration.html">FrameworkIntegration</a></li><li><a href="module-InteractionUtils.html">InteractionUtils</a></li><li><a href="module-LayeredBackground.html">LayeredBackground</a></li><li><a href="module-PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.html">ThemeSystem</a></li><li><a href="module-WebGLUtils.html">WebGLUtils</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li><li><a href="module-useAnimationControls.html">useAnimationControls</a></li><li><a href="module-usePerformanceMonitor.html">usePerformanceMonitor</a></li></ul><h3>Classes</h3><ul><li><a href="module-AIFeatures.ContentGenerator.html">ContentGenerator</a></li><li><a href="module-AIFeatures.IntelligentOptimizer.html">IntelligentOptimizer</a></li><li><a href="module-AIFeatures-AnimationPatternGenerator.html">AnimationPatternGenerator</a></li><li><a href="module-AIFeatures-ColorHarmonyGenerator.html">ColorHarmonyGenerator</a></li><li><a href="module-AnimationSequencer.AnimationPresets.html">AnimationPresets</a></li><li><a href="module-AnimationSequencer.AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AnimationSequencer.AnimationTrack.html">AnimationTrack</a></li><li><a href="module-AnimationSequencer.Keyframe.html">Keyframe</a></li><li><a href="module-AudioUtils.AudioAnalyzer.html">AudioAnalyzer</a></li><li><a href="module-AudioUtils.AudioReactiveEffects.html">AudioReactiveEffects</a></li><li><a href="module-DebugTools.DebugConsole.html">DebugConsole</a></li><li><a href="module-DebugTools.DebugManager.html">DebugManager</a></li><li><a href="module-DebugTools.DebugVisualizer.html">DebugVisualizer</a></li><li><a href="module-DebugTools.PerformanceMonitor.html">PerformanceMonitor</a></li><li><a href="module-FrameworkIntegration.AnimatedBackgroundManager.html">AnimatedBackgroundManager</a></li><li><a href="module-PhysicsEngine.ForceGenerator.html">ForceGenerator</a></li><li><a href="module-PhysicsEngine.PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-PhysicsEngine.PhysicsParticle.html">PhysicsParticle</a></li><li><a href="module-PhysicsEngine.Vector2D.html">Vector2D</a></li><li><a href="module-PhysicsEngine-SpatialGrid.html">SpatialGrid</a></li><li><a href="module-ProjectManager.ProjectConfig.html">ProjectConfig</a></li><li><a href="module-ProjectManager.ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.ThemeManager.html">ThemeManager</a></li><li><a href="module-WebGLUtils.ShaderManager.html">ShaderManager</a></li><li><a href="module-WebGLUtils.WebGLEffectComposer.html">WebGLEffectComposer</a></li><li><a href="module-WebGLUtils.WebGLParticleSystem.html">WebGLParticleSystem</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>index.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useRef, useEffect, useCallback, useMemo } from 'react';
+import {
+    starryNight, floatingBubbles,
+    gradientWave, particleNetwork, galaxySpiral,
+    rainbowWaves, geometricShapes, fireflies,
+    matrixRain, quantumField, electricStorm,
+    cosmicDust, neonPulse, auroraBorealis, oceanWaves,
+    neuralNetwork,
+    dnaHelix, snowFall, realisticRain, autumnLeaves, realisticClouds, fireflyForest, fallingFoodFiesta,
+    hauntedForest,
+    ghostlyApparitions,
+    spiderwebOverlay,
+    undeadGraveyard,
+    bloodRain,
+    creepyCrawlies,
+} from './backgroundAnimations';
+import AnimatedText from './AnimatedText';
+import LayeredBackground from './LayeredBackground';
+
+// Import new features
+import { useAnimationControls } from './hooks/useAnimationControls';
+import { usePerformanceMonitor } from './hooks/usePerformanceMonitor';
+import { createInteractionHandler, GestureRecognizer } from './utils/interactionUtils';
+import { ThemeManager, themeManager, COLOR_SCHEMES, THEMES } from './utils/themeSystem';
+
+/**
+ * @fileoverview Animated Backgrounds v2.0 - Main entry point
+ * @module AnimatedBackgrounds
+ * @version 2.0.0
+ */
+
+/**
+ * @typedef {Object} InteractionConfig
+ * @property {'attract'|'repel'|'follow'|'burst'|'gravity'} [effect='attract'] - Type of interaction effect
+ * @property {number} [strength=0.5] - Interaction strength (0.1 to 2.0)
+ * @property {number} [radius=100] - Interaction radius in pixels
+ * @property {boolean} [continuous=true] - Whether interaction continues after mouse leaves
+ * @property {boolean} [multiTouch=false] - Enable multi-touch support for mobile
+ * @example
+ * // Basic interaction configuration
+ * const interactionConfig = {
+ *   effect: 'attract',
+ *   strength: 0.8,
+ *   radius: 150,
+ *   continuous: true
+ * };
+ * 
+ * // Mobile-optimized configuration
+ * const mobileConfig = {
+ *   effect: 'follow',
+ *   strength: 0.6,
+ *   radius: 100,
+ *   multiTouch: true
+ * };
+ */
+
+/**
+ * @typedef {Object} AnimationControls
+ * @property {boolean} isPlaying - Whether animation is currently playing
+ * @property {number} speed - Current animation speed multiplier
+ * @property {Function} play - Start/resume animation
+ * @property {Function} pause - Pause animation
+ * @property {Function} reset - Reset animation to initial state
+ * @property {Function} setSpeed - Set animation speed (0.1x to 5.0x)
+ * @property {Function} toggle - Toggle play/pause state
+ */
+
+/**
+ * Main AnimatedBackground component that renders stunning animated backgrounds
+ * with support for themes, interactions, performance monitoring, and controls.
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} [props.animationName='geometricShapes'] - Name of the animation to display
+ * @param {string} [props.fallbackAnimation='geometricShapes'] - Fallback animation if main animation fails
+ * @param {number} [props.fps=60] - Target frames per second
+ * @param {string} [props.blendMode='normal'] - Canvas blend mode for visual effects
+ * @param {Object} [props.style] - Inline styles for the canvas element
+ * @param {boolean} [props.interactive=false] - Enable mouse/touch interactions
+ * @param {InteractionConfig} [props.interactionConfig={}] - Configuration for interactions
+ * @param {string} [props.theme] - Theme name to apply predefined color schemes
+ * @param {string} [props.preset] - Preset configuration name
+ * @param {AnimationControls} [props.animationControls] - External animation controls
+ * @param {boolean} [props.enablePerformanceMonitoring=false] - Enable real-time performance tracking
+ * @param {boolean} [props.adaptivePerformance=false] - Auto-optimize based on device performance
+ * @param {string} [props.className] - Additional CSS classes
+ * 
+ * @returns {JSX.Element} Animated background canvas element
+ * 
+ * @example
+ * // Basic usage
+ * &lt;AnimatedBackground animationName="starryNight" />
+ * 
+ * @example
+ * // With theme and interactivity
+ * &lt;AnimatedBackground 
+ *   animationName="particleNetwork"
+ *   theme="gaming"
+ *   interactive={true}
+ *   interactionConfig={{
+ *     effect: 'attract',
+ *     strength: 0.8,
+ *     radius: 150
+ *   }}
+ * />
+ * 
+ * @example
+ * // With performance monitoring and controls
+ * function App() {
+ *   const controls = useAnimationControls();
+ *   
+ *   return (
+ *     &lt;AnimatedBackground 
+ *       animationName="matrixRain"
+ *       theme="cyberpunk"
+ *       animationControls={controls}
+ *       enablePerformanceMonitoring={true}
+ *       adaptivePerformance={true}
+ *     />
+ *   );
+ * }
+ * 
+ * @example
+ * // Mobile-optimized setup
+ * &lt;AnimatedBackground 
+ *   animationName="floatingBubbles"
+ *   theme="wellness"
+ *   interactive={true}
+ *   interactionConfig={{
+ *     effect: 'follow',
+ *     strength: 0.6,
+ *     multiTouch: true
+ *   }}
+ *   adaptivePerformance={true}
+ *   fps={30}
+ * />
+ * 
+ * @since 1.0.0
+ * @version 2.0.0
+ */
+const AnimatedBackground = React.memo(({
+    animationName,
+    fallbackAnimation = 'geometricShapes',
+    fps = 60,
+    blendMode = 'normal',
+    style,
+    interactive = false,
+    interactionConfig = {},
+    theme,
+    preset,
+    animationControls,
+    enablePerformanceMonitoring = false,
+    adaptivePerformance = false
+}) => {
+    const canvasRef = useRef(null);
+    const animationRef = useRef(null);
+    const interactionHandlerRef = useRef(null);
+    
+    // Initialize performance monitoring if enabled
+    const performanceMonitor = enablePerformanceMonitoring ? usePerformanceMonitor() : null;
+    
+    // Apply theme if specified
+    useEffect(() => {
+        if (theme) {
+            themeManager.applyTheme(theme);
+        }
+    }, [theme]);
+
+    const blendModes = [
+        'normal',
+        'multiply',
+        'screen',
+        'overlay',
+        'darken',
+        'lighten',
+        'color-dodge',
+        'color-burn',
+        'hard-light',
+        'soft-light',
+        'difference',
+        'exclusion',
+        'hue',
+        'saturation',
+        'color',
+        'luminosity'
+    ];
+
+    // Memoize animations object to prevent recreation
+    const animations = useMemo(() => ({
+        starryNight, floatingBubbles, gradientWave, particleNetwork, galaxySpiral,
+        rainbowWaves, geometricShapes, fireflies, matrixRain, quantumField,
+        electricStorm, cosmicDust, neonPulse, auroraBorealis, oceanWaves,
+        neuralNetwork, dnaHelix, snowFall, realisticRain, realisticClouds,
+        fireflyForest, autumnLeaves, fallingFoodFiesta, hauntedForest,
+        ghostlyApparitions,
+        spiderwebOverlay,
+        undeadGraveyard,
+        bloodRain,
+        creepyCrawlies,
+    }), []);
+
+    const setupCanvas = useCallback(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Set blend mode
+        ctx.globalCompositeOperation = blendModes.includes(blendMode)
+            ? blendMode
+            : 'normal';
+
+        let animation = animations[animationName];
+
+        if (!animation) {
+            console.warn(`Animation "${animationName}" not found. Using fallback animation.`);
+            animation = animations[fallbackAnimation] || animations.geometricShapes;
+        }
+
+        // Setup interaction handler if interactive mode is enabled
+        if (interactive &amp;&amp; !interactionHandlerRef.current) {
+            interactionHandlerRef.current = createInteractionHandler(canvas, interactionConfig);
+            interactionHandlerRef.current.attachListeners();
+        }
+
+        // Get theme-specific settings if available
+        const themeSettings = theme ? themeManager.getAnimationSettings(animationName) : {};
+        
+        return animation(canvas, ctx, {
+            themeManager: theme ? themeManager : null,
+            interactionHandler: interactionHandlerRef.current,
+            performanceMonitor,
+            adaptivePerformance,
+            ...themeSettings
+        });
+    }, [animationName, fallbackAnimation, blendMode, interactive, theme, animations]);
+
+    // Animation setup effect - only runs when animation or setup changes
+    useEffect(() => {
+        const animation = setupCanvas();
+        let lastTime = 0;
+        const frameInterval = 1000 / fps;
+
+        const loop = (currentTime) => {
+            // Check animation controls
+            if (animationControls &amp;&amp; !animationControls.isPlaying) {
+                animationRef.current = requestAnimationFrame(loop);
+                return;
+            }
+
+            animationRef.current = requestAnimationFrame(loop);
+
+            const deltaTime = currentTime - lastTime;
+            const speedMultiplier = animationControls ? animationControls.speed : 1;
+            const adjustedFrameInterval = frameInterval / speedMultiplier;
+
+            if (deltaTime >= adjustedFrameInterval) {
+                lastTime = currentTime - (deltaTime % adjustedFrameInterval);
+                
+                // Record frame for performance monitoring
+                if (performanceMonitor) {
+                    performanceMonitor.recordFrame();
+                }
+                
+                animation();
+
+                // Adaptive performance adjustments
+                if (adaptivePerformance &amp;&amp; performanceMonitor) {
+                    const { avgFps, performanceLevel } = performanceMonitor;
+                    if (performanceLevel === 'poor' &amp;&amp; avgFps &lt; 20) {
+                        // Automatically reduce complexity or fps
+                        console.warn('Poor performance detected. Consider reducing animation complexity.');
+                    }
+                }
+            }
+        };
+
+        animationRef.current = requestAnimationFrame(loop);
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, [setupCanvas, fps, animationControls]); // Removed changing dependencies
+
+    // Resize handling effect - separate from animation
+    useEffect(() => {
+        const handleResize = () => {
+            if (canvasRef.current) {
+                canvasRef.current.width = window.innerWidth;
+                canvasRef.current.height = window.innerHeight;
+                setupCanvas();
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            if (interactionHandlerRef.current) {
+                interactionHandlerRef.current.removeListeners();
+            }
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [setupCanvas]);
+
+    return (
+        &lt;canvas
+            ref={canvasRef}
+            style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: -1,
+                pointerEvents: interactive ? 'auto' : 'none',
+                ...style
+            }}
+        />
+    );
+});
+
+export {
+    // Main components
+    AnimatedBackground,
+    AnimatedText,
+    LayeredBackground,
+    
+    // Animation functions
+    starryNight,
+    floatingBubbles,
+    gradientWave,
+    particleNetwork,
+    galaxySpiral,
+    rainbowWaves,
+    geometricShapes,
+    fireflies,
+    matrixRain,
+    quantumField,
+    electricStorm,
+    cosmicDust,
+    neonPulse,
+    auroraBorealis,
+    fallingFoodFiesta,
+    hauntedForest,
+    ghostlyApparitions,
+    spiderwebOverlay,
+    undeadGraveyard,
+    bloodRain,
+    creepyCrawlies,
+    
+    // New hooks
+    useAnimationControls,
+    usePerformanceMonitor,
+    
+    // Utilities
+    createInteractionHandler,
+    GestureRecognizer,
+    
+    // Theme system
+    ThemeManager,
+    themeManager,
+    COLOR_SCHEMES,
+    THEMES
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

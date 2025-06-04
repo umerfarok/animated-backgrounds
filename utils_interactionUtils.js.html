@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds - Interactive React Animations API utils/interactionUtils.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds v2.0</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/"
+                        >
+                            🏠 Home
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-AnimatedBackground.html"
+                        >
+                            📚 API Reference
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-ThemeSystem.html"
+                        >
+                            🎨 Themes & Colors
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-InteractionUtils.html"
+                        >
+                            🎮 Interactions
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-useAnimationControls.html"
+                        >
+                            🎛️ Animation Controls
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-usePerformanceMonitor.html"
+                        >
+                            📊 Performance
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-LayeredBackground.html"
+                        >
+                            🏗️ Layered Backgrounds
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href=""
+                        >
+                            
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/umerfarok/animated-backgrounds"
+                        >
+                            💻 GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/animated-backgrounds"
+                        >
+                            📦 NPM
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://qr-generator-murex.vercel.app/"
+                        >
+                            🎮 Live Demo
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AIFeatures.html">AIFeatures</a></li><li><a href="module-AnimatedBackgrounds.html">AnimatedBackgrounds</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AudioUtils.html">AudioUtils</a></li><li><a href="module-DebugTools.html">DebugTools</a></li><li><a href="module-FrameworkIntegration.html">FrameworkIntegration</a></li><li><a href="module-InteractionUtils.html">InteractionUtils</a></li><li><a href="module-LayeredBackground.html">LayeredBackground</a></li><li><a href="module-PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.html">ThemeSystem</a></li><li><a href="module-WebGLUtils.html">WebGLUtils</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li><li><a href="module-useAnimationControls.html">useAnimationControls</a></li><li><a href="module-usePerformanceMonitor.html">usePerformanceMonitor</a></li></ul><h3>Classes</h3><ul><li><a href="module-AIFeatures.ContentGenerator.html">ContentGenerator</a></li><li><a href="module-AIFeatures.IntelligentOptimizer.html">IntelligentOptimizer</a></li><li><a href="module-AIFeatures-AnimationPatternGenerator.html">AnimationPatternGenerator</a></li><li><a href="module-AIFeatures-ColorHarmonyGenerator.html">ColorHarmonyGenerator</a></li><li><a href="module-AnimationSequencer.AnimationPresets.html">AnimationPresets</a></li><li><a href="module-AnimationSequencer.AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AnimationSequencer.AnimationTrack.html">AnimationTrack</a></li><li><a href="module-AnimationSequencer.Keyframe.html">Keyframe</a></li><li><a href="module-AudioUtils.AudioAnalyzer.html">AudioAnalyzer</a></li><li><a href="module-AudioUtils.AudioReactiveEffects.html">AudioReactiveEffects</a></li><li><a href="module-DebugTools.DebugConsole.html">DebugConsole</a></li><li><a href="module-DebugTools.DebugManager.html">DebugManager</a></li><li><a href="module-DebugTools.DebugVisualizer.html">DebugVisualizer</a></li><li><a href="module-DebugTools.PerformanceMonitor.html">PerformanceMonitor</a></li><li><a href="module-FrameworkIntegration.AnimatedBackgroundManager.html">AnimatedBackgroundManager</a></li><li><a href="module-PhysicsEngine.ForceGenerator.html">ForceGenerator</a></li><li><a href="module-PhysicsEngine.PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-PhysicsEngine.PhysicsParticle.html">PhysicsParticle</a></li><li><a href="module-PhysicsEngine.Vector2D.html">Vector2D</a></li><li><a href="module-PhysicsEngine-SpatialGrid.html">SpatialGrid</a></li><li><a href="module-ProjectManager.ProjectConfig.html">ProjectConfig</a></li><li><a href="module-ProjectManager.ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.ThemeManager.html">ThemeManager</a></li><li><a href="module-WebGLUtils.ShaderManager.html">ShaderManager</a></li><li><a href="module-WebGLUtils.WebGLEffectComposer.html">WebGLEffectComposer</a></li><li><a href="module-WebGLUtils.WebGLParticleSystem.html">WebGLParticleSystem</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>utils/interactionUtils.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Utility functions for interactive animations
+ * @module InteractionUtils
+ */
+
+/**
+ * @typedef {Object} InteractionPoint
+ * @property {number} x - X coordinate
+ * @property {number} y - Y coordinate
+ * @property {number} force - Interaction force (0-1)
+ * @property {string} type - 'mouse' | 'touch'
+ */
+
+/**
+ * @typedef {Object} InteractionConfig
+ * @property {string} effect - 'attract' | 'repel' | 'follow' | 'burst' | 'gravity' | 'magnetic' | 'vortex' | 'wave' | 'elastic'
+ * @property {number} strength - Effect strength (0-1)
+ * @property {number} radius - Interaction radius in pixels
+ * @property {boolean} continuous - Whether effect continues after interaction ends
+ */
+
+/**
+ * Creates an interaction handler for canvas animations
+ * @param {HTMLCanvasElement} canvas - The canvas element
+ * @param {InteractionConfig} config - Interaction configuration
+ * @returns {Object} Interaction handler with event listeners and state
+ */
+export const createInteractionHandler = (canvas, config = {}) => {
+  const {
+    effect = 'attract',
+    strength = 0.5,
+    radius = 100,
+    continuous = false
+  } = config;
+
+  let isInteracting = false;
+  let interactionPoints = [];
+  let touchPoints = new Map();
+
+  /**
+   * Get normalized coordinates from event
+   * @param {Event} event - Mouse or touch event
+   * @returns {InteractionPoint|null} Normalized interaction point
+   */
+  const getInteractionPoint = (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    if (event.type.startsWith('touch')) {
+      const touch = event.touches[0] || event.changedTouches[0];
+      return {
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
+        force: touch.force || 0.5,
+        type: 'touch'
+      };
+    } else {
+      return {
+        x: (event.clientX - rect.left) * scaleX,
+        y: (event.clientY - rect.top) * scaleY,
+        force: 0.5,
+        type: 'mouse'
+      };
+    }
+  };
+
+  /**
+   * Calculate interaction force between two points
+   * @param {Object} particle - Particle with x, y coordinates
+   * @param {InteractionPoint} interactionPoint - Interaction point
+   * @returns {Object} Force vector {fx, fy, distance}
+   */
+  const calculateInteractionForce = (particle, interactionPoint) => {
+    const dx = interactionPoint.x - particle.x;
+    const dy = interactionPoint.y - particle.y;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    
+    if (distance === 0 || distance > radius) {
+      return { fx: 0, fy: 0, distance };
+    }
+
+    const normalizedDistance = distance / radius;
+    let forceMagnitude = (1 - normalizedDistance) * strength * interactionPoint.force;
+
+    switch (effect) {
+      case 'attract':
+        forceMagnitude *= 1;
+        break;
+      case 'repel':
+        forceMagnitude *= -1;
+        break;
+      case 'gravity':
+        forceMagnitude *= (1 / (distance * distance + 1));
+        break;
+      case 'burst':
+        forceMagnitude *= distance &lt; radius * 0.3 ? -2 : 0;
+        break;
+      case 'magnetic':
+        // New: Magnetic field effect - stronger at poles
+        const angle = Math.atan2(dy, dx);
+        forceMagnitude *= Math.sin(angle * 2) * 1.5;
+        break;
+      case 'vortex':
+        // New: Spinning vortex effect
+        const perpX = -dy / distance;
+        const perpY = dx / distance;
+        return { 
+          fx: perpX * forceMagnitude + (dx / distance) * forceMagnitude * 0.3,
+          fy: perpY * forceMagnitude + (dy / distance) * forceMagnitude * 0.3,
+          distance 
+        };
+      case 'wave':
+        // New: Wave ripple effect
+        const time = Date.now() * 0.005;
+        const wavePhase = Math.sin(distance * 0.05 + time) * 0.5 + 0.5;
+        forceMagnitude *= wavePhase;
+        break;
+      case 'elastic':
+        // New: Elastic spring effect
+        forceMagnitude = distance &lt; radius * 0.5 ? -forceMagnitude * 2 : forceMagnitude;
+        break;
+      default:
+        forceMagnitude = 0;
+    }
+
+    const fx = (dx / distance) * forceMagnitude;
+    const fy = (dy / distance) * forceMagnitude;
+
+    return { fx, fy, distance };
+  };
+
+  // Event handlers
+  const handleMouseDown = (event) => {
+    isInteracting = true;
+    const point = getInteractionPoint(event);
+    if (point) interactionPoints = [point];
+  };
+
+  const handleMouseMove = (event) => {
+    if (isInteracting || continuous) {
+      const point = getInteractionPoint(event);
+      if (point) interactionPoints = [point];
+    }
+  };
+
+  const handleMouseUp = () => {
+    isInteracting = false;
+    if (!continuous) interactionPoints = [];
+  };
+
+  const handleTouchStart = (event) => {
+    event.preventDefault();
+    Array.from(event.touches).forEach((touch, index) => {
+      const point = {
+        x: (touch.clientX - canvas.getBoundingClientRect().left) * (canvas.width / canvas.getBoundingClientRect().width),
+        y: (touch.clientY - canvas.getBoundingClientRect().top) * (canvas.height / canvas.getBoundingClientRect().height),
+        force: touch.force || 0.5,
+        type: 'touch'
+      };
+      touchPoints.set(touch.identifier, point);
+    });
+    interactionPoints = Array.from(touchPoints.values());
+  };
+
+  const handleTouchMove = (event) => {
+    event.preventDefault();
+    Array.from(event.touches).forEach((touch) => {
+      const point = {
+        x: (touch.clientX - canvas.getBoundingClientRect().left) * (canvas.width / canvas.getBoundingClientRect().width),
+        y: (touch.clientY - canvas.getBoundingClientRect().top) * (canvas.height / canvas.getBoundingClientRect().height),
+        force: touch.force || 0.5,
+        type: 'touch'
+      };
+      touchPoints.set(touch.identifier, point);
+    });
+    interactionPoints = Array.from(touchPoints.values());
+  };
+
+  const handleTouchEnd = (event) => {
+    event.preventDefault();
+    Array.from(event.changedTouches).forEach((touch) => {
+      touchPoints.delete(touch.identifier);
+    });
+    interactionPoints = Array.from(touchPoints.values());
+  };
+
+  // Attach event listeners
+  const attachListeners = () => {
+    canvas.addEventListener('mousedown', handleMouseDown);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseup', handleMouseUp);
+    canvas.addEventListener('mouseleave', handleMouseUp);
+    
+    canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+    canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+    canvas.addEventListener('touchend', handleTouchEnd, { passive: false });
+    canvas.addEventListener('touchcancel', handleTouchEnd, { passive: false });
+  };
+
+  // Remove event listeners
+  const removeListeners = () => {
+    canvas.removeEventListener('mousedown', handleMouseDown);
+    canvas.removeEventListener('mousemove', handleMouseMove);
+    canvas.removeEventListener('mouseup', handleMouseUp);
+    canvas.removeEventListener('mouseleave', handleMouseUp);
+    
+    canvas.removeEventListener('touchstart', handleTouchStart);
+    canvas.removeEventListener('touchmove', handleTouchMove);
+    canvas.removeEventListener('touchend', handleTouchEnd);
+    canvas.removeEventListener('touchcancel', handleTouchEnd);
+  };
+
+  return {
+    attachListeners,
+    removeListeners,
+    calculateInteractionForce,
+    getInteractionPoints: () => interactionPoints,
+    isInteracting: () => isInteracting,
+    updateConfig: (newConfig) => {
+      Object.assign(config, newConfig);
+    }
+  };
+};
+
+/**
+ * Gesture recognition utilities
+ */
+export const GestureRecognizer = {
+  /**
+   * Detect pinch gesture for zoom
+   * @param {TouchEvent} event - Touch event
+   * @returns {Object|null} Pinch data or null
+   */
+  detectPinch: (event) => {
+    if (event.touches.length !== 2) return null;
+    
+    const touch1 = event.touches[0];
+    const touch2 = event.touches[1];
+    
+    const distance = Math.sqrt(
+      Math.pow(touch2.clientX - touch1.clientX, 2) +
+      Math.pow(touch2.clientY - touch1.clientY, 2)
+    );
+    
+    const centerX = (touch1.clientX + touch2.clientX) / 2;
+    const centerY = (touch1.clientY + touch2.clientY) / 2;
+    
+    return {
+      distance,
+      centerX,
+      centerY,
+      rotation: Math.atan2(touch2.clientY - touch1.clientY, touch2.clientX - touch1.clientX)
+    };
+  },
+
+  /**
+   * Detect swipe gesture
+   * @param {Object} startPoint - Starting touch point
+   * @param {Object} endPoint - Ending touch point
+   * @param {number} minDistance - Minimum distance for swipe
+   * @returns {Object|null} Swipe data or null
+   */
+  detectSwipe: (startPoint, endPoint, minDistance = 50) => {
+    const deltaX = endPoint.x - startPoint.x;
+    const deltaY = endPoint.y - startPoint.y;
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    
+    if (distance &lt; minDistance) return null;
+    
+    const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+    let direction = 'right';
+    
+    if (angle >= -45 &amp;&amp; angle &lt; 45) direction = 'right';
+    else if (angle >= 45 &amp;&amp; angle &lt; 135) direction = 'down';
+    else if (angle >= 135 || angle &lt; -135) direction = 'left';
+    else direction = 'up';
+    
+    return {
+      direction,
+      distance,
+      deltaX,
+      deltaY,
+      velocity: distance / (endPoint.time - startPoint.time)
+    };
+  }
+}; </code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

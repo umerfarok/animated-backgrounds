@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds - Interactive React Animations API utils/themeSystem.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds v2.0</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/"
+                        >
+                            🏠 Home
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-AnimatedBackground.html"
+                        >
+                            📚 API Reference
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-ThemeSystem.html"
+                        >
+                            🎨 Themes & Colors
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-InteractionUtils.html"
+                        >
+                            🎮 Interactions
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-useAnimationControls.html"
+                        >
+                            🎛️ Animation Controls
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-usePerformanceMonitor.html"
+                        >
+                            📊 Performance
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-LayeredBackground.html"
+                        >
+                            🏗️ Layered Backgrounds
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href=""
+                        >
+                            
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/umerfarok/animated-backgrounds"
+                        >
+                            💻 GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/animated-backgrounds"
+                        >
+                            📦 NPM
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://qr-generator-murex.vercel.app/"
+                        >
+                            🎮 Live Demo
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AIFeatures.html">AIFeatures</a></li><li><a href="module-AnimatedBackgrounds.html">AnimatedBackgrounds</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AudioUtils.html">AudioUtils</a></li><li><a href="module-DebugTools.html">DebugTools</a></li><li><a href="module-FrameworkIntegration.html">FrameworkIntegration</a></li><li><a href="module-InteractionUtils.html">InteractionUtils</a></li><li><a href="module-LayeredBackground.html">LayeredBackground</a></li><li><a href="module-PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.html">ThemeSystem</a></li><li><a href="module-WebGLUtils.html">WebGLUtils</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li><li><a href="module-useAnimationControls.html">useAnimationControls</a></li><li><a href="module-usePerformanceMonitor.html">usePerformanceMonitor</a></li></ul><h3>Classes</h3><ul><li><a href="module-AIFeatures.ContentGenerator.html">ContentGenerator</a></li><li><a href="module-AIFeatures.IntelligentOptimizer.html">IntelligentOptimizer</a></li><li><a href="module-AIFeatures-AnimationPatternGenerator.html">AnimationPatternGenerator</a></li><li><a href="module-AIFeatures-ColorHarmonyGenerator.html">ColorHarmonyGenerator</a></li><li><a href="module-AnimationSequencer.AnimationPresets.html">AnimationPresets</a></li><li><a href="module-AnimationSequencer.AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AnimationSequencer.AnimationTrack.html">AnimationTrack</a></li><li><a href="module-AnimationSequencer.Keyframe.html">Keyframe</a></li><li><a href="module-AudioUtils.AudioAnalyzer.html">AudioAnalyzer</a></li><li><a href="module-AudioUtils.AudioReactiveEffects.html">AudioReactiveEffects</a></li><li><a href="module-DebugTools.DebugConsole.html">DebugConsole</a></li><li><a href="module-DebugTools.DebugManager.html">DebugManager</a></li><li><a href="module-DebugTools.DebugVisualizer.html">DebugVisualizer</a></li><li><a href="module-DebugTools.PerformanceMonitor.html">PerformanceMonitor</a></li><li><a href="module-FrameworkIntegration.AnimatedBackgroundManager.html">AnimatedBackgroundManager</a></li><li><a href="module-PhysicsEngine.ForceGenerator.html">ForceGenerator</a></li><li><a href="module-PhysicsEngine.PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-PhysicsEngine.PhysicsParticle.html">PhysicsParticle</a></li><li><a href="module-PhysicsEngine.Vector2D.html">Vector2D</a></li><li><a href="module-PhysicsEngine-SpatialGrid.html">SpatialGrid</a></li><li><a href="module-ProjectManager.ProjectConfig.html">ProjectConfig</a></li><li><a href="module-ProjectManager.ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.ThemeManager.html">ThemeManager</a></li><li><a href="module-WebGLUtils.ShaderManager.html">ShaderManager</a></li><li><a href="module-WebGLUtils.WebGLEffectComposer.html">WebGLEffectComposer</a></li><li><a href="module-WebGLUtils.WebGLParticleSystem.html">WebGLParticleSystem</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>utils/themeSystem.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Theme and color system for animated backgrounds
+ * @module ThemeSystem
+ */
+
+/**
+ * @typedef {Object} ColorScheme
+ * @property {string} name - Theme name
+ * @property {Array&lt;string>} colors - Array of hex colors
+ * @property {Object} gradients - Gradient definitions
+ * @property {Object} effects - Special effect colors
+ */
+
+/**
+ * @typedef {Object} ThemeConfig
+ * @property {string} name - Theme name
+ * @property {ColorScheme} colorScheme - Color scheme for the theme
+ * @property {Object} animationSettings - Theme-specific animation settings
+ * @property {Array&lt;string>} recommendedAnimations - Animations that work well with this theme
+ */
+
+/**
+ * Predefined color schemes
+ */
+export const COLOR_SCHEMES = {
+  cyberpunk: {
+    name: 'Cyberpunk',
+    colors: ['#0D1B2A', '#1B263B', '#415A77', '#778DA9', '#E0E1DD'],
+    gradients: {
+      primary: ['#0D1B2A', '#415A77'],
+      secondary: ['#1B263B', '#778DA9'],
+      accent: ['#415A77', '#E0E1DD']
+    },
+    effects: {
+      glow: '#778DA9',
+      highlight: '#E0E1DD',
+      shadow: '#0D1B2A'
+    }
+  },
+
+  nature: {
+    name: 'Nature',
+    colors: ['#2D5016', '#4F772D', '#90A955', '#C8D5B9', '#F8FFF4'],
+    gradients: {
+      primary: ['#2D5016', '#90A955'],
+      secondary: ['#4F772D', '#C8D5B9'],
+      accent: ['#90A955', '#F8FFF4']
+    },
+    effects: {
+      glow: '#90A955',
+      highlight: '#F8FFF4',
+      shadow: '#2D5016'
+    }
+  },
+
+  ocean: {
+    name: 'Ocean',
+    colors: ['#03045E', '#0077B6', '#00B4D8', '#90E0EF', '#CAF0F8'],
+    gradients: {
+      primary: ['#03045E', '#00B4D8'],
+      secondary: ['#0077B6', '#90E0EF'],
+      accent: ['#00B4D8', '#CAF0F8']
+    },
+    effects: {
+      glow: '#00B4D8',
+      highlight: '#CAF0F8',
+      shadow: '#03045E'
+    }
+  },
+
+  sunset: {
+    name: 'Sunset',
+    colors: ['#FF6B35', '#F7931E', '#FFD23F', '#06FFA5', '#4ECDC4'],
+    gradients: {
+      primary: ['#FF6B35', '#FFD23F'],
+      secondary: ['#F7931E', '#06FFA5'],
+      accent: ['#06FFA5', '#4ECDC4']
+    },
+    effects: {
+      glow: '#FFD23F',
+      highlight: '#06FFA5',
+      shadow: '#FF6B35'
+    }
+  },
+
+  monochrome: {
+    name: 'Monochrome',
+    colors: ['#000000', '#333333', '#666666', '#999999', '#ffffff'],
+    gradients: {
+      primary: ['#000000', '#666666'],
+      secondary: ['#333333', '#999999'],
+      accent: ['#666666', '#ffffff']
+    },
+    effects: {
+      glow: '#ffffff',
+      highlight: '#cccccc',
+      shadow: '#000000'
+    }
+  },
+
+  neon: {
+    name: 'Neon',
+    colors: ['#FF0080', '#00FF80', '#8000FF', '#FF8000', '#00FFFF'],
+    gradients: {
+      primary: ['#FF0080', '#00FF80'],
+      secondary: ['#8000FF', '#FF8000'],
+      accent: ['#FF8000', '#00FFFF']
+    },
+    effects: {
+      glow: '#00FF80',
+      highlight: '#FF0080',
+      shadow: '#000011'
+    }
+  },
+
+  space: {
+    name: 'Space',
+    colors: ['#0C0C20', '#1A1A3E', '#2E2E5C', '#6B46C1', '#A855F7'],
+    gradients: {
+      primary: ['#0C0C20', '#2E2E5C'],
+      secondary: ['#1A1A3E', '#6B46C1'],
+      accent: ['#6B46C1', '#A855F7']
+    },
+    effects: {
+      glow: '#A855F7',
+      highlight: '#6B46C1',
+      shadow: '#0C0C20'
+    }
+  },
+
+  retro: {
+    name: 'Retro',
+    colors: ['#FF006E', '#8338EC', '#3A86FF', '#06FFA5', '#FFBE0B'],
+    gradients: {
+      primary: ['#FF006E', '#8338EC'],
+      secondary: ['#3A86FF', '#06FFA5'],
+      accent: ['#06FFA5', '#FFBE0B']
+    },
+    effects: {
+      glow: '#06FFA5',
+      highlight: '#FFBE0B',
+      shadow: '#FF006E'
+    }
+  },
+
+  cosmic: {
+    name: 'Cosmic',
+    colors: ['#1A0B3D', '#6B2C91', '#B83DBA', '#EF4CE0', '#FFB3FD'],
+    gradients: {
+      primary: ['#1A0B3D', '#B83DBA'],
+      secondary: ['#6B2C91', '#EF4CE0'],
+      accent: ['#EF4CE0', '#FFB3FD']
+    },
+    effects: {
+      glow: '#EF4CE0',
+      highlight: '#FFB3FD',
+      shadow: '#1A0B3D'
+    }
+  },
+
+  aurora: {
+    name: 'Aurora',
+    colors: ['#003366', '#0066CC', '#00CCFF', '#66FFCC', '#CCFF99'],
+    gradients: {
+      primary: ['#003366', '#00CCFF'],
+      secondary: ['#0066CC', '#66FFCC'],
+      accent: ['#66FFCC', '#CCFF99']
+    },
+    effects: {
+      glow: '#66FFCC',
+      highlight: '#CCFF99',
+      shadow: '#003366'
+    }
+  },
+
+  volcano: {
+    name: 'Volcano',
+    colors: ['#1A0000', '#8B0000', '#FF4500', '#FF8C00', '#FFD700'],
+    gradients: {
+      primary: ['#1A0000', '#FF4500'],
+      secondary: ['#8B0000', '#FF8C00'],
+      accent: ['#FF8C00', '#FFD700']
+    },
+    effects: {
+      glow: '#FF8C00',
+      highlight: '#FFD700',
+      shadow: '#1A0000'
+    }
+  },
+
+  forest: {
+    name: 'Forest',
+    colors: ['#0D2818', '#1A4C32', '#2D7049', '#4A9960', '#66C2A5'],
+    gradients: {
+      primary: ['#0D2818', '#2D7049'],
+      secondary: ['#1A4C32', '#4A9960'],
+      accent: ['#4A9960', '#66C2A5']
+    },
+    effects: {
+      glow: '#4A9960',
+      highlight: '#66C2A5',
+      shadow: '#0D2818'
+    }
+  },
+
+  ice: {
+    name: 'Ice',
+    colors: ['#E8F4FD', '#A8DADC', '#457B9D', '#1D3557', '#F1FAEE'],
+    gradients: {
+      primary: ['#E8F4FD', '#457B9D'],
+      secondary: ['#A8DADC', '#1D3557'],
+      accent: ['#1D3557', '#F1FAEE']
+    },
+    effects: {
+      glow: '#A8DADC',
+      highlight: '#F1FAEE',
+      shadow: '#1D3557'
+    }
+  },
+
+  galaxy: {
+    name: 'Galaxy',
+    colors: ['#0F0F23', '#2D1B69', '#6A4C93', '#C490E4', '#FFEEDD'],
+    gradients: {
+      primary: ['#0F0F23', '#6A4C93'],
+      secondary: ['#2D1B69', '#C490E4'],
+      accent: ['#C490E4', '#FFEEDD']
+    },
+    effects: {
+      glow: '#C490E4',
+      highlight: '#FFEEDD',
+      shadow: '#0F0F23'
+    }
+  },
+
+  desert: {
+    name: 'Desert',
+    colors: ['#8B4513', '#CD853F', '#DEB887', '#FFE4B5', '#FFEFD5'],
+    gradients: {
+      primary: ['#8B4513', '#DEB887'],
+      secondary: ['#CD853F', '#FFE4B5'],
+      accent: ['#FFE4B5', '#FFEFD5']
+    },
+    effects: {
+      glow: '#FFE4B5',
+      highlight: '#FFEFD5',
+      shadow: '#8B4513'
+    }
+  }
+};
+
+/**
+ * Predefined themes with complete configurations
+ */
+export const THEMES = {
+  gaming: {
+    name: 'Gaming',
+    colorScheme: COLOR_SCHEMES.cyberpunk,
+    animationSettings: {
+      intensity: 'high',
+      speed: 1.2,
+      particleCount: 150,
+      glowEffect: true
+    },
+    recommendedAnimations: ['matrixRain', 'electricStorm', 'neonPulse', 'particleNetwork']
+  },
+
+  portfolio: {
+    name: 'Portfolio',
+    colorScheme: COLOR_SCHEMES.monochrome,
+    animationSettings: {
+      intensity: 'medium',
+      speed: 0.8,
+      particleCount: 80,
+      glowEffect: false
+    },
+    recommendedAnimations: ['geometricShapes', 'floatingBubbles', 'gradientWave']
+  },
+
+  landing: {
+    name: 'Landing Page',
+    colorScheme: COLOR_SCHEMES.sunset,
+    animationSettings: {
+      intensity: 'medium',
+      speed: 1.0,
+      particleCount: 100,
+      glowEffect: true
+    },
+    recommendedAnimations: ['galaxySpiral', 'rainbowWaves', 'auroraBorealis']
+  },
+
+  presentation: {
+    name: 'Presentation',
+    colorScheme: COLOR_SCHEMES.space,
+    animationSettings: {
+      intensity: 'low',
+      speed: 0.6,
+      particleCount: 50,
+      glowEffect: false
+    },
+    recommendedAnimations: ['starryNight', 'cosmicDust', 'quantumField']
+  },
+
+  wellness: {
+    name: 'Wellness',
+    colorScheme: COLOR_SCHEMES.nature,
+    animationSettings: {
+      intensity: 'low',
+      speed: 0.7,
+      particleCount: 60,
+      glowEffect: false
+    },
+    recommendedAnimations: ['oceanWaves', 'autumnLeaves', 'fireflyForest']
+  },
+
+  party: {
+    name: 'Party',
+    colorScheme: COLOR_SCHEMES.neon,
+    animationSettings: {
+      intensity: 'high',
+      speed: 1.5,
+      particleCount: 200,
+      glowEffect: true
+    },
+    recommendedAnimations: ['rainbowWaves', 'neonPulse', 'electricStorm']
+  },
+
+  cyberpunk: {
+    name: 'Cyberpunk',
+    colorScheme: COLOR_SCHEMES.cyberpunk,
+    animationSettings: {
+      intensity: 'high',
+      speed: 1.3,
+      particleCount: 180,
+      glowEffect: true
+    },
+    recommendedAnimations: ['matrixRain', 'electricStorm', 'neonPulse', 'quantumField']
+  },
+
+  retro: {
+    name: 'Retro',
+    colorScheme: COLOR_SCHEMES.retro,
+    animationSettings: {
+      intensity: 'medium',
+      speed: 1.0,
+      particleCount: 120,
+      glowEffect: true
+    },
+    recommendedAnimations: ['rainbowWaves', 'geometricShapes', 'neonPulse', 'galaxySpiral']
+  }
+};
+
+/**
+ * Theme utility functions
+ */
+export class ThemeManager {
+  constructor() {
+    this.currentTheme = null;
+    this.customThemes = new Map();
+    this.currentColors = [];
+    this.isTransitioning = false;
+    this.themeCycleInterval = null;
+  }
+
+  /**
+   * Apply a theme to animation settings
+   * @param {string} themeName - Name of the theme to apply
+   * @returns {Object} Theme configuration
+   */
+  applyTheme(themeName) {
+    const theme = THEMES[themeName] || this.customThemes.get(themeName);
+    if (!theme) {
+      console.warn(`Theme "${themeName}" not found. Using default.`);
+      return THEMES.portfolio;
+    }
+    
+    this.currentTheme = theme;
+    this.currentColors = theme.colorScheme.colors;
+    return theme;
+  }
+
+  /**
+   * Get random color from current theme
+   * @param {string} [category='colors'] - Color category ('colors', 'primary', 'secondary', 'accent')
+   * @returns {string} Hex color string
+   */
+  getRandomColor(category = 'colors') {
+    if (!this.currentTheme) return '#ffffff';
+    
+    const colorScheme = this.currentTheme.colorScheme;
+    let colorArray;
+    
+    switch (category) {
+      case 'primary':
+        colorArray = colorScheme.gradients.primary;
+        break;
+      case 'secondary':
+        colorArray = colorScheme.gradients.secondary;
+        break;
+      case 'accent':
+        colorArray = colorScheme.gradients.accent;
+        break;
+      default:
+        colorArray = colorScheme.colors;
+    }
+    
+    return colorArray[Math.floor(Math.random() * colorArray.length)];
+  }
+
+  /**
+   * Get gradient colors for canvas
+   * @param {CanvasRenderingContext2D} ctx - Canvas context
+   * @param {string} gradientType - 'primary', 'secondary', or 'accent'
+   * @param {Object} coordinates - {x1, y1, x2, y2} for linear gradient
+   * @returns {CanvasGradient} Canvas gradient object
+   */
+  createGradient(ctx, gradientType = 'primary', coordinates = {x1: 0, y1: 0, x2: 0, y2: 100}) {
+    if (!this.currentTheme) return null;
+    
+    const colors = this.currentTheme.colorScheme.gradients[gradientType];
+    const gradient = ctx.createLinearGradient(coordinates.x1, coordinates.y1, coordinates.x2, coordinates.y2);
+    
+    colors.forEach((color, index) => {
+      gradient.addColorStop(index / (colors.length - 1), color);
+    });
+    
+    return gradient;
+  }
+
+  /**
+   * Create a custom theme
+   * @param {string} name - Theme name
+   * @param {Object} config - Theme configuration
+   */
+  createCustomTheme(name, config) {
+    this.customThemes.set(name, config);
+  }
+
+  /**
+   * Get effect color from current theme
+   * @param {string} effectType - 'glow', 'highlight', or 'shadow'
+   * @returns {string} Hex color string
+   */
+  getEffectColor(effectType) {
+    if (!this.currentTheme) return '#ffffff';
+    return this.currentTheme.colorScheme.effects[effectType] || '#ffffff';
+  }
+
+  /**
+   * Generate theme-appropriate settings for animations
+   * @param {string} animationType - Type of animation
+   * @returns {Object} Animation-specific settings
+   */
+  getAnimationSettings(animationType) {
+    if (!this.currentTheme) return {};
+    
+    const baseSettings = this.currentTheme.animationSettings;
+    const settings = { ...baseSettings };
+    
+    // Adjust settings based on animation type
+    switch (animationType) {
+      case 'particleNetwork':
+      case 'matrixRain':
+        settings.particleCount = Math.floor(baseSettings.particleCount * 1.2);
+        break;
+      case 'starryNight':
+      case 'cosmicDust':
+        settings.particleCount = Math.floor(baseSettings.particleCount * 0.8);
+        break;
+      case 'electricStorm':
+      case 'neonPulse':
+        settings.glowEffect = true;
+        settings.intensity = 'high';
+        break;
+    }
+    
+    return settings;
+  }
+
+  /**
+   * Get all available themes
+   * @returns {Array&lt;string>} Array of theme names
+   */
+  getAvailableThemes() {
+    return [...Object.keys(THEMES), ...Array.from(this.customThemes.keys())];
+  }
+
+  /**
+   * Get recommended animations for current theme
+   * @returns {Array&lt;string>} Array of animation names
+   */
+  getRecommendedAnimations() {
+    if (!this.currentTheme) return [];
+    return this.currentTheme.recommendedAnimations || [];
+  }
+
+  /**
+   * Get current theme colors
+   * @returns {Array&lt;string>} Array of current colors
+   */
+  getCurrentColors() {
+    if (!this.currentTheme) return ['#ffffff', '#cccccc', '#999999'];
+    return this.currentColors || this.currentTheme.colorScheme.colors;
+  }
+
+  /**
+   * Get background color for current theme
+   * @param {number} [opacity=0.1] - Background opacity
+   * @returns {string} Background color with opacity
+   */
+  getBackgroundColor(opacity = 0.1) {
+    if (!this.currentTheme) return `rgba(15, 23, 42, ${opacity})`;
+    
+    // Use the darkest color from the theme as background
+    const colors = this.getCurrentColors();
+    const darkestColor = colors[colors.length - 1] || colors[0];
+    
+    // Convert hex to rgba with opacity
+    const rgb = this.parseColor(darkestColor);
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+  }
+
+  /**
+   * Get current theme name
+   * @returns {string} Current theme name or 'default'
+   */
+  getCurrentThemeName() {
+    return this.currentTheme ? this.currentTheme.name : 'default';
+  }
+
+  /**
+   * Check if a theme is currently applied
+   * @returns {boolean} True if a theme is applied
+   */
+  hasTheme() {
+    return this.currentTheme !== null;
+  }
+
+  /**
+   * Convert any color to rgba format
+   * @param {string} color - Input color (hex, rgb, rgba)
+   * @param {number} [opacity=1] - Opacity (0-1)
+   * @returns {string} RGBA color string
+   */
+  toRgba(color, opacity = 1) {
+    const rgb = this.parseColor(color);
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+  }
+
+  /**
+   * Smooth transition between themes
+   * @param {string} newTheme - Target theme name
+   * @param {number} [duration=2000] - Transition duration in milliseconds
+   * @param {Function} [easingFunction] - Custom easing function
+   */
+  transitionToTheme(newTheme, duration = 2000, easingFunction = this.easeInOutCubic) {
+    if (!THEMES[newTheme] || this.isTransitioning) return;
+    
+    const startTheme = this.currentTheme;
+    const startTime = Date.now();
+    this.isTransitioning = true;
+    
+    const startColors = [...this.currentColors];
+    const targetColors = THEMES[newTheme].colorScheme.colors;
+    
+    const transitionStep = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easingFunction(progress);
+      
+      // Interpolate colors
+      this.currentColors = startColors.map((startColor, index) => {
+        const targetColor = targetColors[index] || targetColors[targetColors.length - 1];
+        return this.interpolateColor(startColor, targetColor, easedProgress);
+      });
+      
+      if (progress &lt; 1) {
+        requestAnimationFrame(transitionStep);
+      } else {
+        this.currentTheme = newTheme;
+        this.isTransitioning = false;
+      }
+    };
+    
+    transitionStep();
+  }
+
+  /**
+   * Interpolate between two colors
+   * @param {string} color1 - Start color (hex or rgb)
+   * @param {string} color2 - End color (hex or rgb)
+   * @param {number} factor - Interpolation factor (0-1)
+   * @returns {string} Interpolated color
+   */
+  interpolateColor(color1, color2, factor) {
+    const rgb1 = this.parseColor(color1);
+    const rgb2 = this.parseColor(color2);
+    
+    const r = Math.round(rgb1.r + (rgb2.r - rgb1.r) * factor);
+    const g = Math.round(rgb1.g + (rgb2.g - rgb1.g) * factor);
+    const b = Math.round(rgb1.b + (rgb2.b - rgb1.b) * factor);
+    
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  /**
+   * Parse color string to RGB object
+   * @param {string} color - Color string
+   * @returns {Object} RGB object
+   */
+  parseColor(color) {
+    if (color.startsWith('#')) {
+      const hex = color.slice(1);
+      return {
+        r: parseInt(hex.slice(0, 2), 16),
+        g: parseInt(hex.slice(2, 4), 16),
+        b: parseInt(hex.slice(4, 6), 16)
+      };
+    } else if (color.startsWith('rgb')) {
+      const matches = color.match(/\d+/g);
+      return {
+        r: parseInt(matches[0]),
+        g: parseInt(matches[1]),
+        b: parseInt(matches[2])
+      };
+    }
+    return { r: 255, g: 255, b: 255 };
+  }
+
+  /**
+   * Cubic easing function
+   * @param {number} t - Time parameter (0-1)
+   * @returns {number} Eased value
+   */
+  easeInOutCubic(t) {
+    return t &lt; 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  /**
+   * Enable automatic theme cycling
+   * @param {Array} themes - Array of theme names to cycle through
+   * @param {number} [interval=10000] - Time between changes in milliseconds
+   */
+  enableThemeCycling(themes, interval = 10000) {
+    this.stopThemeCycling();
+    
+    let currentIndex = 0;
+    this.themeCycleInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % themes.length;
+      this.transitionToTheme(themes[currentIndex]);
+    }, interval);
+  }
+
+  /**
+   * Stop automatic theme cycling
+   */
+  stopThemeCycling() {
+    if (this.themeCycleInterval) {
+      clearInterval(this.themeCycleInterval);
+      this.themeCycleInterval = null;
+    }
+  }
+}
+
+// Export a singleton instance
+export const themeManager = new ThemeManager(); </code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
