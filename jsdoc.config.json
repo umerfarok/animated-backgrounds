@@ -1,60 +1,133 @@
 {
   "source": {
-    "include": ["src"],
-    "includePattern": ".+\\.js(x)?$",
-    "excludePattern": "(node_modules/|docs)"
+    "include": ["src", "README.md"],
+    "includePattern": ".+\\.(js|jsx)$",
+    "excludePattern": "(node_modules/|docs|dist|coverage|examples/.*\\.test\\.)"
   },
   "plugins": [
-    "plugins/markdown",
-    "node_modules/better-docs/component",
-    "node_modules/better-docs/category"
+    "plugins/markdown"
   ],
   "opts": {
     "destination": "./docs",
     "template": "node_modules/better-docs",
-    "readme": "./README.md"
+    "readme": "./README.md",
+    "recurse": true,
+    "verbose": true,
+    "package": "./package.json"
   },
   "templates": {
     "better-docs": {
-      "name": "Animated Backgrounds",
-      "title": "Animated Backgrounds Documentation",
-      "description": "Documentation for the Animated Backgrounds React package",
-      "navigation": [
+      "name": "Animated Backgrounds v2.0",
+      "title": "Animated Backgrounds - Interactive React Animations API",
+      "description": "Complete API documentation for the feature-rich animated backgrounds package with themes, interactions, performance monitoring, and layered compositions.",
+      "logo": "images/logo.png",
+      "hideGenerator": false,
+      "theme": "dark",
+      "navLinks": [
         {
-          "label": "GitHub",
-          "href": "https://github.com/umerfarok/animated-backgrounds"
+          "label": "🏠 Home",
+          "href": "/"
         },
         {
-          "label": "NPM",
-          "href": "https://www.npmjs.com/package/animated-backgrounds"
+          "label": "📚 API Reference",
+          "href": "/module-AnimatedBackground.html"
+        },
+        {
+          "label": "🎨 Themes & Colors",
+          "href": "/module-ThemeSystem.html"
+        },
+        {
+          "label": "🎮 Interactions",
+          "href": "/module-InteractionUtils.html"
+        },
+        {
+          "label": "🎛️ Animation Controls",
+          "href": "/module-useAnimationControls.html"
+        },
+        {
+          "label": "📊 Performance",
+          "href": "/module-usePerformanceMonitor.html"
+        },
+        {
+          "label": "🏗️ Layered Backgrounds",
+          "href": "/module-LayeredBackground.html"
+        },
+        {
+          "divider": true
+        },
+        {
+          "label": "💻 GitHub",
+          "href": "https://github.com/umerfarok/animated-backgrounds",
+          "target": "_blank"
+        },
+        {
+          "label": "📦 NPM",
+          "href": "https://www.npmjs.com/package/animated-backgrounds",
+          "target": "_blank"
+        },
+        {
+          "label": "🎮 Live Demo",
+          "href": "https://qr-generator-murex.vercel.app/",
+          "target": "_blank"
         }
-      ]
+      ],
+      "footer": "Made with ❤️ by <a href='https://github.com/umerfarok'>Umer Farooq</a> | v2.0.0 | <a href='https://github.com/umerfarok/animated-backgrounds/blob/main/LICENSE'>MIT License</a>",
+      "search": {
+        "enabled": true,
+        "placeholder": "Search documentation..."
+      }
     }
   },
   "tags": {
-    "allowUnknownTags": ["component"]
+    "allowUnknownTags": [
+      "component", 
+      "interactive", 
+      "performance", 
+      "theme", 
+      "mobile", 
+      "gesture", 
+      "animation", 
+      "canvas",
+      "example",
+      "demo",
+      "since",
+      "version"
+    ]
   },
-  "search": true,
   "docdash": {
     "static": false,
     "sort": true,
     "sectionOrder": [
       "Classes",
+      "Components", 
+      "Hooks",
       "Modules",
-      "Externals",
+      "Utilities",
+      "Types",
       "Events",
+      "Examples",
+      "Externals",
       "Namespaces",
       "Mixins",
-      "Tutorials",
       "Interfaces"
     ],
     "meta": {
-      "title": "Animated Backgrounds Documentation",
-      "description": "Documentation for the Animated Backgrounds React package",
-      "keyword": "react, animation, background, canvas, javascript"
+      "title": "Animated Backgrounds v2.0 - Interactive React Animations API Documentation",
+      "description": "Complete API documentation for feature-rich animated backgrounds with themes, interactions, performance monitoring, and layered compositions for React applications.",
+      "keyword": "react, animation, background, canvas, javascript, interactive, themes, performance, mobile, touch, particles, effects, layered, controls, api, documentation",
+      "author": "Umer Farooq",
+      "viewport": "width=device-width, initial-scale=1.0"
     },
     "search": true,
-    "collapse": true,
-    "wrap": true
+    "collapse": false,
+    "wrap": true,
+    "typedefs": true,
+    "commonjs": true,
+    "includeDate": true,
+    "systemName": "Animated Backgrounds"
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": false
   }
 }

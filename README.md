@@ -1,30 +1,32 @@
-# Animated Backgrounds [![Socket Badge](https://socket.dev/api/badge/npm/package/animated-backgrounds/1.1.0)](https://socket.dev/npm/package/animated-backgrounds/overview/1.1.0)
+# Animated Backgrounds v2.0
 
-[![npm](https://img.shields.io/npm/dm/animated-backgrounds.svg)](https://www.npmjs.com/package/animated-backgrounds)
-![License](https://img.shields.io/github/license/umerfarok/animated-backgrounds)
-![npm](https://img.shields.io/npm/v/animated-backgrounds)
-![GitHub stars](https://img.shields.io/github/stars/umerfarok/animated-backgrounds)
+> ✨ **A comprehensive React package for stunning animated backgrounds with interactive controls, themes, performance monitoring, and layered compositions.**
 
+![npm version](https://img.shields.io/npm/v/animated-backgrounds.svg)
+![npm downloads](https://img.shields.io/npm/dm/animated-backgrounds.svg)
+![license](https://img.shields.io/npm/l/animated-backgrounds.svg)
+![React](https://img.shields.io/badge/React-%2016.8%2B-blue)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/animated-backgrounds/2.0.0)](https://socket.dev/npm/package/animated-backgrounds/overview/2.0.0)
 
-A React package for easy-to-use, customizable animated backgrounds.
-Sample implementation https://qr-generator-murex.vercel.app/
-## Docs https://umerfarok.github.io/animated-backgrounds/
+## 🚀 What's New in v2.0
 
-## Installation
+**Major upgrade with powerful new features:**
+
+- 🎨 **8 Stunning Themes** - Gaming, Portfolio, Landing, Presentation, Wellness, Party, Cyberpunk, Retro
+- 🎮 **Interactive Animations** - Mouse/touch interactions with particle systems
+- 🏗️ **Layered Backgrounds** - Multiple animation layers with blend modes
+- 🎛️ **Animation Controls** - Play/pause/speed/reset functionality
+- 📊 **Performance Monitoring** - Real-time FPS tracking and optimization
+- 📱 **Mobile Optimized** - Touch gestures and responsive design
+- ⚡ **Zero Flashing** - Smooth transitions without component remounting
+
+## 📦 Installation
 
 ```bash
 npm install animated-backgrounds
 ```
 
-or
-
-```bash
-yarn add animated-backgrounds
-```
-
-## Usage
-
-To use the animated backgrounds in your React application, import the `AnimatedBackground` component and use it in your JSX:
+## 🎯 Quick Start
 
 ```jsx
 import React from 'react';
@@ -33,303 +35,467 @@ import { AnimatedBackground } from 'animated-backgrounds';
 function App() {
   return (
     <div>
-      <AnimatedBackground animationName="starryNight" 
-       blendMode="screen" />
-      {/* Your app content */}
+      <AnimatedBackground 
+        animationName="particleNetwork"
+        theme="gaming"
+      />
+      <h1>Your content here</h1>
     </div>
   );
 }
-
-export default App;
 ```
 
+## 🎨 Available Animations
 
-## Usage For Animated Text
+### Core Animations (19 total)
+- **Nature**: `autumnLeaves`, `oceanWaves`, `starryNight`, `auroraBorealis`, `fireflies`
+- **Tech**: `particleNetwork`, `neuralNetwork`, `matrixRain`, `quantumField`, `electricStorm`
+- **Abstract**: `geometricShapes`, `gradientWave`, `floatingBubbles`, `cosmicDust`, `neonPulse`
+- **Fun**: `fallingFoodFiesta`, `rainbowWaves`, `galaxySpiral`, `dnaHelix`
 
-To use animated text effects in your React application, import the `AnimatedText` component and use it in your JSX:
+### Themes
+Each theme applies unique color schemes and visual settings:
 
-```jsx
-import React from 'react';
-import { AnimatedText } from 'animated-backgrounds';
+| Theme | Description | Best For |
+|-------|-------------|----------|
+| 🎮 **Gaming** | Cyberpunk colors, high energy | Gaming sites, tech demos |
+| 💼 **Portfolio** | Professional monochrome | Business, resumes, corporate |
+| 🌅 **Landing** | Warm sunset tones | Marketing pages, landing sites |
+| 📊 **Presentation** | Subtle space theme | Slides, professional content |
+| 🌿 **Wellness** | Calming nature colors | Health, wellness, meditation |
+| 🎉 **Party** | Vibrant neon colors | Events, entertainment, festivals |
+| 🤖 **Cyberpunk** | Classic sci-fi aesthetic | Futuristic themes, tech blogs |
+| 🕹️ **Retro** | Nostalgic vintage colors | Creative projects, portfolios |
 
-function App() {
-  return (
-    <div>
-      {/* Basic usage */}
-      <AnimatedText 
-        text="Hello World!"
-        effect="typewriter"
-      />
+## 🎮 Interactive Features
 
-      {/* With configuration */}
-      <AnimatedText 
-        text="Animated Text with Config"
-        effect="rainbow"
-        config={{
-          speed: 100,
-          loop: true,
-          delay: 1000,
-          color: '#ff0000'
-        }}
-      />
-
-      {/* With custom styles */}
-      <AnimatedText 
-        text="Custom Styled Text"
-        effect="bounce"
-        styles={{
-          fontSize: '2em',
-          fontWeight: 'bold',
-          color: '#0066ff'
-        }}
-      />
-
-      {/* Combined with other components */}
-      <h1>
-        <AnimatedText 
-          text="Welcome to My App"
-          effect="glitch"
-        />
-      </h1>
-    </div>
-  );
-}
-
-export default App;
-```
-
-## Usage in Next.js with SSR
-When using the AnimatedBackground component in a Next.js project with server-side rendering (SSR), you need to ensure that the component is rendered on the client side. You can do this by adding the "use client" directive at the top of the file where you use the component.
-
-```jsx
-// pages/index.js
-"use client";
-
-import React from 'react';
-import AnimatedBackground from 'animated-backgrounds';
-
-const Home = () => {
-  return (
-    <div>
-      <h1>Welcome to Next.js with Animated Backgrounds</h1>
-      <AnimatedBackground animationName="starryNight" 
-       blendMode="screen"  // Optional: Add blend mode for visual effects
-
-      />
-    </div>
-  );
-};  
-
-export default Home;
-```
-
-## Blend Modes
-
-The package supports various blend modes to create different visual effects. Available blend modes include:
-
-- `normal` (default)
-- `multiply`
-- `screen`
-- `overlay`
-- `darken`
-- `lighten`
-- `color-dodge`
-- `color-burn`
-- `hard-light`
-- `soft-light`
-- `difference`
-- `exclusion`
-- `hue`
-- `saturation`
-- `color`
-- `luminosity`
-
-To use a blend mode, simply set the `blendMode` prop on the `AnimatedBackground` component:
-
+### Basic Interaction
 ```jsx
 <AnimatedBackground 
-  animationName="starryNight" 
-  blendMode="screen" 
+  animationName="particleNetwork"
+  interactive={true}
+  interactionConfig={{
+    effect: 'attract',     // 'attract' | 'repel' | 'follow' | 'burst' | 'gravity'
+    strength: 0.8,         // 0.1 to 2.0
+    radius: 150,           // Interaction radius in pixels
+    continuous: true       // Continuous vs single-click interaction
+  }}
 />
 ```
 
-## Recommended Blend Modes for Specific Effects
+### Interaction Effects
+- **attract**: Particles move toward cursor/touch
+- **repel**: Particles move away from cursor/touch  
+- **follow**: Particles trail behind cursor movement
+- **burst**: Explosive effect on click/touch
+- **gravity**: Gravitational pull effect
 
-- **Screen**: Use for light effects and glowing animations.
-- **Multiply**: Use for darker, atmospheric effects.
-- **Overlay**: Use for increased contrast and vibrant colors.
-- **Color-Dodge**: Use for intense light effects.
+### Mobile Gestures
+- **Pinch**: Zoom effect on animations
+- **Swipe**: Directional particle movement
+- **Tap**: Burst effects
+- **Multi-touch**: Multiple interaction points
 
-## Available Animations
+## 🏗️ Layered Backgrounds
 
-The package currently includes the following animations:
-
-- `starryNight`
-- `floatingBubbles`
-- `gradientWave`
-- `particleNetwork`
-- `galaxySpiral`
-- `rainbowWaves`
-- `geometricShapes`
-- `fireflies`
-- `matrixRain`
-- `quantumField`
-- `electricStorm`
-- `cosmicDust`, `neonPulse`, `auroraBorealis`, `autumnLeaves`, `dnaHelix`, `fallingFoodFiesta`
-
-
-To use a different animation, simply change the `animationName` prop:
+Create complex visual compositions by combining multiple animations:
 
 ```jsx
+import { LayeredBackground } from 'animated-backgrounds';
 
-<AnimatedBackground animationName="floatingBubbles" />
+<LayeredBackground 
+  layers={[
+    { 
+      animation: 'starryNight', 
+      opacity: 0.7, 
+      blendMode: 'normal',
+      speed: 0.5 
+    },
+    { 
+      animation: 'particleNetwork', 
+      opacity: 0.3, 
+      blendMode: 'screen',
+      speed: 1.2 
+    },
+    { 
+      animation: 'cosmicDust', 
+      opacity: 0.5, 
+      blendMode: 'overlay',
+      speed: 0.8 
+    }
+  ]}
+/>
 ```
 
-## Cycling Through Backgrounds
+### Blend Modes
+- `normal`, `multiply`, `screen`, `overlay`
+- `darken`, `lighten`, `color-dodge`, `color-burn`
+- `hard-light`, `soft-light`, `difference`, `exclusion`
+- `hue`, `saturation`, `color`, `luminosity`
 
-If you want to cycle through different backgrounds on each page reload, you can use the following approach:
+## 🎛️ Animation Controls
+
+Take full control of your animations:
 
 ```jsx
-import React, { useState, useEffect } from 'react';
-import { AnimatedBackground } from 'animated-backgrounds';
+import { AnimatedBackground, useAnimationControls } from 'animated-backgrounds';
 
-function App() {
-  const [animation, setAnimation] = useState({
-    name: 'starryNight',
-    blendMode: 'normal'
+function ControlledAnimation() {
+  const controls = useAnimationControls({
+    initialSpeed: 1,
+    autoPlay: true
   });
-
-  useEffect(() => {
-    const animations = ['starryNight', 'floatingBubbles', 'gradientWave'];
-    const blendModes = ['screen', 'multiply', 'overlay', 'color-dodge'];
-    
-    const storedIndex = localStorage.getItem('backgroundAnimationIndex');
-    const storedBlendIndex = localStorage.getItem('blendModeIndex');
-    
-    const newIndex = storedIndex ? (parseInt(storedIndex) + 1) % animations.length : 0;
-    const newBlendIndex = storedBlendIndex ? (parseInt(storedBlendIndex) + 1) % blendModes.length : 0;
-    
-    setAnimation({
-      name: animations[newIndex],
-      blendMode: blendModes[newBlendIndex]
-    });
-    
-    localStorage.setItem('backgroundAnimationIndex', newIndex.toString());
-    localStorage.setItem('blendModeIndex', newBlendIndex.toString());
-  }, []);
 
   return (
     <div>
       <AnimatedBackground 
-        animationName={animation.name}
-        blendMode={animation.blendMode}
+        animationName="galaxySpiral"
+        animationControls={controls}
       />
-      {/* Your app content */}
+      
+      <div className="controls">
+        <button onClick={controls.play}>▶️ Play</button>
+        <button onClick={controls.pause}>⏸️ Pause</button>
+        <button onClick={controls.reset}>🔄 Reset</button>
+        <input 
+          type="range" 
+          min="0.1" 
+          max="5" 
+          step="0.1"
+          value={controls.speed}
+          onChange={(e) => controls.setSpeed(e.target.value)}
+        />
+      </div>
     </div>
   );
 }
-
-export default App;
 ```
 
-This code will cycle through all available animations, changing to a new one each time the page is reloaded.
+### Control Methods
+- `play()` - Start/resume animation
+- `pause()` - Pause animation
+- `reset()` - Reset to initial state
+- `toggle()` - Toggle play/pause
+- `setSpeed(value)` - Set speed (0.1x to 5.0x)
 
-## Customization
+## 📊 Performance Monitoring
 
-The `AnimatedBackground` component accepts additional props for customization:
+Monitor and optimize animation performance:
 
 ```jsx
+import { usePerformanceMonitor } from 'animated-backgrounds';
+
+function MonitoredAnimation() {
+  const performance = usePerformanceMonitor({
+    sampleSize: 60,        // Frames to average over
+    warningThreshold: 30,  // FPS warning threshold
+    autoOptimize: true     // Auto-adjust for performance
+  });
+
+  return (
+    <div>
+      <AnimatedBackground 
+        animationName="particleNetwork"
+        enablePerformanceMonitoring={true}
+        adaptivePerformance={true}
+      />
+      
+      <div className="performance-panel">
+        <div>FPS: {performance.fps}</div>
+        <div>Avg FPS: {performance.avgFps}</div>
+        <div>Level: {performance.performanceLevel}</div>
+        <div>Memory: {performance.memoryUsage}MB</div>
+        {performance.warnings.map(warning => (
+          <div key={warning} className="warning">{warning}</div>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Performance Levels
+- **Excellent**: 55+ FPS
+- **Good**: 40-54 FPS  
+- **Fair**: 25-39 FPS
+- **Poor**: <25 FPS
+
+## 🎨 Advanced Examples
+
+### Complete Feature Demo
+```jsx
+import React, { useState } from 'react';
+import { 
+  AnimatedBackground, 
+  LayeredBackground,
+  useAnimationControls,
+  usePerformanceMonitor,
+  THEMES 
+} from 'animated-backgrounds';
+
+function AdvancedDemo() {
+  const [mode, setMode] = useState('themed');
+  const [theme, setTheme] = useState('gaming');
+  const [animation, setAnimation] = useState('particleNetwork');
+  
+  const controls = useAnimationControls();
+  const performance = usePerformanceMonitor();
+
+  const renderBackground = () => {
+    switch (mode) {
+      case 'interactive':
+        return (
+          <AnimatedBackground 
+            animationName="particleNetwork"
+            interactive={true}
+            interactionConfig={{
+              effect: 'attract',
+              strength: 0.8,
+              radius: 150
+            }}
+            theme={theme}
+          />
+        );
+      
+      case 'layered':
+        return (
+          <LayeredBackground 
+            layers={[
+              { animation: 'starryNight', opacity: 0.7, blendMode: 'normal' },
+              { animation: 'particleNetwork', opacity: 0.4, blendMode: 'screen' }
+            ]}
+          />
+        );
+      
+      case 'controlled':
+        return (
+          <AnimatedBackground 
+            animationName={animation}
+            animationControls={controls}
+            theme={theme}
+          />
+        );
+      
+      default:
+        return (
+          <AnimatedBackground 
+            animationName={animation}
+            theme={theme}
+            enablePerformanceMonitoring={true}
+          />
+        );
+    }
+  };
+
+  return (
+    <div className="demo-app">
+      {renderBackground()}
+      
+      <div className="controls-panel">
+        <select value={mode} onChange={(e) => setMode(e.target.value)}>
+          <option value="themed">🎨 Themed</option>
+          <option value="interactive">🎮 Interactive</option>
+          <option value="layered">🏗️ Layered</option>
+          <option value="controlled">🎛️ Controlled</option>
+        </select>
+
+        <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+          {Object.entries(THEMES).map(([key, themeData]) => (
+            <option key={key} value={key}>{themeData.name}</option>
+          ))}
+        </select>
+
+        {mode === 'controlled' && (
+          <div className="animation-controls">
+            <button onClick={controls.play}>▶️</button>
+            <button onClick={controls.pause}>⏸️</button>
+            <button onClick={controls.reset}>🔄</button>
+            <input 
+              type="range" 
+              min="0.1" 
+              max="3" 
+              step="0.1"
+              value={controls.speed}
+              onChange={(e) => controls.setSpeed(e.target.value)}
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+## 📱 Mobile Optimization
+
+### Responsive Design
+```jsx
 <AnimatedBackground 
-  animationName="starryNight"
-  style={{ opacity: 0.5 }}  // Add any additional CSS styles
+  animationName="particleNetwork"
+  interactive={true}
+  adaptivePerformance={true}  // Auto-optimize for mobile
+  enablePerformanceMonitoring={true}
 />
 ```
 
-## Animations we have
-### Falling Food Fiesta
-![Falling Food Fiesta](images/fallingFoodFiesta.png "Falling Food Fiesta")
+### Touch Gestures
+```jsx
+<AnimatedBackground 
+  animationName="floatingBubbles"
+  interactive={true}
+  interactionConfig={{
+    effect: 'follow',
+    strength: 0.6,
+    radius: 100,
+    multiTouch: true  // Enable multi-touch support
+  }}
+/>
+```
 
-### Starry Night
-![Starry Night](images/starryNight.png "Starry Night")
+## ⚙️ Configuration Options
 
-### Floating Bubbles
-![Floating Bubbles](images/floatingBubbles.png "Floating Bubbles")
+### AnimatedBackground Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `animationName` | `string` | `'geometricShapes'` | Animation to display |
+| `theme` | `string` | `undefined` | Theme to apply |
+| `interactive` | `boolean` | `false` | Enable interactions |
+| `interactionConfig` | `object` | `{}` | Interaction settings |
+| `animationControls` | `object` | `undefined` | Control object from hook |
+| `enablePerformanceMonitoring` | `boolean` | `false` | Enable performance tracking |
+| `adaptivePerformance` | `boolean` | `false` | Auto-optimize performance |
+| `fps` | `number` | `60` | Target frames per second |
+| `blendMode` | `string` | `'normal'` | Canvas blend mode |
+| `fallbackAnimation` | `string` | `'geometricShapes'` | Fallback if main fails |
 
-### Gradient Wave
-![Gradient Wave](images/gradientWave.png "Gradient Wave")
+### InteractionConfig Options
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `effect` | `string` | `'attract'` | Interaction type |
+| `strength` | `number` | `0.5` | Effect strength (0.1-2.0) |
+| `radius` | `number` | `100` | Interaction radius |
+| `continuous` | `boolean` | `true` | Continuous vs click-only |
+| `multiTouch` | `boolean` | `false` | Multi-touch support |
 
-### Particle Network
-![Particle Network](images/particleNetwork.png "Particle Network")
+## 🔧 TypeScript Support
 
-### Galaxy Spiral
-![Galaxy Spiral](images/galaxySpiral.png "Galaxy Spiral")
+Full TypeScript definitions included:
 
-### Rainbow Waves
-![Rainbow Waves](images/rainbowWaves.png "Rainbow Waves")
+```typescript
+import { 
+  AnimatedBackground, 
+  AnimationName, 
+  ThemeName,
+  InteractionConfig,
+  PerformanceMetrics 
+} from 'animated-backgrounds';
 
-### Geometric Shapes
-![Geometric Shapes](images/geometricShapes.png "Geometric Shapes")
-
-### Fireflies
-![Fireflies](images/fireflies.png "Fireflies")
-
-### Matrix Rain
-![Matrix Rain](images/matrixRain.png "Matrix Rain")
-
-### Quantum Field
-![Quantum Field](images/quantumField.png "Quantum Field")
-
-### Electric Storm
-![Electric Storm](images/electricStorm.png "Electric Storm")
-
-### Cosmic Dust
-![Cosmic Dust](images/cosmicDust.png "Cosmic Dust")
-
-### Neon Pulse
-![Neon Pulse](images/neonPulse.png "Neon Pulse")
-
-### Aurora Borealis
-![Aurora Borealis](images/auroraBorealis.png "Aurora Borealis")
-
-## Adding New Animations
-
-To add a new animation:
-
-1. Create a new file in the `src` directory of the package, e.g., `newAnimation.js`.
-2. Define your animation function. It should accept `canvas` and `ctx` parameters and return a function that updates the animation for each frame.
-3. Export your new animation from `src/backgroundAnimations.js`.
-4. Update the `animations` object in `src/index.js` to include your new animation.
-
-Example of a new animation:
-
-```javascript
-// src/newAnimation.js
-export const newAnimation = (canvas, ctx) => {
-  // Setup code here
-
-  return () => {
-    // Animation update code here
-  };
-};
-
-// src/backgroundAnimations.js
-export { newAnimation } from './newAnimation';
-
-// src/index.js
-import { newAnimation } from './backgroundAnimations';
-
-const animations = {
-  // ... existing animations
-  newAnimation,
+const config: InteractionConfig = {
+  effect: 'attract',
+  strength: 0.8,
+  radius: 150,
+  continuous: true
 };
 ```
 
-After adding a new animation, rebuild the package with `npm run build`.
+## 🚀 Performance Tips
 
-## Contributing
+### Optimization Best Practices
+1. **Use appropriate themes** - `portfolio` and `presentation` are most performant
+2. **Enable adaptive performance** - Auto-adjusts based on device capabilities
+3. **Monitor performance** - Use performance monitoring to identify bottlenecks
+4. **Reduce complexity on mobile** - Use simpler animations for touch devices
+5. **Limit layered backgrounds** - More layers = higher resource usage
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### Memory Management
+- Animations automatically clean up on unmount
+- Performance monitoring helps identify memory leaks
+- Adaptive performance reduces particle counts on low-end devices
 
-## License
+## 🌟 Examples & Demos
 
-This project is licensed under the MIT License.
+### Live Examples
+- **QR Generator Demo**: Full-featured app showcasing all v2.0 capabilities
+- **Theme Showcase**: Interactive theme comparison
+- **Performance Test**: Real-time performance monitoring
+- **Mobile Demo**: Touch interaction examples
+
+### Code Examples
+Check the `/examples` directory for:
+- Basic usage patterns
+- Advanced configurations  
+- Integration examples
+- Performance optimization
+
+## 🔗 Related Packages
+
+### Complementary Libraries
+- **React**: Core framework (>= 16.8 required for hooks)
+- **Framer Motion**: For additional animations
+- **React Spring**: Alternative animation library
+- **Three.js**: For 3D animated backgrounds
+
+## 📈 Migration Guide
+
+### From v1.x to v2.0
+
+**Breaking Changes:**
+- New theme system (optional upgrade)
+- Performance monitoring API changes
+- Some animation names updated
+
+**Migration Steps:**
+```jsx
+// v1.x
+<AnimatedBackground animation="stars" />
+
+// v2.0  
+<AnimatedBackground 
+  animationName="starryNight"  // Renamed
+  theme="portfolio"            // New theme system
+/>
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Setup
+```bash
+git clone https://github.com/umerfarok/animated-backgrounds.git
+cd animated-backgrounds
+npm install
+npm run build
+```
+
+### Testing
+```bash
+npm test
+npm run test:performance
+npm run test:mobile
+```
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+## 🙋‍♂️ Support
+
+- 📧 **Email**: umerfarooq.dev@gmail.com
+- 🐛 **Issues**: [GitHub Issues](https://github.com/umerfarok/animated-backgrounds/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/umerfarok/animated-backgrounds/discussions)
+- 📖 **Documentation**: [Full API Docs](https://umerfarok.github.io/animated-backgrounds)
+
+## 🌟 Show Your Support
+
+If you like this project, please ⭐ star it on GitHub and share it with the community!
+
+```bash
+npm install animated-backgrounds
+```
+
+---
+
+**Made with ❤️ by [Umer Farooq](https://github.com/umerfarok)**
+
+*Transform your React applications with stunning animated backgrounds!* ✨
