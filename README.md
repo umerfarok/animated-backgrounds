@@ -2,6 +2,10 @@
 
 > ✨ **A comprehensive React package for stunning animated backgrounds with interactive controls, themes, performance monitoring, and layered compositions.**
 
+## 📖 Documentation
+
+🔗 **[Complete API Documentation & Interactive Examples](https://umerfarok.github.io/animated-backgrounds/)**
+
 ![npm version](https://img.shields.io/npm/v/animated-backgrounds.svg)
 ![npm downloads](https://img.shields.io/npm/dm/animated-backgrounds.svg)
 ![license](https://img.shields.io/npm/l/animated-backgrounds.svg)
