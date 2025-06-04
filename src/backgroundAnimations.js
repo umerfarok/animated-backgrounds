@@ -156,9 +156,11 @@ export const gradientWave = (canvas, ctx) => {
  * @param {CanvasRenderingContext2D} ctx - The canvas 2D rendering context
  * @returns {Function} Animation loop function
  */
-export const particleNetwork = (canvas, ctx) => {
+export const particleNetwork = (canvas, ctx, options = {}) => {
+    const { themeManager, interactionHandler, performanceMonitor, adaptivePerformance } = options;
+    
     const particles = [];
-    const particleCount = 150;
+    const particleCount = adaptivePerformance ? Math.min(150, Math.max(50, navigator.hardwareConcurrency * 20)) : 150;
     const maxDistance = 120;
 
     for (let i = 0; i < particleCount; i++) {
@@ -168,27 +170,60 @@ export const particleNetwork = (canvas, ctx) => {
             radius: Math.random() * 3 + 1,
             vx: Math.random() * 1.5 - 0.75,
             vy: Math.random() * 1.5 - 0.75,
-            color: `hsl(${Math.random() * 360}, 70%, 70%)`
+            originalVx: Math.random() * 1.5 - 0.75,
+            originalVy: Math.random() * 1.5 - 0.75,
+            color: themeManager ? themeManager.getCurrentColors()[0] : `hsl(${Math.random() * 360}, 70%, 70%)`
         });
     }
 
     return () => {
-        ctx.fillStyle = 'rgba(15, 23, 42, 0.1)';
+        // Use theme-aware background
+        const bgColor = themeManager ? themeManager.getBackgroundColor() : 'rgba(15, 23, 42, 0.1)';
+        ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Apply interactions if available
+        if (interactionHandler) {
+            const interactionPoints = interactionHandler.getInteractionPoints();
+            
+            particles.forEach(particle => {
+                // Reset to original velocity
+                particle.vx = particle.originalVx;
+                particle.vy = particle.originalVy;
+                
+                // Apply interaction forces
+                interactionPoints.forEach(point => {
+                    const force = interactionHandler.calculateInteractionForce(particle, point);
+                    particle.vx += force.fx * 2; // Amplify force for visibility
+                    particle.vy += force.fy * 2;
+                });
+            });
+        }
 
         particles.forEach(particle => {
             particle.x += particle.vx;
             particle.y += particle.vy;
 
-            if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-            if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+            // Bounce off walls with dampening
+            if (particle.x < 0 || particle.x > canvas.width) {
+                particle.vx *= -0.8;
+                particle.originalVx *= -0.8;
+                particle.x = Math.max(0, Math.min(canvas.width, particle.x));
+            }
+            if (particle.y < 0 || particle.y > canvas.height) {
+                particle.vy *= -0.8;
+                particle.originalVy *= -0.8;
+                particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+            }
 
+            // Draw particle
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
             ctx.fillStyle = particle.color;
             ctx.fill();
         });
 
+        // Draw connections between nearby particles
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -199,7 +234,29 @@ export const particleNetwork = (canvas, ctx) => {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / maxDistance})`;
+                    
+                    const opacity = 1 - distance / maxDistance;
+                    
+                    // Get line color from theme or use default
+                    let lineColor = 'rgba(255, 255, 255, 1)';
+                    if (themeManager) {
+                        const themeColors = themeManager.getCurrentColors();
+                        const colorIndex = themeColors.length > 1 ? 1 : 0;
+                        const hexColor = themeColors[colorIndex];
+                        
+                        // Convert hex to rgba
+                        if (hexColor.startsWith('#')) {
+                            const rgb = themeManager.parseColor(hexColor);
+                            lineColor = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+                        } else {
+                            // Handle already rgb/rgba colors
+                            lineColor = hexColor.includes('rgba') ? hexColor : hexColor.replace('rgb', 'rgba').replace(')', `, ${opacity})`);
+                        }
+                    } else {
+                        lineColor = `rgba(255, 255, 255, ${opacity})`;
+                    }
+                    
+                    ctx.strokeStyle = lineColor;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }

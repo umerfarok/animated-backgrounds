@@ -13,7 +13,7 @@
 
 /**
  * @typedef {Object} InteractionConfig
- * @property {string} effect - 'attract' | 'repel' | 'follow' | 'burst' | 'gravity'
+ * @property {string} effect - 'attract' | 'repel' | 'follow' | 'burst' | 'gravity' | 'magnetic' | 'vortex' | 'wave' | 'elastic'
  * @property {number} strength - Effect strength (0-1)
  * @property {number} radius - Interaction radius in pixels
  * @property {boolean} continuous - Whether effect continues after interaction ends
@@ -95,6 +95,30 @@ export const createInteractionHandler = (canvas, config = {}) => {
         break;
       case 'burst':
         forceMagnitude *= distance < radius * 0.3 ? -2 : 0;
+        break;
+      case 'magnetic':
+        // New: Magnetic field effect - stronger at poles
+        const angle = Math.atan2(dy, dx);
+        forceMagnitude *= Math.sin(angle * 2) * 1.5;
+        break;
+      case 'vortex':
+        // New: Spinning vortex effect
+        const perpX = -dy / distance;
+        const perpY = dx / distance;
+        return { 
+          fx: perpX * forceMagnitude + (dx / distance) * forceMagnitude * 0.3,
+          fy: perpY * forceMagnitude + (dy / distance) * forceMagnitude * 0.3,
+          distance 
+        };
+      case 'wave':
+        // New: Wave ripple effect
+        const time = Date.now() * 0.005;
+        const wavePhase = Math.sin(distance * 0.05 + time) * 0.5 + 0.5;
+        forceMagnitude *= wavePhase;
+        break;
+      case 'elastic':
+        // New: Elastic spring effect
+        forceMagnitude = distance < radius * 0.5 ? -forceMagnitude * 2 : forceMagnitude;
         break;
       default:
         forceMagnitude = 0;

@@ -17,124 +17,247 @@ import { useState, useEffect, useRef, useCallback } from 'react';
  */
 
 /**
- * Custom hook for monitoring animation performance
+ * Enhanced performance monitoring hook with advanced analytics
  * @param {Object} options - Configuration options
- * @param {number} [options.sampleSize=60] - Number of frames to average over
- * @param {number} [options.warningThreshold=30] - FPS threshold for warnings
- * @param {boolean} [options.autoOptimize=false] - Auto-adjust settings for performance
- * @returns {PerformanceMetrics} Performance metrics and controls
+ * @returns {Object} Performance metrics and controls
  */
-export const usePerformanceMonitor = ({
-  sampleSize = 60,
-  warningThreshold = 30,
-  autoOptimize = false
-} = {}) => {
-  const [fps, setFps] = useState(60);
-  const [avgFps, setAvgFps] = useState(60);
-  const [memoryUsage, setMemoryUsage] = useState(0);
-  const [warnings, setWarnings] = useState([]);
-  
-  const frameCountRef = useRef(0);
-  const lastTimeRef = useRef(performance.now());
-  const fpsHistoryRef = useRef([]);
-  const warningsRef = useRef(new Set());
+export const usePerformanceMonitor = (options = {}) => {
+  const {
+    sampleSize = 60,
+    warningThreshold = 30,
+    autoOptimize = false,
+    enableGPUMonitoring = true,
+    enableMemoryMonitoring = true,
+    enableBatteryMonitoring = true
+  } = options;
 
-  const getPerformanceLevel = useCallback((currentFps) => {
-    if (currentFps >= 55) return 'excellent';
-    if (currentFps >= 40) return 'good';
-    if (currentFps >= 25) return 'fair';
-    return 'poor';
-  }, []);
+  const [performanceData, setPerformanceData] = useState({
+    fps: 0,
+    avgFps: 0,
+    minFps: Infinity,
+    maxFps: 0,
+    frameTime: 0,
+    memoryUsage: 0,
+    gpuUsage: 0,
+    batteryLevel: 1,
+    batteryCharging: false,
+    performanceLevel: 'good',
+    warnings: [],
+    deviceInfo: {},
+    renderingStats: {
+      droppedFrames: 0,
+      totalFrames: 0,
+      averageFrameTime: 0,
+      longestFrame: 0
+    }
+  });
 
-  const updatePerformance = useCallback(() => {
-    const now = performance.now();
-    const delta = now - lastTimeRef.current;
-    
-    if (delta >= 1000) { // Update every second
-      const currentFps = Math.round((frameCountRef.current * 1000) / delta);
-      setFps(currentFps);
-      
-      // Update FPS history
-      fpsHistoryRef.current.push(currentFps);
-      if (fpsHistoryRef.current.length > sampleSize) {
-        fpsHistoryRef.current.shift();
-      }
-      
-      // Calculate average FPS
-      const average = fpsHistoryRef.current.reduce((a, b) => a + b, 0) / fpsHistoryRef.current.length;
-      setAvgFps(Math.round(average));
-      
-      // Check for performance warnings
-      const newWarnings = new Set(warningsRef.current);
-      
-      if (currentFps < warningThreshold) {
-        newWarnings.add(`Low FPS detected: ${currentFps}`);
-      } else {
-        newWarnings.delete(`Low FPS detected: ${currentFps}`);
-      }
-      
-      if (delta > 100) { // Frame took too long
-        newWarnings.add('Frame rendering lag detected');
-      }
-      
-      // Memory usage (if available)
-      if (performance.memory) {
-        const memUsage = Math.round(performance.memory.usedJSHeapSize / 1024 / 1024);
-        setMemoryUsage(memUsage);
-        
-        if (memUsage > 100) { // More than 100MB
-          newWarnings.add(`High memory usage: ${memUsage}MB`);
+  const frameTimesRef = useRef([]);
+  const lastFrameTimeRef = useRef(performance.now());
+  const gpuInfoRef = useRef(null);
+  const memoryObserverRef = useRef(null);
+
+  // Initialize device information
+  useEffect(() => {
+    const getDeviceInfo = async () => {
+      const deviceInfo = {
+        cores: navigator.hardwareConcurrency || 'unknown',
+        memory: navigator.deviceMemory || 'unknown',
+        platform: navigator.platform,
+        userAgent: navigator.userAgent,
+        screen: {
+          width: screen.width,
+          height: screen.height,
+          colorDepth: screen.colorDepth,
+          pixelRatio: window.devicePixelRatio
+        },
+        connection: navigator.connection ? {
+          effectiveType: navigator.connection.effectiveType,
+          downlink: navigator.connection.downlink,
+          rtt: navigator.connection.rtt
+        } : null
+      };
+
+      // GPU Information (if available)
+      if (enableGPUMonitoring) {
+        try {
+          const canvas = document.createElement('canvas');
+          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+          if (gl) {
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+              deviceInfo.gpu = {
+                vendor: gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL),
+                renderer: gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
+              };
+            }
+          }
+        } catch (e) {
+          console.warn('GPU info not available:', e);
         }
       }
+
+      setPerformanceData(prev => ({ ...prev, deviceInfo }));
+    };
+
+    getDeviceInfo();
+  }, [enableGPUMonitoring]);
+
+  // Battery monitoring
+  useEffect(() => {
+    if (!enableBatteryMonitoring || !('getBattery' in navigator)) return;
+
+    navigator.getBattery().then(battery => {
+      const updateBatteryInfo = () => {
+        setPerformanceData(prev => ({
+          ...prev,
+          batteryLevel: battery.level,
+          batteryCharging: battery.charging
+        }));
+      };
+
+      updateBatteryInfo();
+      battery.addEventListener('levelchange', updateBatteryInfo);
+      battery.addEventListener('chargingchange', updateBatteryInfo);
+
+      return () => {
+        battery.removeEventListener('levelchange', updateBatteryInfo);
+        battery.removeEventListener('chargingchange', updateBatteryInfo);
+      };
+    });
+  }, [enableBatteryMonitoring]);
+
+  // Memory monitoring
+  useEffect(() => {
+    if (!enableMemoryMonitoring || !performance.memory) return;
+
+    const updateMemoryInfo = () => {
+      const memInfo = performance.memory;
+      const memoryUsage = Math.round(memInfo.usedJSHeapSize / 1024 / 1024);
       
-      warningsRef.current = newWarnings;
-      setWarnings(Array.from(newWarnings));
-      
-      // Reset counters
-      frameCountRef.current = 0;
-      lastTimeRef.current = now;
-    }
-  }, [sampleSize, warningThreshold]);
+      setPerformanceData(prev => ({
+        ...prev,
+        memoryUsage,
+        memoryDetails: {
+          used: Math.round(memInfo.usedJSHeapSize / 1024 / 1024),
+          total: Math.round(memInfo.totalJSHeapSize / 1024 / 1024),
+          limit: Math.round(memInfo.jsHeapSizeLimit / 1024 / 1024)
+        }
+      }));
+    };
+
+    updateMemoryInfo();
+    const interval = setInterval(updateMemoryInfo, 1000);
+    return () => clearInterval(interval);
+  }, [enableMemoryMonitoring]);
 
   const recordFrame = useCallback(() => {
-    frameCountRef.current++;
-    updatePerformance();
-  }, [updatePerformance]);
+    const now = performance.now();
+    const frameTime = now - lastFrameTimeRef.current;
+    lastFrameTimeRef.current = now;
 
-  // Auto-optimization suggestions
+    frameTimesRef.current.push(frameTime);
+    if (frameTimesRef.current.length > sampleSize) {
+      frameTimesRef.current.shift();
+    }
+
+    const fps = Math.round(1000 / frameTime);
+    const avgFps = Math.round(1000 / (frameTimesRef.current.reduce((a, b) => a + b, 0) / frameTimesRef.current.length));
+    
+    setPerformanceData(prev => {
+      const newStats = {
+        ...prev.renderingStats,
+        totalFrames: prev.renderingStats.totalFrames + 1,
+        averageFrameTime: frameTime,
+        longestFrame: Math.max(prev.renderingStats.longestFrame, frameTime)
+      };
+
+      if (fps < warningThreshold) {
+        newStats.droppedFrames++;
+      }
+
+      const warnings = [];
+      let performanceLevel = 'excellent';
+
+      // Performance analysis
+      if (avgFps < 20) {
+        performanceLevel = 'poor';
+        warnings.push('Very low FPS detected. Consider reducing animation complexity.');
+      } else if (avgFps < 30) {
+        performanceLevel = 'fair';
+        warnings.push('Low FPS detected. Performance optimizations recommended.');
+      } else if (avgFps < 50) {
+        performanceLevel = 'good';
+      }
+
+      // Memory warnings
+      if (prev.memoryDetails && prev.memoryDetails.used > prev.memoryDetails.limit * 0.8) {
+        warnings.push('High memory usage detected. Memory cleanup recommended.');
+      }
+
+      // Battery warnings
+      if (prev.batteryLevel < 0.2 && !prev.batteryCharging) {
+        warnings.push('Low battery detected. Consider enabling power-saving mode.');
+      }
+
+      return {
+        ...prev,
+        fps,
+        avgFps,
+        minFps: Math.min(prev.minFps, fps),
+        maxFps: Math.max(prev.maxFps, fps),
+        frameTime,
+        performanceLevel,
+        warnings,
+        renderingStats: newStats
+      };
+    });
+  }, [sampleSize, warningThreshold]);
+
+  const resetStats = useCallback(() => {
+    frameTimesRef.current = [];
+    setPerformanceData(prev => ({
+      ...prev,
+      fps: 0,
+      avgFps: 0,
+      minFps: Infinity,
+      maxFps: 0,
+      warnings: [],
+      renderingStats: {
+        droppedFrames: 0,
+        totalFrames: 0,
+        averageFrameTime: 0,
+        longestFrame: 0
+      }
+    }));
+  }, []);
+
   const getOptimizationSuggestions = useCallback(() => {
     const suggestions = [];
     
-    if (avgFps < 30) {
-      suggestions.push('Reduce animation complexity');
-      suggestions.push('Lower FPS target');
-      suggestions.push('Use simpler blend modes');
+    if (performanceData.avgFps < 30) {
+      suggestions.push('Reduce particle count');
+      suggestions.push('Lower animation complexity');
+      suggestions.push('Disable expensive effects');
     }
     
-    if (memoryUsage > 100) {
-      suggestions.push('Reduce particle count');
-      suggestions.push('Optimize canvas size');
+    if (performanceData.memoryUsage > 100) {
+      suggestions.push('Enable garbage collection');
+      suggestions.push('Reduce texture sizes');
+    }
+    
+    if (performanceData.batteryLevel < 0.3) {
+      suggestions.push('Enable power-saving mode');
+      suggestions.push('Reduce frame rate');
     }
     
     return suggestions;
-  }, [avgFps, memoryUsage]);
-
-  const performanceLevel = getPerformanceLevel(avgFps);
-  const isOptimal = performanceLevel === 'excellent' || performanceLevel === 'good';
+  }, [performanceData]);
 
   return {
-    fps,
-    avgFps,
-    memoryUsage,
-    performanceLevel,
-    warnings,
-    isOptimal,
+    ...performanceData,
     recordFrame,
-    getOptimizationSuggestions,
-    reset: () => {
-      fpsHistoryRef.current = [];
-      setWarnings([]);
-      warningsRef.current.clear();
-    }
+    resetStats,
+    getOptimizationSuggestions
   };
 }; 

@@ -24,10 +24,8 @@ import { createInteractionHandler, GestureRecognizer } from './utils/interaction
 import { ThemeManager, themeManager, COLOR_SCHEMES, THEMES } from './utils/themeSystem';
 
 /**
- * @fileoverview Main animated-backgrounds module with comprehensive animation and theming support
- * @module animated-backgrounds
- * @requires react
- * @since 2.0.0
+ * @fileoverview Animated Backgrounds v2.0 - Main entry point
+ * @module AnimatedBackgrounds
  * @version 2.0.0
  */
 
