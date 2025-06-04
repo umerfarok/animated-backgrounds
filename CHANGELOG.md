@@ -5,161 +5,69 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2024-01-15
+## [2.0.0] - 2024-12-04
 
-### 🌟 Major Features Added
+### 🐛 Fixed
+- **Documentation Logo**: Fixed missing logo in documentation navigation bar - logo now displays correctly
+- **Mouse Interactions**: Fixed particle interaction system - particles now properly respond to mouse movement
+- **Canvas Pointer Events**: Fixed canvas pointer events to enable interactions when `interactive={true}`
+- **Particle Physics**: Improved particle interaction force calculation and velocity management
+- **Performance**: Enhanced particle network animation for better responsiveness
 
-#### Theme System
-- **NEW**: Predefined theme system with 8 beautiful themes
-  - `gaming` - Cyberpunk colors with high intensity
-  - `portfolio` - Professional monochrome design
-  - `landing` - Sunset colors for landing pages
-  - `presentation` - Space theme for presentations
-  - `wellness` - Calming nature colors
-  - `party` - High-energy neon colors
-  - `cyberpunk` - Classic cyberpunk aesthetic
-  - `retro` - Nostalgic retro colors
+### ✨ Enhanced
+- **Interaction System**: Better force accumulation and damping for smoother particle interactions
+- **Theme Integration**: Improved theme color application across all supported animations
+- **Documentation**: Simplified and focused documentation on core working features
+- **Error Handling**: Better fallback behavior for interaction and theme systems
 
-#### Interactive Animations
-- **NEW**: Mouse and touch interaction support
-- **NEW**: 5 interaction effects: `attract`, `repel`, `follow`, `burst`, `gravity`
-- **NEW**: Configurable interaction radius and strength
-- **NEW**: Continuous vs. on-demand interaction modes
-- **NEW**: Multi-touch gesture support
+### 🎮 Interactive Animations
+- **8 Interaction Effects**: attract, repel, follow, burst, gravity, magnetic, vortex, wave
+- **Multi-touch Support**: Full mobile gesture support
+- **Real-time Physics**: Improved force simulation for particle interactions
 
-#### Animation Controls
-- **NEW**: `useAnimationControls` hook for programmatic control
-- **NEW**: Play/pause/reset functionality
-- **NEW**: Variable speed control (0.1x to 5.0x)
-- **NEW**: External animation control API
+### 🎨 Advanced Theme System
+- **8 Predefined Themes**: gaming, portfolio, landing, presentation, wellness, party, cyberpunk, retro
+- **Dynamic Color Management**: Automatic color scheme application
+- **Theme-aware Animations**: Consistent visual styling across animations
 
-#### Performance Monitoring
-- **NEW**: `usePerformanceMonitor` hook for real-time metrics
-- **NEW**: FPS tracking and averaging
-- **NEW**: Memory usage monitoring (when available)
-- **NEW**: Performance level indicators (`excellent`, `good`, `fair`, `poor`)
-- **NEW**: Adaptive performance optimization
-- **NEW**: Performance warnings and suggestions
+### ⚡ Performance & Control Features
+- **Animation Controls**: Play/pause/reset with speed control (0.1x-5.0x)
+- **Performance Monitoring**: Real-time FPS tracking and optimization
+- **Adaptive Performance**: Automatic adjustments based on device capabilities
+- **Memory Management**: Improved cleanup and resource management
 
-#### Layered Backgrounds
-- **NEW**: `LayeredBackground` component for complex compositions
-- **NEW**: Multiple animation layers with individual settings
-- **NEW**: Per-layer opacity, blend modes, and speed control
-- **NEW**: Independent layer animation timing
+### 🏗️ Layered Compositions
+- **Multiple Animation Layers**: Composite multiple animations
+- **Independent Controls**: Per-layer opacity, blend modes, and speed
+- **16 Blend Modes**: Full CSS blend mode support for visual effects
 
-#### Mobile & Touch Optimizations
-- **NEW**: Touch gesture recognition utilities
-- **NEW**: Pinch-to-zoom detection
-- **NEW**: Swipe gesture detection
-- **NEW**: Mobile-optimized performance settings
-- **NEW**: Responsive animation complexity
-
-### 🎨 Enhanced Features
-
-#### Existing Component Improvements
-- **ENHANCED**: `AnimatedBackground` now supports themes
-- **ENHANCED**: Better error handling and fallbacks
-- **ENHANCED**: Improved JSDoc documentation
-- **ENHANCED**: More robust animation system
-
-#### Developer Experience
-- **ENHANCED**: Comprehensive TypeScript-style JSDoc annotations
-- **ENHANCED**: Better error messages and warnings
-- **ENHANCED**: More intuitive API design
-- **ENHANCED**: Extensive examples and demos
-
-### 📚 Documentation & Examples
-
-#### New Documentation
-- **NEW**: Complete v2.0 feature documentation
-- **NEW**: Interactive demo components
-- **NEW**: Theme creation guide
-- **NEW**: Performance optimization guide
-- **NEW**: Mobile development best practices
-
-#### Example Applications
-- **NEW**: Feature demo showcase
-- **NEW**: QR generator with v2.0 integration
-- **NEW**: Performance monitoring examples
-- **NEW**: Interactive animation demos
+### 📚 Core Animations
+- **Battle-tested Animations**: particleNetwork, starryNight, floatingBubbles, gradientWave
+- **Nature Effects**: fireflies, oceanWaves, autumnLeaves, snowFall
+- **Sci-Fi Themes**: galaxySpiral, electricStorm, matrixRain, quantumField
+- **Abstract Visuals**: geometricShapes, cosmicDust, neonPulse, auroraBorealis
 
 ### 🛠️ Technical Improvements
+- **ES Module Support**: Full ES6 module compatibility
+- **TypeScript Definitions**: Complete type definitions included
+- **React 16.8+ Support**: Modern hooks-based architecture
+- **Mobile Optimization**: Touch gestures and responsive design
 
-#### Code Quality
-- **IMPROVED**: Modular architecture with utilities and hooks
-- **IMPROVED**: Better separation of concerns
-- **IMPROVED**: Enhanced error boundaries
-- **IMPROVED**: Memory leak prevention
+### 💻 Developer Experience
+- **Comprehensive API**: Simple props interface with powerful customization
+- **Real-world Examples**: Production-ready code examples
+- **Performance Tips**: Optimization guidelines for different use cases
+- **Troubleshooting Guide**: Common issues and solutions
 
-#### Build & Tooling
-- **UPDATED**: Enhanced JSDoc configuration
-- **UPDATED**: Better documentation generation
-- **UPDATED**: Improved package structure
+### 🚀 Migration from v1.x
+- **100% Backward Compatibility**: Existing v1.x code continues to work
+- **Optional Upgrades**: New features are opt-in enhancements
+- **Progressive Enhancement**: Add new features gradually as needed
 
-### 📦 API Changes
-
-#### New Exports
-```javascript
-// Main components
-export { AnimatedBackground, LayeredBackground, AnimatedText }
-
-// Custom hooks
-export { useAnimationControls, usePerformanceMonitor }
-
-// Utilities
-export { createInteractionHandler, GestureRecognizer }
-
-// Theme system
-export { ThemeManager, themeManager, COLOR_SCHEMES, THEMES }
-```
-
-#### New Props for AnimatedBackground
-- `theme`: Apply predefined theme
-- `interactive`: Enable mouse/touch interactions
-- `interactionConfig`: Configure interaction behavior
-- `animationControls`: External animation controls
-- `enablePerformanceMonitoring`: Enable performance tracking
-- `adaptivePerformance`: Auto-optimize based on performance
-
-### 🔄 Migration Guide from v1.x
-
-#### Simple Migration
-Most v1.x code will work without changes:
-```javascript
-// v1.x - Still works in v2.0
-<AnimatedBackground animationName="starryNight" />
-```
-
-#### Enhanced with New Features
-```javascript
-// v2.0 - Add new features gradually
-<AnimatedBackground 
-  animationName="starryNight"
-  theme="gaming"              // NEW: Theme support
-  interactive={true}          // NEW: Interactivity
-  adaptivePerformance={true}  // NEW: Auto-optimization
-/>
-```
-
-### 🐛 Bug Fixes
-- Fixed memory leaks in animation loops
-- Improved canvas resize handling
-- Better cleanup on component unmount
-- Fixed blend mode compatibility issues
-
-### ⚡ Performance Improvements
-- Optimized animation frame handling
-- Reduced memory allocation in hot paths
-- Better garbage collection patterns
-- Improved mobile performance
-
-### 🔧 Internal Changes
-- Refactored codebase into modular structure
-- Added comprehensive error handling
-- Improved code documentation
-- Enhanced testing capabilities
-
----
+## [1.x] - Previous Versions
+- Basic animated backgrounds
+- Simple animation functions
+- Basic React component wrapper
 
 ## [1.1.0] - 2023-12-01
 

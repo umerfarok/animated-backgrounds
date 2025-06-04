@@ -2,10 +2,6 @@
 
 > ✨ **A comprehensive React package for stunning animated backgrounds with interactive controls, themes, performance monitoring, and layered compositions.**
 
-## 📖 Documentation
-
-🔗 **[Complete API Documentation & Interactive Examples](https://umerfarok.github.io/animated-backgrounds/)**
-
 ![npm version](https://img.shields.io/npm/v/animated-backgrounds.svg)
 ![npm downloads](https://img.shields.io/npm/dm/animated-backgrounds.svg)
 ![license](https://img.shields.io/npm/l/animated-backgrounds.svg)
@@ -16,13 +12,25 @@
 
 **Major upgrade with powerful new features:**
 
-- 🎨 **8 Stunning Themes** - Gaming, Portfolio, Landing, Presentation, Wellness, Party, Cyberpunk, Retro
-- 🎮 **Interactive Animations** - Mouse/touch interactions with particle systems
-- 🏗️ **Layered Backgrounds** - Multiple animation layers with blend modes
-- 🎛️ **Animation Controls** - Play/pause/speed/reset functionality
-- 📊 **Performance Monitoring** - Real-time FPS tracking and optimization
-- 📱 **Mobile Optimized** - Touch gestures and responsive design
-- ⚡ **Zero Flashing** - Smooth transitions without component remounting
+### 🎮 Interactive Animations
+- **Mouse & Touch Interactions**: 8 interaction effects (attract, repel, follow, burst, gravity, magnetic, vortex, wave)
+- **Multi-touch Support**: Responsive mobile gestures and interactions
+- **Real-time Force Simulation**: Physics-based particle interactions
+
+### 🎨 Advanced Theme System
+- **8 Predefined Themes**: Gaming, Portfolio, Landing, Presentation, Wellness, Party, Cyberpunk, Retro
+- **Custom Color Schemes**: Dynamic color management and gradients
+- **Theme-aware Animations**: Automatic color and style adaptation
+
+### ⚡ Performance & Control
+- **Animation Controls**: Play/pause/reset functionality with speed control (0.1x-5.0x)
+- **Performance Monitoring**: Real-time FPS tracking and memory usage
+- **Adaptive Optimization**: Automatic performance adjustments
+
+### 🏗️ Layered Compositions  
+- **Multiple Animation Layers**: Composite animations with individual opacity and blend modes
+- **Independent Controls**: Per-layer speed and timing control
+- **Advanced Blend Modes**: 16 CSS blend modes for stunning visual effects
 
 ## 📦 Installation
 
@@ -32,474 +40,382 @@ npm install animated-backgrounds
 
 ## 🎯 Quick Start
 
+### Basic Animation
 ```jsx
-import React from 'react';
 import { AnimatedBackground } from 'animated-backgrounds';
 
 function App() {
   return (
     <div>
-      <AnimatedBackground 
-        animationName="particleNetwork"
-        theme="gaming"
-      />
+      <AnimatedBackground animationName="particleNetwork" />
       <h1>Your content here</h1>
     </div>
   );
 }
 ```
 
-## 🎨 Available Animations
-
-### Core Animations (19 total)
-- **Nature**: `autumnLeaves`, `oceanWaves`, `starryNight`, `auroraBorealis`, `fireflies`
-- **Tech**: `particleNetwork`, `neuralNetwork`, `matrixRain`, `quantumField`, `electricStorm`
-- **Abstract**: `geometricShapes`, `gradientWave`, `floatingBubbles`, `cosmicDust`, `neonPulse`
-- **Fun**: `fallingFoodFiesta`, `rainbowWaves`, `galaxySpiral`, `dnaHelix`
-
-### Themes
-Each theme applies unique color schemes and visual settings:
-
-| Theme | Description | Best For |
-|-------|-------------|----------|
-| 🎮 **Gaming** | Cyberpunk colors, high energy | Gaming sites, tech demos |
-| 💼 **Portfolio** | Professional monochrome | Business, resumes, corporate |
-| 🌅 **Landing** | Warm sunset tones | Marketing pages, landing sites |
-| 📊 **Presentation** | Subtle space theme | Slides, professional content |
-| 🌿 **Wellness** | Calming nature colors | Health, wellness, meditation |
-| 🎉 **Party** | Vibrant neon colors | Events, entertainment, festivals |
-| 🤖 **Cyberpunk** | Classic sci-fi aesthetic | Futuristic themes, tech blogs |
-| 🕹️ **Retro** | Nostalgic vintage colors | Creative projects, portfolios |
-
-## 🎮 Interactive Features
-
-### Basic Interaction
+### Interactive Animation with Theme
 ```jsx
-<AnimatedBackground 
-  animationName="particleNetwork"
-  interactive={true}
-  interactionConfig={{
-    effect: 'attract',     // 'attract' | 'repel' | 'follow' | 'burst' | 'gravity'
-    strength: 0.8,         // 0.1 to 2.0
-    radius: 150,           // Interaction radius in pixels
-    continuous: true       // Continuous vs single-click interaction
-  }}
-/>
+import { AnimatedBackground } from 'animated-backgrounds';
+
+function App() {
+  return (
+    <AnimatedBackground 
+      animationName="particleNetwork"
+      theme="cyberpunk"
+      interactive={true}
+      interactionConfig={{
+        effect: 'attract',
+        strength: 0.8,
+        radius: 150,
+        continuous: true
+      }}
+    />
+  );
+}
 ```
 
-### Interaction Effects
-- **attract**: Particles move toward cursor/touch
-- **repel**: Particles move away from cursor/touch  
-- **follow**: Particles trail behind cursor movement
-- **burst**: Explosive effect on click/touch
-- **gravity**: Gravitational pull effect
-
-### Mobile Gestures
-- **Pinch**: Zoom effect on animations
-- **Swipe**: Directional particle movement
-- **Tap**: Burst effects
-- **Multi-touch**: Multiple interaction points
-
-## 🏗️ Layered Backgrounds
-
-Create complex visual compositions by combining multiple animations:
-
-```jsx
-import { LayeredBackground } from 'animated-backgrounds';
-
-<LayeredBackground 
-  layers={[
-    { 
-      animation: 'starryNight', 
-      opacity: 0.7, 
-      blendMode: 'normal',
-      speed: 0.5 
-    },
-    { 
-      animation: 'particleNetwork', 
-      opacity: 0.3, 
-      blendMode: 'screen',
-      speed: 1.2 
-    },
-    { 
-      animation: 'cosmicDust', 
-      opacity: 0.5, 
-      blendMode: 'overlay',
-      speed: 0.8 
-    }
-  ]}
-/>
-```
-
-### Blend Modes
-- `normal`, `multiply`, `screen`, `overlay`
-- `darken`, `lighten`, `color-dodge`, `color-burn`
-- `hard-light`, `soft-light`, `difference`, `exclusion`
-- `hue`, `saturation`, `color`, `luminosity`
-
-## 🎛️ Animation Controls
-
-Take full control of your animations:
-
+### Animation with Controls
 ```jsx
 import { AnimatedBackground, useAnimationControls } from 'animated-backgrounds';
 
-function ControlledAnimation() {
-  const controls = useAnimationControls({
-    initialSpeed: 1,
-    autoPlay: true
-  });
-
+function App() {
+  const controls = useAnimationControls();
+  
   return (
     <div>
       <AnimatedBackground 
-        animationName="galaxySpiral"
+        animationName="starryNight"
         animationControls={controls}
       />
       
       <div className="controls">
-        <button onClick={controls.play}>▶️ Play</button>
-        <button onClick={controls.pause}>⏸️ Pause</button>
-        <button onClick={controls.reset}>🔄 Reset</button>
-        <input 
-          type="range" 
-          min="0.1" 
-          max="5" 
-          step="0.1"
-          value={controls.speed}
-          onChange={(e) => controls.setSpeed(e.target.value)}
-        />
+        <button onClick={controls.play}>Play</button>
+        <button onClick={controls.pause}>Pause</button>
+        <button onClick={() => controls.setSpeed(2.0)}>2x Speed</button>
       </div>
     </div>
   );
 }
 ```
 
-### Control Methods
-- `play()` - Start/resume animation
-- `pause()` - Pause animation
-- `reset()` - Reset to initial state
-- `toggle()` - Toggle play/pause
-- `setSpeed(value)` - Set speed (0.1x to 5.0x)
-
-## 📊 Performance Monitoring
-
-Monitor and optimize animation performance:
-
+### Performance Monitoring
 ```jsx
-import { usePerformanceMonitor } from 'animated-backgrounds';
+import { AnimatedBackground, usePerformanceMonitor } from 'animated-backgrounds';
 
-function MonitoredAnimation() {
-  const performance = usePerformanceMonitor({
-    sampleSize: 60,        // Frames to average over
-    warningThreshold: 30,  // FPS warning threshold
-    autoOptimize: true     // Auto-adjust for performance
-  });
-
+function App() {
+  const performance = usePerformanceMonitor();
+  
   return (
     <div>
       <AnimatedBackground 
-        animationName="particleNetwork"
+        animationName="matrixRain"
         enablePerformanceMonitoring={true}
         adaptivePerformance={true}
       />
       
-      <div className="performance-panel">
-        <div>FPS: {performance.fps}</div>
-        <div>Avg FPS: {performance.avgFps}</div>
-        <div>Level: {performance.performanceLevel}</div>
-        <div>Memory: {performance.memoryUsage}MB</div>
-        {performance.warnings.map(warning => (
-          <div key={warning} className="warning">{warning}</div>
-        ))}
+      <div className="performance-info">
+        FPS: {performance.fps} | Level: {performance.performanceLevel}
       </div>
     </div>
   );
 }
 ```
 
-### Performance Levels
-- **Excellent**: 55+ FPS
-- **Good**: 40-54 FPS  
-- **Fair**: 25-39 FPS
-- **Poor**: <25 FPS
-
-## 🎨 Advanced Examples
-
-### Complete Feature Demo
+### Layered Background
 ```jsx
-import React, { useState } from 'react';
-import { 
-  AnimatedBackground, 
-  LayeredBackground,
-  useAnimationControls,
-  usePerformanceMonitor,
-  THEMES 
-} from 'animated-backgrounds';
+import { LayeredBackground } from 'animated-backgrounds';
 
-function AdvancedDemo() {
-  const [mode, setMode] = useState('themed');
-  const [theme, setTheme] = useState('gaming');
-  const [animation, setAnimation] = useState('particleNetwork');
+function App() {
+  const layers = [
+    { animation: 'starryNight', opacity: 0.8, blendMode: 'normal', speed: 0.5 },
+    { animation: 'cosmicDust', opacity: 0.6, blendMode: 'screen', speed: 1.0 },
+    { animation: 'auroraBorealis', opacity: 0.4, blendMode: 'overlay', speed: 1.5 }
+  ];
   
-  const controls = useAnimationControls();
-  const performance = usePerformanceMonitor();
-
-  const renderBackground = () => {
-    switch (mode) {
-      case 'interactive':
-        return (
-          <AnimatedBackground 
-            animationName="particleNetwork"
-            interactive={true}
-            interactionConfig={{
-              effect: 'attract',
-              strength: 0.8,
-              radius: 150
-            }}
-            theme={theme}
-          />
-        );
-      
-      case 'layered':
-        return (
-          <LayeredBackground 
-            layers={[
-              { animation: 'starryNight', opacity: 0.7, blendMode: 'normal' },
-              { animation: 'particleNetwork', opacity: 0.4, blendMode: 'screen' }
-            ]}
-          />
-        );
-      
-      case 'controlled':
-        return (
-          <AnimatedBackground 
-            animationName={animation}
-            animationControls={controls}
-            theme={theme}
-          />
-        );
-      
-      default:
-        return (
-          <AnimatedBackground 
-            animationName={animation}
-            theme={theme}
-            enablePerformanceMonitoring={true}
-          />
-        );
-    }
-  };
-
   return (
-    <div className="demo-app">
-      {renderBackground()}
-      
-      <div className="controls-panel">
-        <select value={mode} onChange={(e) => setMode(e.target.value)}>
-          <option value="themed">🎨 Themed</option>
-          <option value="interactive">🎮 Interactive</option>
-          <option value="layered">🏗️ Layered</option>
-          <option value="controlled">🎛️ Controlled</option>
-        </select>
-
-        <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-          {Object.entries(THEMES).map(([key, themeData]) => (
-            <option key={key} value={key}>{themeData.name}</option>
-          ))}
-        </select>
-
-        {mode === 'controlled' && (
-          <div className="animation-controls">
-            <button onClick={controls.play}>▶️</button>
-            <button onClick={controls.pause}>⏸️</button>
-            <button onClick={controls.reset}>🔄</button>
-            <input 
-              type="range" 
-              min="0.1" 
-              max="3" 
-              step="0.1"
-              value={controls.speed}
-              onChange={(e) => controls.setSpeed(e.target.value)}
-            />
-          </div>
-        )}
-      </div>
-    </div>
+    <LayeredBackground layers={layers} />
   );
 }
 ```
 
-## 📱 Mobile Optimization
+## 🎨 Available Animations
 
-### Responsive Design
+### Core Animations (Battle-tested)
+- `particleNetwork` - Interactive particle system with connections
+- `starryNight` - Twinkling stars with smooth movement
+- `floatingBubbles` - Gentle bubbles with realistic physics
+- `gradientWave` - Dynamic flowing gradient waves
+- `geometricShapes` - Rotating geometric patterns
+- `matrixRain` - Digital rain effect
+- `auroraBorealis` - Northern lights simulation
+
+### Nature & Organic
+- `fireflies` - Glowing fireflies in the forest
+- `oceanWaves` - Realistic ocean wave simulation
+- `autumnLeaves` - Falling autumn leaves
+- `snowFall` - Gentle snowfall effect
+
+### Sci-Fi & Abstract
+- `galaxySpiral` - Spinning galaxy animation
+- `electricStorm` - Lightning and electrical effects
+- `cosmicDust` - Cosmic particle field
+- `quantumField` - Quantum physics visualization
+- `neonPulse` - Pulsing neon lights
+- `dnaHelix` - DNA double helix rotation
+
+## 🎨 Theme System
+
+### Predefined Themes
 ```jsx
 <AnimatedBackground 
   animationName="particleNetwork"
-  interactive={true}
-  adaptivePerformance={true}  // Auto-optimize for mobile
-  enablePerformanceMonitoring={true}
+  theme="cyberpunk" // gaming, portfolio, landing, presentation, wellness, party, cyberpunk, retro
 />
 ```
 
-### Touch Gestures
+### Available Themes
+- **`gaming`** - High-contrast gaming aesthetic
+- **`portfolio`** - Professional and clean
+- **`landing`** - Modern landing page style
+- **`presentation`** - Business presentation ready
+- **`wellness`** - Calm and soothing colors
+- **`party`** - Vibrant and energetic
+- **`cyberpunk`** - Neon and futuristic
+- **`retro`** - Nostalgic color schemes
+
+## 🎮 Interactive Features
+
+### Interaction Effects
 ```jsx
+const interactionConfig = {
+  effect: 'attract',     // 'attract' | 'repel' | 'follow' | 'burst' | 'gravity' | 'magnetic' | 'vortex' | 'wave'
+  strength: 0.8,         // 0.1 to 2.0
+  radius: 150,           // pixels
+  continuous: true,      // continue effect after mouse leaves
+  multiTouch: true       // enable multi-touch for mobile
+};
+
 <AnimatedBackground 
-  animationName="floatingBubbles"
   interactive={true}
-  interactionConfig={{
-    effect: 'follow',
-    strength: 0.6,
-    radius: 100,
-    multiTouch: true  // Enable multi-touch support
-  }}
+  interactionConfig={interactionConfig}
 />
 ```
 
-## ⚙️ Configuration Options
+### Interaction Types
+- **`attract`** - Particles are drawn toward cursor
+- **`repel`** - Particles push away from cursor
+- **`follow`** - Particles trail behind cursor movement
+- **`burst`** - Explosive effect on interaction
+- **`gravity`** - Realistic gravitational pull
+- **`magnetic`** - Magnetic field interaction
+- **`vortex`** - Spinning vortex effect
+- **`wave`** - Ripple wave propagation
+
+## ⚡ Performance Features
+
+### Animation Controls
+```jsx
+import { useAnimationControls } from 'animated-backgrounds';
+
+const controls = useAnimationControls();
+
+// Available methods:
+controls.play();           // Start animation
+controls.pause();          // Pause animation
+controls.reset();          // Reset to initial state
+controls.toggle();         // Toggle play/pause
+controls.setSpeed(1.5);    // Set speed (0.1x to 5.0x)
+
+// Available properties:
+controls.isPlaying;        // Current play state
+controls.speed;            // Current speed multiplier
+```
+
+### Performance Monitoring
+```jsx
+import { usePerformanceMonitor } from 'animated-backgrounds';
+
+const performance = usePerformanceMonitor();
+
+// Available metrics:
+performance.fps;                    // Current FPS
+performance.avgFps;                 // Average FPS
+performance.performanceLevel;       // 'excellent' | 'good' | 'fair' | 'poor'
+performance.memoryUsage;           // Memory usage info
+performance.frameTime;             // Frame render time
+```
+
+## 🏗️ Layered Backgrounds
+
+Create complex visual compositions by layering multiple animations:
+
+```jsx
+import { LayeredBackground } from 'animated-backgrounds';
+
+const cosmicScene = [
+  { 
+    animation: 'starryNight', 
+    opacity: 0.8, 
+    blendMode: 'normal',
+    speed: 0.3 
+  },
+  { 
+    animation: 'cosmicDust', 
+    opacity: 0.6, 
+    blendMode: 'screen',
+    speed: 0.8 
+  },
+  { 
+    animation: 'auroraBorealis', 
+    opacity: 0.4, 
+    blendMode: 'overlay',
+    speed: 1.2 
+  }
+];
+
+<LayeredBackground layers={cosmicScene} />
+```
+
+### Blend Modes
+`normal`, `multiply`, `screen`, `overlay`, `darken`, `lighten`, `color-dodge`, `color-burn`, `hard-light`, `soft-light`, `difference`, `exclusion`, `hue`, `saturation`, `color`, `luminosity`
+
+## 🔧 API Reference
 
 ### AnimatedBackground Props
+
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `animationName` | `string` | `'geometricShapes'` | Animation to display |
-| `theme` | `string` | `undefined` | Theme to apply |
-| `interactive` | `boolean` | `false` | Enable interactions |
-| `interactionConfig` | `object` | `{}` | Interaction settings |
-| `animationControls` | `object` | `undefined` | Control object from hook |
+| `animationName` | `string` | `'geometricShapes'` | Name of the animation |
+| `theme` | `string` | `undefined` | Theme name for colors |
+| `interactive` | `boolean` | `false` | Enable mouse/touch interactions |
+| `interactionConfig` | `object` | `{}` | Interaction configuration |
+| `animationControls` | `object` | `undefined` | External animation controls |
 | `enablePerformanceMonitoring` | `boolean` | `false` | Enable performance tracking |
 | `adaptivePerformance` | `boolean` | `false` | Auto-optimize performance |
 | `fps` | `number` | `60` | Target frames per second |
 | `blendMode` | `string` | `'normal'` | Canvas blend mode |
-| `fallbackAnimation` | `string` | `'geometricShapes'` | Fallback if main fails |
+| `style` | `object` | `{}` | Custom CSS styles |
 
 ### InteractionConfig Options
+
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `effect` | `string` | `'attract'` | Interaction type |
+| `effect` | `string` | `'attract'` | Interaction effect type |
 | `strength` | `number` | `0.5` | Effect strength (0.1-2.0) |
-| `radius` | `number` | `100` | Interaction radius |
-| `continuous` | `boolean` | `true` | Continuous vs click-only |
-| `multiTouch` | `boolean` | `false` | Multi-touch support |
+| `radius` | `number` | `100` | Interaction radius in pixels |
+| `continuous` | `boolean` | `true` | Continue after mouse leaves |
+| `multiTouch` | `boolean` | `false` | Enable multi-touch support |
 
-## 🔧 TypeScript Support
+## 🎯 Real-world Examples
 
-Full TypeScript definitions included:
-
-```typescript
-import { 
-  AnimatedBackground, 
-  AnimationName, 
-  ThemeName,
-  InteractionConfig,
-  PerformanceMetrics 
-} from 'animated-backgrounds';
-
-const config: InteractionConfig = {
-  effect: 'attract',
-  strength: 0.8,
-  radius: 150,
-  continuous: true
-};
-```
-
-## 🚀 Performance Tips
-
-### Optimization Best Practices
-1. **Use appropriate themes** - `portfolio` and `presentation` are most performant
-2. **Enable adaptive performance** - Auto-adjusts based on device capabilities
-3. **Monitor performance** - Use performance monitoring to identify bottlenecks
-4. **Reduce complexity on mobile** - Use simpler animations for touch devices
-5. **Limit layered backgrounds** - More layers = higher resource usage
-
-### Memory Management
-- Animations automatically clean up on unmount
-- Performance monitoring helps identify memory leaks
-- Adaptive performance reduces particle counts on low-end devices
-
-## 🌟 Examples & Demos
-
-### Live Examples
-- **QR Generator Demo**: Full-featured app showcasing all v2.0 capabilities
-- **Theme Showcase**: Interactive theme comparison
-- **Performance Test**: Real-time performance monitoring
-- **Mobile Demo**: Touch interaction examples
-
-### Code Examples
-Check the `/examples` directory for:
-- Basic usage patterns
-- Advanced configurations  
-- Integration examples
-- Performance optimization
-
-## 🔗 Related Packages
-
-### Complementary Libraries
-- **React**: Core framework (>= 16.8 required for hooks)
-- **Framer Motion**: For additional animations
-- **React Spring**: Alternative animation library
-- **Three.js**: For 3D animated backgrounds
-
-## 📈 Migration Guide
-
-### From v1.x to v2.0
-
-**Breaking Changes:**
-- New theme system (optional upgrade)
-- Performance monitoring API changes
-- Some animation names updated
-
-**Migration Steps:**
+### Gaming Website Header
 ```jsx
-// v1.x
-<AnimatedBackground animation="stars" />
-
-// v2.0  
 <AnimatedBackground 
-  animationName="starryNight"  // Renamed
-  theme="portfolio"            // New theme system
+  animationName="electricStorm"
+  theme="gaming"
+  interactive={true}
+  interactionConfig={{
+    effect: 'burst',
+    strength: 1.2,
+    radius: 200
+  }}
+  adaptivePerformance={true}
 />
 ```
+
+### Professional Portfolio
+```jsx
+<AnimatedBackground 
+  animationName="geometricShapes"
+  theme="portfolio"
+  fps={30}
+  style={{ opacity: 0.6 }}
+/>
+```
+
+### Mobile-Optimized
+```jsx
+<AnimatedBackground 
+  animationName="floatingBubbles"
+  theme="wellness"
+  interactive={true}
+  interactionConfig={{
+    effect: 'follow',
+    strength: 0.6,
+    multiTouch: true
+  }}
+  adaptivePerformance={true}
+  fps={30}
+/>
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### 1. Mouse Interactions Not Working
+**Problem**: Particles don't respond to mouse movement
+**Solution**: Ensure `interactive={true}` and check that the canvas doesn't have `pointer-events: none`
+
+```jsx
+// Correct usage
+<AnimatedBackground 
+  interactive={true}
+  style={{ pointerEvents: 'auto' }} // Ensure pointer events are enabled
+/>
+```
+
+#### 2. Performance Issues
+**Problem**: Low FPS or choppy animations
+**Solutions**:
+- Enable adaptive performance: `adaptivePerformance={true}`
+- Reduce FPS: `fps={30}`
+- Use simpler animations for mobile devices
+
+#### 3. Theme Colors Not Applying
+**Problem**: Theme doesn't change animation colors
+**Solution**: Ensure the animation supports themes (check documentation)
+
+```jsx
+// Some animations support themes better than others
+<AnimatedBackground 
+  animationName="particleNetwork" // Good theme support
+  theme="cyberpunk"
+/>
+```
+
+### Performance Optimization
+
+1. **Mobile Devices**: Use `fps={30}` and `adaptivePerformance={true}`
+2. **Low-end Hardware**: Stick to basic animations like `starryNight` or `geometricShapes`
+3. **Background Usage**: Consider using `style={{ opacity: 0.6 }}` for better text readability
+
+## 📚 Documentation
+
+- [Live Demo](https://qr-generator-murex.vercel.app/) - Interactive examples
+- [API Documentation](https://umerfarok.github.io/animated-backgrounds/) - Complete API reference
+- [GitHub Repository](https://github.com/umerfarok/animated-backgrounds) - Source code
 
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-### Development Setup
-```bash
-git clone https://github.com/umerfarok/animated-backgrounds.git
-cd animated-backgrounds
-npm install
-npm run build
-```
-
-### Testing
-```bash
-npm test
-npm run test:performance
-npm run test:mobile
-```
-
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](LICENSE) file for details.
 
-## 🙋‍♂️ Support
+## 🔧 Technical Support
 
-- 📧 **Email**: umerfarooq.dev@gmail.com
-- 🐛 **Issues**: [GitHub Issues](https://github.com/umerfarok/animated-backgrounds/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/umerfarok/animated-backgrounds/discussions)
-- 📖 **Documentation**: [Full API Docs](https://umerfarok.github.io/animated-backgrounds)
-
-## 🌟 Show Your Support
-
-If you like this project, please ⭐ star it on GitHub and share it with the community!
-
-```bash
-npm install animated-backgrounds
-```
+- **Node.js**: 16.x or higher
+- **React**: 16.8 or higher (hooks support required)
+- **Browsers**: Modern browsers with Canvas support
+- **TypeScript**: Full TypeScript definitions included
 
 ---
 
 **Made with ❤️ by [Umer Farooq](https://github.com/umerfarok)**
 
-*Transform your React applications with stunning animated backgrounds!* ✨
+```bash
+npm install animated-backgrounds
+```

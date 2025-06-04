@@ -314,6 +314,7 @@ const AnimatedBackground = React.memo(({
                 width: '100%',
                 height: '100%',
                 zIndex: -1,
+                pointerEvents: interactive ? 'auto' : 'none',
                 ...style
             }}
         />

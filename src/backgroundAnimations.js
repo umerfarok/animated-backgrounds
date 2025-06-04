@@ -164,14 +164,16 @@ export const particleNetwork = (canvas, ctx, options = {}) => {
     const maxDistance = 120;
 
     for (let i = 0; i < particleCount; i++) {
+        const vx = Math.random() * 1.5 - 0.75;
+        const vy = Math.random() * 1.5 - 0.75;
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             radius: Math.random() * 3 + 1,
-            vx: Math.random() * 1.5 - 0.75,
-            vy: Math.random() * 1.5 - 0.75,
-            originalVx: Math.random() * 1.5 - 0.75,
-            originalVy: Math.random() * 1.5 - 0.75,
+            vx: vx,
+            vy: vy,
+            originalVx: vx,
+            originalVy: vy,
             color: themeManager ? themeManager.getCurrentColors()[0] : `hsl(${Math.random() * 360}, 70%, 70%)`
         });
     }
@@ -186,18 +188,30 @@ export const particleNetwork = (canvas, ctx, options = {}) => {
         if (interactionHandler) {
             const interactionPoints = interactionHandler.getInteractionPoints();
             
-            particles.forEach(particle => {
-                // Reset to original velocity
-                particle.vx = particle.originalVx;
-                particle.vy = particle.originalVy;
-                
-                // Apply interaction forces
-                interactionPoints.forEach(point => {
-                    const force = interactionHandler.calculateInteractionForce(particle, point);
-                    particle.vx += force.fx * 2; // Amplify force for visibility
-                    particle.vy += force.fy * 2;
+            if (interactionPoints.length > 0) {
+                particles.forEach(particle => {
+                    // Start with original velocity
+                    let totalFx = 0;
+                    let totalFy = 0;
+                    
+                    // Apply interaction forces from all interaction points
+                    interactionPoints.forEach(point => {
+                        const force = interactionHandler.calculateInteractionForce(particle, point);
+                        totalFx += force.fx;
+                        totalFy += force.fy;
+                    });
+                    
+                    // Apply accumulated forces with damping
+                    particle.vx = particle.originalVx + totalFx * 3;
+                    particle.vy = particle.originalVy + totalFy * 3;
                 });
-            });
+            } else {
+                // Gradually return to original velocity when no interaction
+                particles.forEach(particle => {
+                    particle.vx = particle.vx * 0.95 + particle.originalVx * 0.05;
+                    particle.vy = particle.vy * 0.95 + particle.originalVy * 0.05;
+                });
+            }
         }
 
         particles.forEach(particle => {
