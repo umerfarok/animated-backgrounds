@@ -20,37 +20,37 @@
       "name": "Animated Backgrounds v2.0",
       "title": "Animated Backgrounds - Interactive React Animations API",
       "description": "Complete API documentation for the feature-rich animated backgrounds package with themes, interactions, performance monitoring, and layered compositions.",
-      "logo": "images/logo.png",
+      "logo": "images/logo.svg",
       "hideGenerator": false,
       "theme": "dark",
       "navLinks": [
         {
           "label": "🏠 Home",
-          "href": "/"
+          "href": "https://umerfarok.github.io/animated-backgrounds/"
         },
         {
           "label": "📚 API Reference",
-          "href": "/module-AnimatedBackground.html"
+          "href": "https://umerfarok.github.io/animated-backgrounds/module-AnimatedBackground.html"
         },
         {
           "label": "🎨 Themes & Colors",
-          "href": "/module-ThemeSystem.html"
+          "href": "https://umerfarok.github.io/animated-backgrounds/module-ThemeSystem.html"
         },
         {
           "label": "🎮 Interactions",
-          "href": "/module-InteractionUtils.html"
+          "href": "https://umerfarok.github.io/animated-backgrounds/module-InteractionUtils.html"
         },
         {
           "label": "🎛️ Animation Controls",
-          "href": "/module-useAnimationControls.html"
+          "href": "https://umerfarok.github.io/animated-backgrounds/module-useAnimationControls.html"
         },
         {
           "label": "📊 Performance",
-          "href": "/module-usePerformanceMonitor.html"
+          "href": "https://umerfarok.github.io/animated-backgrounds/module-usePerformanceMonitor.html"
         },
         {
           "label": "🏗️ Layered Backgrounds",
-          "href": "/module-LayeredBackground.html"
+          "href": "https://umerfarok.github.io/animated-backgrounds/module-LayeredBackground.html"
         },
         {
           "divider": true
