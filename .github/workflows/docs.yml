@@ -25,6 +25,15 @@ jobs:
       - name: Generate documentation
         run: npm run docs
 
+      - name: Verify documentation assets
+        run: |
+          echo "Verifying documentation build..."
+          ls -la docs/animated-backgrounds/2.0.0/
+          echo "Checking logo exists..."
+          test -f docs/animated-backgrounds/2.0.0/images/logo.svg && echo "✅ Logo found" || echo "❌ Logo missing"
+          echo "Checking main documentation..."
+          test -f docs/animated-backgrounds/2.0.0/index.html && echo "✅ Documentation generated" || echo "❌ Documentation missing"
+
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3

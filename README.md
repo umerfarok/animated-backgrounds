@@ -7,8 +7,10 @@
 ![license](https://img.shields.io/npm/l/animated-backgrounds.svg)
 ![React](https://img.shields.io/badge/React-%2016.8%2B-blue)
 [![Socket Badge](https://socket.dev/api/badge/npm/package/animated-backgrounds/2.0.0)](https://socket.dev/npm/package/animated-backgrounds/overview/2.0.0)
+[![Docs](https://img.shields.io/badge/Docs-📚_API_Reference-blue)](https://umerfarok.github.io/animated-backgrounds/)
+[![Demo](https://img.shields.io/badge/Demo-🎮_Live_Example-green)](https://qr-generator-murex.vercel.app/)
 
-## 🚀 What's New in v2.0
+## �� What's New in v2.0
 
 **Major upgrade with powerful new features:**
 
