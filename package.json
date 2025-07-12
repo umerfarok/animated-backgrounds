@@ -1,7 +1,7 @@
 {
   "name": "animated-backgrounds",
   "version": "2.0.0",
-  "description": "A feature-rich React package for stunning animated backgrounds with interactive controls, themes, performance monitoring, and layered compositions.",
+  "description": "A feature-rich React package test for stunning animated backgrounds with interactive controls, themes, performance monitoring, and layered compositions.",
   "type": "module",
   "keywords": [
     "animated",
