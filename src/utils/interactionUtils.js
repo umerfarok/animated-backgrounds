@@ -30,7 +30,8 @@ export const createInteractionHandler = (canvas, config = {}) => {
     effect = 'attract',
     strength = 0.5,
     radius = 100,
-    continuous = false
+    continuous = false,
+    multiTouch = false
   } = config;
 
   let isInteracting = false;
@@ -151,7 +152,9 @@ export const createInteractionHandler = (canvas, config = {}) => {
 
   const handleTouchStart = (event) => {
     event.preventDefault();
-    Array.from(event.touches).forEach((touch, index) => {
+    const touches = multiTouch ? Array.from(event.touches) : [event.touches[0]];
+    touches.forEach((touch) => {
+      if (!touch) return;
       const point = {
         x: (touch.clientX - canvas.getBoundingClientRect().left) * (canvas.width / canvas.getBoundingClientRect().width),
         y: (touch.clientY - canvas.getBoundingClientRect().top) * (canvas.height / canvas.getBoundingClientRect().height),
@@ -165,7 +168,9 @@ export const createInteractionHandler = (canvas, config = {}) => {
 
   const handleTouchMove = (event) => {
     event.preventDefault();
-    Array.from(event.touches).forEach((touch) => {
+    const touches = multiTouch ? Array.from(event.touches) : [event.touches[0]];
+    touches.forEach((touch) => {
+      if (!touch) return;
       const point = {
         x: (touch.clientX - canvas.getBoundingClientRect().left) * (canvas.width / canvas.getBoundingClientRect().width),
         y: (touch.clientY - canvas.getBoundingClientRect().top) * (canvas.height / canvas.getBoundingClientRect().height),
@@ -179,9 +184,19 @@ export const createInteractionHandler = (canvas, config = {}) => {
 
   const handleTouchEnd = (event) => {
     event.preventDefault();
-    Array.from(event.changedTouches).forEach((touch) => {
+    const changedTouches = Array.from(event.changedTouches);
+    changedTouches.forEach((touch) => {
       touchPoints.delete(touch.identifier);
     });
+
+    // In single-touch mode, if the primary touch is lifted but other fingers
+    // are still on the screen, we need to ensure the interaction points are cleared
+    // to prevent the effect from getting stuck, but only if there are no actual touches left
+    // from the event.touches.
+    if (!multiTouch && event.touches.length === 0) {
+        touchPoints.clear();
+    }
+
     interactionPoints = Array.from(touchPoints.values());
   };
 

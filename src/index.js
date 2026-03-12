@@ -239,7 +239,8 @@ const AnimatedBackground = React.memo(({
     useEffect(() => {
         const animation = setupCanvas();
         let lastTime = 0;
-        const frameInterval = 1000 / fps;
+        let lastEvalTime = 0;
+        let currentFps = fps;
 
         const loop = (currentTime) => {
             // Check animation controls
@@ -250,6 +251,28 @@ const AnimatedBackground = React.memo(({
 
             animationRef.current = requestAnimationFrame(loop);
 
+            // Adaptive performance adjustments
+            if (adaptivePerformance && performanceMonitor) {
+                const { avgFps, performanceLevel } = performanceMonitor;
+
+                // Only evaluate adaptive adjustments once per second to prevent rapid toggling
+                // and console spamming
+                if (currentTime - lastEvalTime > 1000) {
+                    lastEvalTime = currentTime;
+                    if (performanceLevel === 'poor' && avgFps > 0 && avgFps < 25) {
+                        if (currentFps > 15) {
+                            // Automatically reduce fps to improve rendering stability
+                            currentFps = Math.max(15, currentFps - 5);
+                            console.warn(`Poor performance detected. Automatically reduced target FPS to ${currentFps}.`);
+                        }
+                    } else if (performanceLevel === 'excellent' && avgFps > 55 && currentFps < fps) {
+                        // Gradually restore fps if performance is excellent
+                        currentFps = Math.min(fps, currentFps + 1);
+                    }
+                }
+            }
+
+            const frameInterval = 1000 / currentFps;
             const deltaTime = currentTime - lastTime;
             const speedMultiplier = animationControls ? animationControls.speed : 1;
             const adjustedFrameInterval = frameInterval / speedMultiplier;
@@ -263,15 +286,6 @@ const AnimatedBackground = React.memo(({
                 }
                 
                 animation();
-
-                // Adaptive performance adjustments
-                if (adaptivePerformance && performanceMonitor) {
-                    const { avgFps, performanceLevel } = performanceMonitor;
-                    if (performanceLevel === 'poor' && avgFps < 20) {
-                        // Automatically reduce complexity or fps
-                        console.warn('Poor performance detected. Consider reducing animation complexity.');
-                    }
-                }
             }
         };
 
@@ -282,7 +296,7 @@ const AnimatedBackground = React.memo(({
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, [setupCanvas, fps, animationControls]); // Removed changing dependencies
+    }, [setupCanvas, fps, animationControls, adaptivePerformance]); // Added adaptivePerformance as dependency
 
     // Resize handling effect - separate from animation
     useEffect(() => {
