@@ -554,34 +554,42 @@ export class ThemeManager {
    * @param {Function} [easingFunction] - Custom easing function
    */
   transitionToTheme(newTheme, duration = 2000, easingFunction = this.easeInOutCubic) {
-    if (!THEMES[newTheme] || this.isTransitioning) return;
-    
-    const startTheme = this.currentTheme;
+    const theme = THEMES[newTheme] || this.customThemes.get(newTheme);
+    if (!theme || this.isTransitioning) return;
+
+    // Nothing to interpolate from yet
+    if (!this.currentTheme) {
+      this.applyTheme(newTheme);
+      return;
+    }
+
     const startTime = Date.now();
     this.isTransitioning = true;
-    
+
     const startColors = [...this.currentColors];
-    const targetColors = THEMES[newTheme].colorScheme.colors;
-    
+    const targetColors = theme.colorScheme.colors;
+
     const transitionStep = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const easedProgress = easingFunction(progress);
-      
-      // Interpolate colors
-      this.currentColors = startColors.map((startColor, index) => {
-        const targetColor = targetColors[index] || targetColors[targetColors.length - 1];
-        return this.interpolateColor(startColor, targetColor, easedProgress);
-      });
-      
+
       if (progress < 1) {
+        const easedProgress = easingFunction(progress);
+
+        // Interpolate colors
+        this.currentColors = targetColors.map((targetColor, index) => {
+          const startColor = startColors[index] || startColors[startColors.length - 1];
+          return this.interpolateColor(startColor, targetColor, easedProgress);
+        });
+
         requestAnimationFrame(transitionStep);
       } else {
-        this.currentTheme = newTheme;
+        this.currentTheme = theme;
+        this.currentColors = targetColors;
         this.isTransitioning = false;
       }
     };
-    
+
     transitionStep();
   }
 
