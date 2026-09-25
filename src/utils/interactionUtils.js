@@ -17,7 +17,21 @@
  * @property {number} strength - Effect strength (0-1)
  * @property {number} radius - Interaction radius in pixels
  * @property {boolean} continuous - Whether effect continues after interaction ends
+ * @property {boolean} multiTouch - Whether every touch point interacts, not just the first
  */
+
+/**
+ * Fills in defaults for missing interaction settings
+ * @param {InteractionConfig} config - Interaction configuration
+ * @returns {InteractionConfig} Complete interaction configuration
+ */
+const resolveConfig = ({
+  effect = 'attract',
+  strength = 0.5,
+  radius = 100,
+  continuous = false,
+  multiTouch = false
+}) => ({ effect, strength, radius, continuous, multiTouch });
 
 /**
  * Creates an interaction handler for canvas animations
@@ -26,13 +40,7 @@
  * @returns {Object} Interaction handler with event listeners and state
  */
 export const createInteractionHandler = (canvas, config = {}) => {
-  const {
-    effect = 'attract',
-    strength = 0.5,
-    radius = 100,
-    continuous = false,
-    multiTouch = false
-  } = config;
+  let settings = resolveConfig(config);
 
   let isInteracting = false;
   let interactionPoints = [];
@@ -73,6 +81,7 @@ export const createInteractionHandler = (canvas, config = {}) => {
    * @returns {Object} Force vector {fx, fy, distance}
    */
   const calculateInteractionForce = (particle, interactionPoint) => {
+    const { effect, strength, radius } = settings;
     const dx = interactionPoint.x - particle.x;
     const dy = interactionPoint.y - particle.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -139,7 +148,7 @@ export const createInteractionHandler = (canvas, config = {}) => {
   };
 
   const handleMouseMove = (event) => {
-    if (isInteracting || continuous) {
+    if (isInteracting || settings.continuous) {
       const point = getInteractionPoint(event);
       if (point) interactionPoints = [point];
     }
@@ -147,12 +156,12 @@ export const createInteractionHandler = (canvas, config = {}) => {
 
   const handleMouseUp = () => {
     isInteracting = false;
-    if (!continuous) interactionPoints = [];
+    if (!settings.continuous) interactionPoints = [];
   };
 
   const handleTouchStart = (event) => {
     event.preventDefault();
-    const touches = multiTouch ? Array.from(event.touches) : [event.touches[0]];
+    const touches = settings.multiTouch ? Array.from(event.touches) : [event.touches[0]];
     touches.forEach((touch) => {
       if (!touch) return;
       const point = {
@@ -168,7 +177,7 @@ export const createInteractionHandler = (canvas, config = {}) => {
 
   const handleTouchMove = (event) => {
     event.preventDefault();
-    const touches = multiTouch ? Array.from(event.touches) : [event.touches[0]];
+    const touches = settings.multiTouch ? Array.from(event.touches) : [event.touches[0]];
     touches.forEach((touch) => {
       if (!touch) return;
       const point = {
@@ -193,7 +202,7 @@ export const createInteractionHandler = (canvas, config = {}) => {
     // are still on the screen, we need to ensure the interaction points are cleared
     // to prevent the effect from getting stuck, but only if there are no actual touches left
     // from the event.touches.
-    if (!multiTouch && event.touches.length === 0) {
+    if (!settings.multiTouch && event.touches.length === 0) {
         touchPoints.clear();
     }
 
@@ -233,7 +242,7 @@ export const createInteractionHandler = (canvas, config = {}) => {
     getInteractionPoints: () => interactionPoints,
     isInteracting: () => isInteracting,
     updateConfig: (newConfig) => {
-      Object.assign(config, newConfig);
+      settings = resolveConfig({ ...settings, ...newConfig });
     }
   };
 };
