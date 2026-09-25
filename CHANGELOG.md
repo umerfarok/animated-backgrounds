@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### 🐛 Fixed
+- **Interactive Mode**: Mouse and touch listeners stay attached when the animation, theme, or blend mode changes, and `interactionConfig` updates reach the live handler
+- **Interaction Config**: `updateConfig` on an interaction handler now takes effect and no longer mutates the config object passed in
+- **Theme Transitions**: `transitionToTheme` now finishes with the theme applied, accepts custom themes, and applies the theme at once when none is active
+- **Animation Sequencer**: Importing keeps a track volume of `0`, and `batch` restores update notifications when an operation throws
+
+### 🛠️ Technical Improvements
+- **Tests**: Added a `node --test` suite that runs in CI on Node 22 and 24
+- **Docs Deployment**: The docs workflow deploys with the built-in `GITHUB_TOKEN` instead of a personal token
+
 ## [2.0.0] - 2024-12-04
 
 ### 🐛 Fixed
