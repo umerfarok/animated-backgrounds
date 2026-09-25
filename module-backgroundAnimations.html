@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animated Backgrounds - Interactive React Animations API backgroundAnimations</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="images/logo.svg" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Animated Backgrounds v2.0</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/"
+                        >
+                            🏠 Home
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-AnimatedBackground.html"
+                        >
+                            📚 API Reference
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-ThemeSystem.html"
+                        >
+                            🎨 Themes & Colors
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-InteractionUtils.html"
+                        >
+                            🎮 Interactions
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-useAnimationControls.html"
+                        >
+                            🎛️ Animation Controls
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-usePerformanceMonitor.html"
+                        >
+                            📊 Performance
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://umerfarok.github.io/animated-backgrounds/module-LayeredBackground.html"
+                        >
+                            🏗️ Layered Backgrounds
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href=""
+                        >
+                            
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/umerfarok/animated-backgrounds"
+                        >
+                            💻 GitHub
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://www.npmjs.com/package/animated-backgrounds"
+                        >
+                            📦 NPM
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://qr-generator-murex.vercel.app/"
+                        >
+                            🎮 Live Demo
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-AIFeatures.html">AIFeatures</a></li><li><a href="module-AnimatedBackgrounds.html">AnimatedBackgrounds</a></li><li><a href="module-AnimatedText.html">AnimatedText</a></li><li><a href="module-AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AudioUtils.html">AudioUtils</a></li><li><a href="module-DebugTools.html">DebugTools</a></li><li><a href="module-FrameworkIntegration.html">FrameworkIntegration</a></li><li><a href="module-InteractionUtils.html">InteractionUtils</a></li><li><a href="module-LayeredBackground.html">LayeredBackground</a></li><li><a href="module-PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.html">ThemeSystem</a></li><li><a href="module-WebGLUtils.html">WebGLUtils</a></li><li><a href="module-backgroundAnimations.html">backgroundAnimations</a></li><li><a href="module-useAnimationControls.html">useAnimationControls</a></li><li><a href="module-usePerformanceMonitor.html">usePerformanceMonitor</a></li></ul><h3>Classes</h3><ul><li><a href="module-AIFeatures.ContentGenerator.html">ContentGenerator</a></li><li><a href="module-AIFeatures.IntelligentOptimizer.html">IntelligentOptimizer</a></li><li><a href="module-AIFeatures-AnimationPatternGenerator.html">AnimationPatternGenerator</a></li><li><a href="module-AIFeatures-ColorHarmonyGenerator.html">ColorHarmonyGenerator</a></li><li><a href="module-AnimationSequencer.AnimationPresets.html">AnimationPresets</a></li><li><a href="module-AnimationSequencer.AnimationSequencer.html">AnimationSequencer</a></li><li><a href="module-AnimationSequencer.AnimationTrack.html">AnimationTrack</a></li><li><a href="module-AnimationSequencer.Keyframe.html">Keyframe</a></li><li><a href="module-AudioUtils.AudioAnalyzer.html">AudioAnalyzer</a></li><li><a href="module-AudioUtils.AudioReactiveEffects.html">AudioReactiveEffects</a></li><li><a href="module-DebugTools.DebugConsole.html">DebugConsole</a></li><li><a href="module-DebugTools.DebugManager.html">DebugManager</a></li><li><a href="module-DebugTools.DebugVisualizer.html">DebugVisualizer</a></li><li><a href="module-DebugTools.PerformanceMonitor.html">PerformanceMonitor</a></li><li><a href="module-FrameworkIntegration.AnimatedBackgroundManager.html">AnimatedBackgroundManager</a></li><li><a href="module-PhysicsEngine.ForceGenerator.html">ForceGenerator</a></li><li><a href="module-PhysicsEngine.PhysicsEngine.html">PhysicsEngine</a></li><li><a href="module-PhysicsEngine.PhysicsParticle.html">PhysicsParticle</a></li><li><a href="module-PhysicsEngine.Vector2D.html">Vector2D</a></li><li><a href="module-PhysicsEngine-SpatialGrid.html">SpatialGrid</a></li><li><a href="module-ProjectManager.ProjectConfig.html">ProjectConfig</a></li><li><a href="module-ProjectManager.ProjectManager.html">ProjectManager</a></li><li><a href="module-ThemeSystem.ThemeManager.html">ThemeManager</a></li><li><a href="module-WebGLUtils.ShaderManager.html">ShaderManager</a></li><li><a href="module-WebGLUtils.WebGLEffectComposer.html">WebGLEffectComposer</a></li><li><a href="module-WebGLUtils.WebGLParticleSystem.html">WebGLParticleSystem</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Module</p>
+                    <h1>backgroundAnimations</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Collection of animation functions with blend mode support</p></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1">line 1</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id=".auroraBorealis">
+    <a class="href-link" href="#.auroraBorealis">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        auroraBorealis
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry auroraBorealis animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line381">line 381</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".autumnLeaves">
+    <a class="href-link" href="#.autumnLeaves">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        autumnLeaves
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry autumnLeaves animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1231">line 1231</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".bloodRain">
+    <a class="href-link" href="#.bloodRain">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        bloodRain
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry bloodRain animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1783">line 1783</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".cosmicDust">
+    <a class="href-link" href="#.cosmicDust">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        cosmicDust
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry cosmicDust animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line465">line 465</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".creepyCrawlies">
+    <a class="href-link" href="#.creepyCrawlies">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        creepyCrawlies
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry creepyCrawlies animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1845">line 1845</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".dnaHelix">
+    <a class="href-link" href="#.dnaHelix">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        dnaHelix
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry dnaHelix animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line753">line 753</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".electricStorm">
+    <a class="href-link" href="#.electricStorm">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        electricStorm
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry electricStorm animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line504">line 504</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".fallingFoodFiesta">
+    <a class="href-link" href="#.fallingFoodFiesta">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        fallingFoodFiesta
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry fallingFoodFiesta animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1385">line 1385</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".fireflies">
+    <a class="href-link" href="#.fireflies">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        fireflies
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry fireflies animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line671">line 671</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".fireflyForest">
+    <a class="href-link" href="#.fireflyForest">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        fireflyForest
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry fireflyForest animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1053">line 1053</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".floatingBubbles">
+    <a class="href-link" href="#.floatingBubbles">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        floatingBubbles
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates floating bubbles animation with blend modes</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line62">line 62</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".galaxySpiral">
+    <a class="href-link" href="#.galaxySpiral">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        galaxySpiral
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry galaxySpiral animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line289">line 289</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".geometricShapes">
+    <a class="href-link" href="#.geometricShapes">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        geometricShapes
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry geometricShapes animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line610">line 610</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".ghostlyApparitions">
+    <a class="href-link" href="#.ghostlyApparitions">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        ghostlyApparitions
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry ghostlyApparitions animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1572">line 1572</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".gradientWave">
+    <a class="href-link" href="#.gradientWave">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        gradientWave
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry gradientWave animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line128">line 128</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".hauntedForest">
+    <a class="href-link" href="#.hauntedForest">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        hauntedForest
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry hauntedForest animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1485">line 1485</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".matrixRain">
+    <a class="href-link" href="#.matrixRain">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        matrixRain
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry matrixRain animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line718">line 718</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".neonPulse">
+    <a class="href-link" href="#.neonPulse">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        neonPulse
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry neonPulse animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line423">line 423</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".neuralNetwork">
+    <a class="href-link" href="#.neuralNetwork">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        neuralNetwork
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry neuralNetwork animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line799">line 799</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".oceanWaves">
+    <a class="href-link" href="#.oceanWaves">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        oceanWaves
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry oceanWaves animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line887">line 887</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".particleNetwork">
+    <a class="href-link" href="#.particleNetwork">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        particleNetwork
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry particleNetwork animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line159">line 159</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".quantumField">
+    <a class="href-link" href="#.quantumField">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        quantumField
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry quantumField animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line555">line 555</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".rainbowWaves">
+    <a class="href-link" href="#.rainbowWaves">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        rainbowWaves
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry rainbowWaves animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line347">line 347</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".realisticClouds">
+    <a class="href-link" href="#.realisticClouds">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        realisticClouds
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry realisticClouds animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1130">line 1130</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".realisticRain">
+    <a class="href-link" href="#.realisticRain">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        realisticRain
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry realisticRain animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1322">line 1322</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".snowFall">
+    <a class="href-link" href="#.snowFall">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        snowFall
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry snowFall animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line967">line 967</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".spiderwebOverlay">
+    <a class="href-link" href="#.spiderwebOverlay">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        spiderwebOverlay
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry spiderwebOverlay animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1630">line 1630</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".starryNight">
+    <a class="href-link" href="#.starryNight">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        starryNight
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry night animation with blend modes</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".undeadGraveyard">
+    <a class="href-link" href="#.undeadGraveyard">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        undeadGraveyard
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Creates a starry undeadGraveyard animation</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="backgroundAnimations.js.html" class="button">View Source</a>
+            <span>
+                <a href="backgroundAnimations.js.html">backgroundAnimations.js</a>, <a href="backgroundAnimations.js.html#line1684">line 1684</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

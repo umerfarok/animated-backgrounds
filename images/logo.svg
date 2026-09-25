@@ -1,0 +1,59 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffff00;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with animation -->
+  <circle cx="30" cy="30" r="25" fill="url(#grad2)" opacity="0.3">
+    <animate attributeName="r" values="20;28;20" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Animated particles -->
+  <circle cx="20" cy="20" r="2" fill="#00ffff" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="0 30 30;360 30 30" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="40" cy="25" r="1.5" fill="#ff00ff" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="360 30 30;0 30 30" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="35" cy="40" r="1.8" fill="#ffff00" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="rotate" 
+                      values="180 30 30;540 30 30" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Main logo text -->
+  <text x="65" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="url(#grad1)">
+    Animated
+  </text>
+  
+  <text x="65" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#8b5cf6">
+    Backgrounds
+  </text>
+  
+  <!-- Version badge -->
+  <rect x="160" y="20" width="35" height="15" rx="7" fill="#22c55e" opacity="0.8"/>
+  <text x="177" y="30" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white" text-anchor="middle">
+    v2.0
+  </text>
+</svg> 
