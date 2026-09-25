@@ -545,7 +545,7 @@ export class AnimationSequencer {
       const track = new AnimationTrack(name);
       track.enabled = trackData.enabled !== false;
       track.muted = trackData.muted || false;
-      track.volume = trackData.volume || 1.0;
+      track.volume = trackData.volume === undefined ? 1.0 : trackData.volume;
       
       trackData.keyframes.forEach(kfData => {
         const keyframe = new Keyframe(kfData.time, kfData.properties, kfData.easing);
@@ -625,11 +625,15 @@ export class AnimationSequencer {
     if (wasNotifying) {
       const originalCallback = this.onTrackUpdate;
       this.onTrackUpdate = null;
-      
-      operations();
-      
-      this.onTrackUpdate = originalCallback;
-      this.notifyTrackUpdate();
+
+      let completed = false;
+      try {
+        operations();
+        completed = true;
+      } finally {
+        this.onTrackUpdate = originalCallback;
+        if (completed) this.notifyTrackUpdate();
+      }
     } else {
       operations();
     }
@@ -758,4 +762,4 @@ export class AnimationPresets {
 }
 
 // Export singleton instance
-export const animationSequencer = new AnimationSequencer(); 
+export const animationSequencer = new AnimationSequencer();

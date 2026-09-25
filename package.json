@@ -44,6 +44,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "test": "node --test",
     "prepare": "npm run build",
     "docs:assets": "shx mkdir -p docs/animated-backgrounds/2.0.0/images && shx cp images/logo.svg docs/animated-backgrounds/2.0.0/images/ && shx cp -r docs-content/demos docs/demos",
     "docs": "jsdoc -c jsdoc.config.json && npm run docs:assets"
