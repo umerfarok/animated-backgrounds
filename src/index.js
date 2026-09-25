@@ -166,6 +166,28 @@ const AnimatedBackground = React.memo(({
         }
     }, [theme]);
 
+    // Own the interaction handler while interactive mode is on. Declared
+    // before the animation effect so setupCanvas can hand it to the animation.
+    useEffect(() => {
+        if (!interactive) return;
+
+        const handler = createInteractionHandler(canvasRef.current, interactionConfig);
+        handler.attachListeners();
+        interactionHandlerRef.current = handler;
+
+        return () => {
+            handler.removeListeners();
+            interactionHandlerRef.current = null;
+        };
+    }, [interactive]);
+
+    // Pass interaction config changes to the live handler
+    useEffect(() => {
+        if (interactionHandlerRef.current) {
+            interactionHandlerRef.current.updateConfig(interactionConfig);
+        }
+    }, [interactionConfig]);
+
     const blendModes = [
         'normal',
         'multiply',
@@ -215,12 +237,6 @@ const AnimatedBackground = React.memo(({
         if (!animation) {
             console.warn(`Animation "${animationName}" not found. Using fallback animation.`);
             animation = animations[fallbackAnimation] || animations.geometricShapes;
-        }
-
-        // Setup interaction handler if interactive mode is enabled
-        if (interactive && !interactionHandlerRef.current) {
-            interactionHandlerRef.current = createInteractionHandler(canvas, interactionConfig);
-            interactionHandlerRef.current.attachListeners();
         }
 
         // Get theme-specific settings if available
@@ -311,9 +327,6 @@ const AnimatedBackground = React.memo(({
         window.addEventListener('resize', handleResize);
 
         return () => {
-            if (interactionHandlerRef.current) {
-                interactionHandlerRef.current.removeListeners();
-            }
             window.removeEventListener('resize', handleResize);
         };
     }, [setupCanvas]);
